@@ -141,7 +141,7 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
 </div>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWn4dA64ks_3MxtKm4j-kqibvFbJhbw_Ul7Zh2tNjcpEWqcW3alP3wOVWxVfJEG2CQ1A/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-fBHMitNcNtIZFqrrcbYqT777S_yA9G7p3HQjCgDZwY1e4gT9CouLqYJqIYOuxB8SlA/exec";
 
 let currentUser = null;
 const data=[{no:"1", text:"ทริปดินเนอร์หรู + โซฟาคู่รัก"},{no:"2", text:"ตู้เย็นใหญ่ + ชุดเครื่องครัวชมพู"},{no:"3", text:"แอร์เย็นฉ่ำ + ที่นอนคิงไซส์"},{no:"4", text:"แหวนทองคำแทนใจ 1 สลึง"}];
@@ -221,15 +221,23 @@ async function draw(){
 }
 
 async function saveToGoogleSheet(name, phone, result) {
-  const payload = { name, phone, result };
+  try {
+    const formData = new URLSearchParams();
+    formData.append('name', name);
+    formData.append('phone', phone);
+    formData.append('result', result);
 
-  await fetch(SCRIPT_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(payload)
-  });
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors', 
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: formData.toString()
+    });
+  } catch (err) {
+    console.error("Error:", err);
+  }
 }
 
 
@@ -280,6 +288,7 @@ function closeCard(){ location.reload(); }
 </script>
 </body>
 </html>
+
 
 
 
