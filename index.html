@@ -9,16 +9,16 @@
 *{box-sizing:border-box}
 html, body { height: 100%; width: 100%; overflow: hidden; position: fixed; margin: 0; padding: 0; background-color: #ff4d6d; }
 
-/* แก้ไขลิงก์ Google Drive ให้เป็น Direct Link */
+/* แก้ไขลิงก์รูปพื้นหลัง */
 .bg-container {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background-image: url('https://lh3.googleusercontent.com/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E');
+  background-image: url('https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU');
   background-size: cover; background-position: center; background-repeat: no-repeat; z-index: -1;
 }
 
 @media (max-width: 768px) {
   .bg-container {
-    background-image: url('https://lh3.googleusercontent.com/d/1ERUqVLPAj1DBJl_AhkY-1TCClSK1rTnq');
+    background-image: url('https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU');
   }
 }
 
@@ -40,13 +40,6 @@ h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); te
   25% { transform: rotate(4deg) translateY(-5px); }
   75% { transform: rotate(-4deg) translateY(-3px); }
 }
-@keyframes stickSwirl {
-  0% { transform: translate(0, 0) rotate(var(--r)); }
-  25% { transform: translate(3px, -10px) rotate(calc(var(--r) + 4deg)); }
-  50% { transform: translate(-3px, -5px) rotate(calc(var(--r) - 3deg)); }
-  75% { transform: translate(2px, -12px) rotate(calc(var(--r) + 2deg)); }
-  100% { transform: translate(0, 0) rotate(var(--r)); }
-}
 .shake .stick { animation: stickSwirl var(--t) infinite ease-in-out; }
 #tubeWrap { position: absolute; bottom: 0; width: 100%; height: 300px; z-index: 10; }
 #tube {
@@ -56,7 +49,8 @@ h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); te
   border: 2px solid #ff0a54; 
   display: flex; justify-content: center; align-items: center; 
 }
-.tubeLogo { width: 80%; height: auto; mix-blend-mode: multiply; display: block; }
+/* ปรับแต่งรูปภาพบนกระบอก */
+.tubeLogo { width: 85%; height: auto; border-radius: 10px; display: block; }
 .stick { position: absolute; width: 24px; height: 260px; background: linear-gradient(to bottom, #fff0f3 0%, #ffccd5 15%, #ff85a1 15%, #ff4d6d 100%); border-radius: 6px 6px 2px 2px; bottom: 100px; z-index: 3; display: flex; justify-content: center; padding-top: 8px; font-size: 16px; font-weight: bold; color: #ff0a54; }
 .s1{left:20px; transform: rotate(-5deg); --r:-5deg; --t:0.35s;} 
 .s2{left:50px; transform: rotate(-2deg); --r:-2deg; --t:0.42s;} 
@@ -118,8 +112,8 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
     <div class="stick s4">❤</div><div class="stick s5">❤</div><div class="stick" id="mainStick">❤</div>
     <div id="tubeWrap">
       <div id="tube">
-        <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" alt="โลโก้บริษัท สตาร์ทอัพ อัพ เรียล เอสเตท จำกัด" width="300">
-    </div>
+        <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" class="tubeLogo" alt="Startup Up Logo">
+      </div>
     </div>
   </div>
 </div>
@@ -136,7 +130,8 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
         <p id="cText" style="font-size: 20px; color: #ff4d6d; font-weight: bold; margin: 10px 0;"></p>
         <hr style="width:100%; border: 0.5px solid #ffe5ec">
         <p id="promoText"></p>
-        <button id="saveBtn" onclick="saveAsImage()" style="margin-top:20px; background:#ff4d6d; color:#fff; border:none; padding:12px; border-radius:25px; cursor:pointer; font-weight:bold; width: 100%;">💾 บันทึกรูปเพื่อเข้าแกลเลอรี</button>
+        <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" style="width:120px; margin-top:10px;">
+        <button id="saveBtn" onclick="saveAsImage()" style="margin-top:15px; background:#ff4d6d; color:#fff; border:none; padding:12px; border-radius:25px; cursor:pointer; font-weight:bold; width: 100%;">💾 บันทึกรูปเพื่อเข้าแกลเลอรี</button>
       </div>
     </div>
   </div>
@@ -150,7 +145,7 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
 
 <div id="adminPanel">
   <div style="display:flex; justify-content: space-between; align-items:center;">
-    <h2>ประวัติผู้ใช้งาน (ในเครื่องนี้)</h2>
+    <h2>ประวัติผู้ใช้งาน</h2>
     <button onclick="closeAdmin()" style="padding:10px;">ปิด</button>
   </div>
   <div id="historyList"></div>
@@ -161,12 +156,14 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzyz9fL8UNW0fdqzELT3
 
 let currentUser = null;
 const data=[{no:"1", text:"ทริปดินเนอร์หรู + โซฟาคู่รัก"},{no:"2", text:"ตู้เย็นใหญ่ + ชุดเครื่องครัวชมพู"},{no:"3", text:"แอร์เย็นฉ่ำ + ที่นอนคิงไซส์"},{no:"4", text:"แหวนทองคำแทนใจ 1 สลึง"}];
+
+// อัปเดตข้อความชวนกู้บ้านแบบ 2 บรรทัด
 const slogans = [
-  "กู้ง่าย อนุมัติไว ได้บ้านในฝันกับ Startup Up!\nผ่อนเบาสบายกว่าเช่า ยื่นกู้วันนี้รับโชคฟรี!",
-  "อยากมีบ้านไม่ใช่เรื่องยาก Startup Up จัดให้กู้ง่ายทันใจ\nวงเงินสูงกู้เต็มร้อยไม่ต้องดาวน์ พร้อมรับสิทธิพิเศษ!",
-  "รักหวานบ้านสวย ยื่นกู้บ้านกับ Startup Up อนุมัติเร็วชัวร์\nดูแลทุกขั้นตอนให้เรื่องบ้านเป็นเรื่องง่าย!",
-  "เขย่าเจอรัก รับบ้านใหม่ไปสร้างครอบครัวกับข้อเสนอสุดคุ้ม\nกู้ง่าย อนุมัติไว เริ่มต้นบ้านในฝันได้ทันที!",
-  "รักแท้คือการสร้างอนาคต ยื่นกู้บ้านกับ Startup Up วันนี้\nผ่อนสบายกระเป๋า พร้อมรับโชคตกแต่งบ้านฟรี!"
+  "กู้ง่าย อนุมัติไว ได้บ้านในฝันกับ Startup Up Real Estate\nผ่อนสบายกว่าเช่า ดอกเบี้ยพิเศษ ยื่นกู้วันนี้รับโชคฟรี!",
+  "อยากมีบ้านไม่ใช่เรื่องยาก Startup Up จัดให้กู้ง่ายทันใจ\nวงเงินกู้สูง กู้เต็มร้อยไม่ต้องดาวน์ พร้อมรับสิทธิพิเศษ!",
+  "รักหวานบ้านสวย ยื่นกู้บ้านกับ Startup Up อนุมัติเร็วชัวร์\nดูแลทุกขั้นตอนให้เรื่องบ้านเป็นเรื่องง่ายและมั่นคง",
+  "เขย่าเจอรัก รับบ้านใหม่สร้างครอบครัวกับข้อเสนอสุดคุ้ม\nดอกเบี้ยต่ำ ผ่อนน้อยยาวๆ เริ่มต้นบ้านในฝันได้ทันที!",
+  "รักแท้คือการสร้างอนาคต ยื่นกู้บ้านกับ Startup Up วันนี้\nกู้ผ่านง่าย อนุมัติไว พร้อมรับของตกแต่งบ้านสุดพิเศษ!"
 ];
 
 async function checkAndStart() {
@@ -183,7 +180,7 @@ async function checkAndStart() {
     const result = await response.json();
     
     if(result.exists) {
-      alert('ขออภัย! เบอร์นี้เคยใช้สิทธิ์ไปแล้ว (ตรวจสอบข้ามเครื่อง)');
+      alert('ขออภัย! เบอร์นี้เคยใช้สิทธิ์ไปแล้ว');
       submitBtn.innerText = "เริ่มเขย่าลุ้นรัก";
       submitBtn.disabled = false;
       return;
@@ -259,20 +256,22 @@ async function saveAsImage() {
   const area = document.getElementById('captureArea');
   const saveBtn = document.getElementById('saveBtn');
   const closeBtn = area.querySelector('.closeBtn');
-  saveBtn.style.opacity = '0'; closeBtn.style.opacity = '0';
-  const originalTransform = area.style.transform;
-  area.style.transform = 'none';
-
+  saveBtn.style.visibility = 'hidden'; closeBtn.style.visibility = 'hidden';
+  
   try {
-    const canvas = await html2canvas(area, { backgroundColor: "#ffffff", scale: 1.5, useCORS: true });
+    const canvas = await html2canvas(area, { 
+      backgroundColor: "#ffffff", 
+      scale: 2, 
+      useCORS: true,
+      allowTaint: true 
+    });
     const imgData = canvas.toDataURL('image/png');
     document.getElementById('previewImage').src = imgData;
     document.getElementById('previewScreen').style.display = 'flex';
   } catch (err) {
     alert("ไม่สามารถสร้างภาพได้ กรุณาแคปหน้าจอแทนครับ");
   } finally {
-    area.style.transform = originalTransform;
-    saveBtn.style.opacity = '1'; closeBtn.style.opacity = '1';
+    saveBtn.style.visibility = 'visible'; closeBtn.style.visibility = 'visible';
   }
 }
 
@@ -310,6 +309,3 @@ function closeCard(){ location.reload(); }
 </script>
 </body>
 </html>
-
-
-
