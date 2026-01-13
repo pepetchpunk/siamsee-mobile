@@ -81,6 +81,10 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
 .face{ position:absolute; inset:0; backface-visibility:hidden; border-radius:20px; padding:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
 .front{ background:#ff758f; color:white; font-size: 28px; font-weight: bold; border: 4px solid white; }
 .back{ background:#fff; color:#ff0a54; transform:rotateY(180deg); text-align: center; border: 4px solid #ff85a1; }
+
+/* คลาสพิเศษสำหรับการ Capture เพื่อแก้ปัญหาตัวอักษรกลับด้าน */
+.capture-mode { transform: none !important; }
+
 .closeBtn{ position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%; background:#ff4d6d; color:white; border: none; z-index: 10; }
 #promoText { margin-top: 15px; font-weight: bold; line-height: 1.4; color: #333; font-size: 14px; white-space: pre-line; }
 #previewScreen { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 10px; }
@@ -228,7 +232,7 @@ async function draw(){
   document.querySelectorAll('.stick').forEach(s => s.innerText = "❤");
   shakeGroup.classList.add("shake");
 
-  // ปรับเวลาเขย่าให้เป็น 300ms (3 วินาที)
+  // เขย่า 5 วินาที
   setTimeout(async ()=>{
     shakeGroup.classList.remove("shake");
     const pick = data[Math.floor(Math.random()*data.length)];
@@ -247,7 +251,7 @@ async function draw(){
       overlay.classList.add("show");
       setTimeout(()=>card.classList.add("flip"), 200);
     }, 600); 
-  }, 3000); // แก้ไขตรงนี้เป็น 3000
+  }, 5000); 
 }
 
 async function saveToGoogleSheet(name, phone, result) {
@@ -264,7 +268,11 @@ async function saveAsImage() {
   const area = document.getElementById('captureArea');
   const saveBtn = document.getElementById('saveBtn');
   const closeBtn = area.querySelector('.closeBtn');
-  saveBtn.style.visibility = 'hidden'; closeBtn.style.visibility = 'hidden';
+  
+  // ซ่อนปุ่มและแก้ไขตัวหนังสือกลับด้านชั่วคราวขณะ capture
+  saveBtn.style.visibility = 'hidden'; 
+  closeBtn.style.visibility = 'hidden';
+  area.classList.add('capture-mode'); 
   
   try {
     const canvas = await html2canvas(area, { 
@@ -279,7 +287,9 @@ async function saveAsImage() {
   } catch (err) {
     alert("ไม่สามารถสร้างภาพได้ กรุณาแคปหน้าจอแทนครับ");
   } finally {
-    saveBtn.style.visibility = 'visible'; closeBtn.style.visibility = 'visible';
+    saveBtn.style.visibility = 'visible'; 
+    closeBtn.style.visibility = 'visible';
+    area.classList.remove('capture-mode'); // คืนค่าการแสดงผลบนหน้าเว็บ
   }
 }
 
