@@ -11,14 +11,8 @@ html, body { height: 100%; width: 100%; overflow: hidden; position: fixed; margi
 
 .bg-container {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background-image: url('https://lh3.googleusercontent.com/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E=s1600');
+  background-image: url('https://images.unsplash.com/photo-1518197146369-01109ca91ba2?q=80&w=2000&auto=format&fit=crop');
   background-size: cover; background-position: center; background-repeat: no-repeat; z-index: -1;
-}
-
-@media (max-width: 768px) {
-  .bg-container {
-    background-image: url('https://lh3.googleusercontent.com/d/1ERUqVLPAj1DBJl_AhkY-1TCClSK1rTnq');
-  }
 }
 
 .bg-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.1); z-index: -1; }
@@ -35,7 +29,6 @@ h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); te
 #scene { position: relative; width: 100%; max-width: 360px; height: 55vh; display: flex; align-items: center; justify-content: center; }
 #shakeGroup { position: relative; width: 180px; height: 400px; transform-origin: bottom center; transition: transform 0.1s; }
 
-/* Animation การเขย่ากระบอกให้นุ่มนวลขึ้น */
 .shake { animation: shakeTube 0.4s infinite ease-in-out; }
 @keyframes shakeTube {
   0%, 100% { transform: rotate(0deg) translateY(0); }
@@ -43,7 +36,6 @@ h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); te
   75% { transform: rotate(-4deg) translateY(-3px); }
 }
 
-/* Animation ไม้เซียมซีขยับวนไปมาในกระบอกแบบสมจริง */
 @keyframes stickSwirl {
   0% { transform: translate(0, 0) rotate(var(--r)); }
   25% { transform: translate(3px, -10px) rotate(calc(var(--r) + 4deg)); }
@@ -58,15 +50,11 @@ h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); te
   position: absolute; bottom: 0; width: 100%; height: 100%;
   background: linear-gradient(90deg, #ff4d6d 0%, #ff85a1 20%, #ffb3c1 50%, #ff85a1 80%, #ff4d6d 100%);
   border-radius: 0 0 40px 40px; box-shadow: inset 0 15px 15px rgba(255,255,255,0.4), 0 10px 20px rgba(0,0,0,0.3);
-  border: 2px solid #ff0a54; 
-  display: flex; justify-content: center; align-items: center; 
+  border: 2px solid #ff0a54; display: flex; justify-content: center; align-items: center; 
 }
-
 .tubeLogo { width: 80%; height: auto; mix-blend-mode: multiply; display: block; }
-
 .stick { position: absolute; width: 24px; height: 260px; background: linear-gradient(to bottom, #fff0f3 0%, #ffccd5 15%, #ff85a1 15%, #ff4d6d 100%); border-radius: 6px 6px 2px 2px; bottom: 100px; z-index: 3; display: flex; justify-content: center; padding-top: 8px; font-size: 16px; font-weight: bold; color: #ff0a54; }
 
-/* กำหนดความเร็ว (--t) ให้ไม้แต่ละอันขยับไม่พร้อมกันเพื่อให้ดูวนไปมา */
 .s1{left:20px; transform: rotate(-5deg); --r:-5deg; --t:0.35s;} 
 .s2{left:50px; transform: rotate(-2deg); --r:-2deg; --t:0.42s;} 
 .s3{left:80px; transform: rotate(1deg); --r:1deg; --t:0.38s;} 
@@ -90,7 +78,6 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
 .closeBtn{ position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%; background:#ff4d6d; color:white; border: none; z-index: 10; }
 #promoText { margin-top: 15px; font-weight: bold; line-height: 1.4; color: #333; font-size: 14px; white-space: pre-line; }
 
-/* ปรับหน้าจอ Preview ให้เล็กลง */
 #previewScreen { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 10px; }
 #previewImage { max-width: 240px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
 #previewScreen h3 { font-size: 16px; text-align: center; color: #fff; margin: 10px 0; }
@@ -100,17 +87,16 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
 .del-btn { background: #ff4d6d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
 </style>
 </head>
-
 <body>
 <div class="bg-container"></div>
 <div class="bg-overlay"></div>
 
 <div id="regForm">
   <div class="reg-box">
-    <h2>ลงทะเบียนลุ้นโชค</h2>
+    <h2 id="regTitle">ลงทะเบียนลุ้นโชค</h2>
     <input type="text" id="uName" placeholder="ชื่อของคุณ">
-    <input type="tel" id="uTel" placeholder="เบอร์โทรศัพท์ (10 หลัก)">
-    <button onclick="checkAndStart()">เริ่มเขย่าลุ้นรัก</button>
+    <input type="tel" id="uTel" placeholder="เบอร์โทรศัพท์ (10 หลัก)" maxlength="10">
+    <button id="regSubmitBtn" onclick="checkAndStart()">เริ่มเขย่าลุ้นรัก</button>
     <p style="font-size: 12px; text-align: center; margin-top: 10px; color: #666; cursor: pointer;" onclick="showAuthBox()">Admin Login</p>
   </div>
 </div>
@@ -132,7 +118,7 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
     <div class="stick s4">❤</div><div class="stick s5">❤</div><div class="stick" id="mainStick">❤</div>
     <div id="tubeWrap">
       <div id="tube">
-        <img src="https://scontent.fbkk5-7.fna.fbcdn.net/v/t39.30808-6/327175098_2203369026536600_194997138302514238_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=O5ahsrMDcS0Q7kNvwGSvPXr&_nc_oc=Adm-ezxH5C2Z8A8iCo_a_x97E_XZY6y-DKhUZ7zMZEY8j2xQSS4FzC9CNbYCeqfzo1SyRLmmSDPNI5UlQ2LmJctu&_nc_zt=23&_nc_ht=scontent.fbkk5-7.fna&_nc_gid=3vCYdbjTrlVnlxwHzCVZSg&oh=00_AfpGW1RtN4c99HD39owORvDNlfVkRrXTMkhqBSOnvFF1Vw&oe=696ADDCE" class="tubeLogo" alt="Startup Up Logo">
+        <img src="https://scontent.fbkk5-7.fna.fbcdn.net/v/t39.30808-6/327175098_2203369026536600_194997138302514238_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&oh=00_AfpGW1RtN4c99HD39owORvDNlfVkRrXTMkhqBSOnvFF1Vw&oe=696ADDCE" class="tubeLogo" alt="Startup Up Logo">
       </div>
     </div>
   </div>
@@ -164,37 +150,63 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
 
 <div id="adminPanel">
   <div style="display:flex; justify-content: space-between; align-items:center;">
-    <h2>ประวัติผู้ใช้งาน</h2>
+    <h2>ประวัติผู้ใช้งาน (ในเครื่องนี้)</h2>
     <button onclick="closeAdmin()" style="padding:10px;">ปิด</button>
   </div>
   <div id="historyList"></div>
 </div>
 
 <script>
+// --- ส่วนเชื่อมต่อ Google Sheet ---
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzyz9fL8UNW0fdqzELT31UEts5mDgsFsj-7xwLDMWmlNHsXzJfjRaXQfzzKJrfvbgqtdQ/exec";
+
 let currentUser = null;
 const data=[{no:"1", text:"ทริปดินเนอร์หรู + โซฟาคู่รัก"},{no:"2", text:"ตู้เย็นใหญ่ + ชุดเครื่องครัวชมพู"},{no:"3", text:"แอร์เย็นฉ่ำ + ที่นอนคิงไซส์"},{no:"4", text:"แหวนทองคำแทนใจ 1 สลึง"}];
 const slogans = [
   "กู้ง่าย อนุมัติไว ได้บ้านในฝันกับ Startup Up!\nผ่อนเบาสบายกว่าเช่า ยื่นกู้วันนี้รับโชคฟรี!",
   "อยากมีบ้านไม่ใช่เรื่องยาก Startup Up จัดให้กู้ง่ายทันใจ\nวงเงินสูงกู้เต็มร้อยไม่ต้องดาวน์ พร้อมรับสิทธิพิเศษ!",
-  "รักหวานบ้านสวย ยื่นกู้บ้านกับ Startup Up อนุมัติเร็วชัวร์\nดอกเบี้ยต่ำ ดูแลทุกขั้นตอนให้เรื่องบ้านเป็นเรื่องง่าย!",
+  "รักหวานบ้านสวย ยื่นกู้บ้านกับ Startup Up อนุมัติเร็วชัวร์\nดูแลทุกขั้นตอนให้เรื่องบ้านเป็นเรื่องง่าย!",
   "เขย่าเจอรัก รับบ้านใหม่ไปสร้างครอบครัวกับข้อเสนอสุดคุ้ม\nกู้ง่าย อนุมัติไว เริ่มต้นบ้านในฝันได้ทันที!",
-  "รักแท้คือการสร้างอนาคต ยื่นกู้บ้านกับ Startup Up วันนี้\nดอกเบี้ยต่ำ ผ่อนสบายกระเป๋า พร้อมรับโชคตกแต่งบ้านฟรี!"
+  "รักแท้คือการสร้างอนาคต ยื่นกู้บ้านกับ Startup Up วันนี้\nผ่อนสบายกระเป๋า พร้อมรับโชคตกแต่งบ้านฟรี!"
 ];
 
-function checkAndStart() {
+async function checkAndStart() {
   const name = document.getElementById('uName').value;
   const tel = document.getElementById('uTel').value;
   if(!name || tel.length < 10) return alert('กรุณากรอกชื่อและเบอร์โทรให้ครบถ้วน');
-  let history = JSON.parse(localStorage.getItem('startup_history') || "[]");
-  if(history.find(h => h.tel === tel)) return alert('เบอร์นี้เคยใช้สิทธิ์ไปแล้วครับ');
-  currentUser = { name, tel };
-  document.getElementById('regForm').style.display = 'none';
-  document.getElementById('drawBtn').disabled = false;
-  document.getElementById('drawBtn').style.opacity = '1';
-  document.getElementById('drawBtn').innerText = 'คลิกเพื่อเขย่าหัวใจ';
+  
+  const submitBtn = document.getElementById('regSubmitBtn');
+  submitBtn.innerText = "กำลังตรวจสอบสิทธิ์...";
+  submitBtn.disabled = true;
+
+  try {
+    // 1. ตรวจสอบเบอร์ซ้ำใน Google Sheet
+    const response = await fetch(`${SCRIPT_URL}?phone=${tel}`);
+    const result = await response.json();
+    
+    if(result.exists) {
+      alert('ขออภัย! เบอร์นี้เคยใช้สิทธิ์ไปแล้ว (ตรวจสอบข้ามอุปกรณ์)');
+      submitBtn.innerText = "เริ่มเขย่าลุ้นรัก";
+      submitBtn.disabled = false;
+      return;
+    }
+
+    currentUser = { name, tel };
+    document.getElementById('regForm').style.display = 'none';
+    document.getElementById('drawBtn').disabled = false;
+    document.getElementById('drawBtn').style.opacity = '1';
+    document.getElementById('drawBtn').innerText = 'คลิกเพื่อเขย่าหัวใจ';
+  } catch (err) {
+    alert("การเชื่อมต่อขัดข้อง กรุณาลองใหม่อีกครั้ง");
+    submitBtn.innerText = "เริ่มเขย่าลุ้นรัก";
+    submitBtn.disabled = false;
+  }
 }
 
-function draw(){
+async function draw(){
+  const drawBtn = document.getElementById('drawBtn');
+  drawBtn.disabled = true;
+  
   const overlay = document.getElementById('overlay');
   const card = document.getElementById('card');
   const mainStick = document.getElementById('mainStick');
@@ -204,67 +216,66 @@ function draw(){
   document.querySelectorAll('.stick').forEach(s => s.innerText = "❤");
   shakeGroup.classList.add("shake");
 
-  setTimeout(()=>{
+  setTimeout(async ()=>{
     shakeGroup.classList.remove("shake");
     const pick = data[Math.floor(Math.random()*data.length)];
     const randomSlogan = slogans[Math.floor(Math.random()*slogans.length)];
-    mainStick.innerText = pick.no; mainStick.classList.add("fly");
+    
+    mainStick.innerText = pick.no; 
+    mainStick.classList.add("fly");
+
+    // 2. บันทึกข้อมูลลงทั้ง Google Sheet และ LocalStorage
+    saveToSheet(currentUser.name, currentUser.tel, pick.text);
     saveHistory(currentUser.name, currentUser.tel, pick.text);
+
     setTimeout(()=>{
       document.getElementById('cNo').innerText = "ใบที่ "+pick.no;
       document.getElementById('cText').innerText = "คุณได้รับ: " + pick.text;
       document.getElementById('promoText').innerText = randomSlogan;
       overlay.classList.add("show");
       setTimeout(()=>card.classList.add("flip"), 300);
-      document.getElementById('drawBtn').disabled = true; 
     }, 1000);
   }, 1200);
+}
+
+async function saveToSheet(name, phone, result) {
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({ name: name, phone: phone, result: result })
+    });
+  } catch (err) { console.error("Sheet save error:", err); }
 }
 
 async function saveAsImage() {
   const area = document.getElementById('captureArea');
   const saveBtn = document.getElementById('saveBtn');
   const closeBtn = area.querySelector('.closeBtn');
-  saveBtn.style.opacity = '0';
-  closeBtn.style.opacity = '0';
+  saveBtn.style.opacity = '0'; closeBtn.style.opacity = '0';
   const originalTransform = area.style.transform;
   area.style.transform = 'none';
 
   try {
-    // ปรับ scale เป็น 1.5 เพื่อให้รูปขนาดเล็กลงมากตามคำขอ
     const canvas = await html2canvas(area, { backgroundColor: "#ffffff", scale: 1.5, useCORS: true });
     const imgData = canvas.toDataURL('image/png');
-    
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    
     document.getElementById('previewImage').src = imgData;
     document.getElementById('previewScreen').style.display = 'flex';
-
-    if (!isMobile) {
-      const link = document.createElement('a');
-      link.href = imgData;
-      link.download = `Siamsee_${currentUser.name}.png`;
-      link.click();
-    }
   } catch (err) {
     alert("ไม่สามารถสร้างภาพได้ กรุณาแคปหน้าจอแทนครับ");
   } finally {
     area.style.transform = originalTransform;
-    saveBtn.style.opacity = '1';
-    closeBtn.style.opacity = '1';
+    saveBtn.style.opacity = '1'; closeBtn.style.opacity = '1';
   }
 }
 
-// ปรับให้ย้อนกลับมาที่หน้าคำทำนายเดิม (ไม่รีโหลดหน้า)
-function closePreview() { 
-  document.getElementById('previewScreen').style.display = 'none'; 
-}
+function closePreview() { document.getElementById('previewScreen').style.display = 'none'; }
 
 function saveHistory(name, tel, prize) {
   let history = JSON.parse(localStorage.getItem('startup_history') || "[]");
   history.push({ name, tel, prize, date: new Date().toLocaleString('th-TH') });
   localStorage.setItem('startup_history', JSON.stringify(history));
 }
+
 function showAuthBox() { document.getElementById('adminAuth').style.display = 'flex'; }
 function hideAuthBox() { document.getElementById('adminAuth').style.display = 'none'; }
 function verifyAdmin() {
