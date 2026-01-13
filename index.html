@@ -9,7 +9,6 @@
 *{box-sizing:border-box}
 html, body { height: 100%; width: 100%; overflow: hidden; position: fixed; margin: 0; padding: 0; background-color: #ff4d6d; }
 
-/* แก้ไขลิงก์พื้นหลังตามที่ระบุ */
 .bg-container {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background-image: url('https://lh3.googleusercontent.com/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E');
@@ -31,11 +30,10 @@ h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); te
 .reg-box h2 { color: #ff4d6d; margin-top: 0; text-align: center; }
 .reg-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; }
 .reg-box button { width: 100%; padding: 12px; background: #ff4d6d; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
-#adminAuth { position: fixed; inset: 0; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 3000; }
+
 #scene { position: relative; width: 100%; max-width: 360px; height: 55vh; display: flex; align-items: center; justify-content: center; }
 #shakeGroup { position: relative; width: 180px; height: 400px; transform-origin: bottom center; transition: transform 0.1s; }
 
-/* อนิเมชั่นเขย่ากระบอก ปรับเป็น 5 วินาทีต่อ 1 รอบ loop */
 .shake { animation: shakeTube 0.5s infinite ease-in-out; } 
 @keyframes shakeTube {
   0%, 100% { transform: rotate(0deg); }
@@ -43,7 +41,6 @@ h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); te
   75% { transform: rotate(-5deg); }
 }
 
-/* ปรับปรุงไม้ให้ขยับวนไปมาในกระบอกให้สมจริง */
 .shake .stick { animation: stickInternalMove var(--t) infinite alternate ease-in-out; }
 @keyframes stickInternalMove {
   0% { transform: rotate(var(--r)) translateY(0); }
@@ -82,7 +79,6 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
 .front{ background:#ff758f; color:white; font-size: 28px; font-weight: bold; border: 4px solid white; }
 .back{ background:#fff; color:#ff0a54; transform:rotateY(180deg); text-align: center; border: 4px solid #ff85a1; }
 
-/* คลาสพิเศษสำหรับการ Capture เพื่อแก้ปัญหาตัวอักษรกลับด้าน */
 .capture-mode { transform: none !important; }
 
 .closeBtn{ position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%; background:#ff4d6d; color:white; border: none; z-index: 10; }
@@ -90,9 +86,6 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
 #previewScreen { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 10px; }
 #previewImage { max-width: 240px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
 #previewScreen h3 { font-size: 16px; text-align: center; color: #fff; margin: 10px 0; }
-#adminPanel { position: fixed; inset: 0; background: white; color: #333; padding: 20px; overflow-y: auto; display: none; z-index: 2000; }
-.history-item { border-bottom: 1px solid #ddd; padding: 10px; display: flex; justify-content: space-between; align-items: center; }
-.del-btn { background: #ff4d6d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
 </style>
 </head>
 
@@ -106,16 +99,6 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
     <input type="text" id="uName" placeholder="ชื่อของคุณ">
     <input type="tel" id="uTel" placeholder="เบอร์โทรศัพท์ (10 หลัก)" maxlength="10">
     <button id="regSubmitBtn" onclick="checkAndStart()">เริ่มเขย่าลุ้นรัก</button>
-    <p style="font-size: 12px; text-align: center; margin-top: 10px; color: #666; cursor: pointer;" onclick="showAuthBox()">Admin Login</p>
-  </div>
-</div>
-
-<div id="adminAuth">
-  <div class="reg-box">
-    <h2>Admin Login</h2>
-    <input type="password" id="adminPw" placeholder="กรุณาใส่รหัสผ่าน">
-    <button onclick="verifyAdmin()">ยืนยันรหัสผ่าน</button>
-    <button onclick="hideAuthBox()" style="background:#666; margin-top:5px;">ยกเลิก</button>
   </div>
 </div>
 
@@ -157,14 +140,6 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
   <button onclick="closePreview()" style="margin-top:20px; background:#666; border:none; padding:10px 20px; color:white; border-radius:10px; cursor:pointer;">ย้อนกลับหน้าคำทำนาย</button>
 </div>
 
-<div id="adminPanel">
-  <div style="display:flex; justify-content: space-between; align-items:center;">
-    <h2>ประวัติผู้ใช้งาน</h2>
-    <button onclick="closeAdmin()" style="padding:10px;">ปิด</button>
-  </div>
-  <div id="historyList"></div>
-</div>
-
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzyz9fL8UNW0fdqzELT31UEts5mDgsFsj-7xwLDMWmlNHsXzJfjRaXQfzzKJrfvbgqtdQ/exec";
 
@@ -199,14 +174,6 @@ async function checkAndStart() {
       return;
     }
 
-    let localHistory = JSON.parse(localStorage.getItem('startup_history') || "[]");
-    if(localHistory.find(h => h.tel === tel)) {
-       alert('เบอร์นี้เคยใช้สิทธิ์ไปแล้วครับ');
-       submitBtn.innerText = "เริ่มเขย่าลุ้นรัก";
-       submitBtn.disabled = false;
-       return;
-    }
-
     currentUser = { name, tel };
     document.getElementById('regForm').style.display = 'none';
     document.getElementById('drawBtn').disabled = false;
@@ -232,7 +199,6 @@ async function draw(){
   document.querySelectorAll('.stick').forEach(s => s.innerText = "❤");
   shakeGroup.classList.add("shake");
 
-  // เขย่า 5 วินาที
   setTimeout(async ()=>{
     shakeGroup.classList.remove("shake");
     const pick = data[Math.floor(Math.random()*data.length)];
@@ -242,7 +208,6 @@ async function draw(){
     mainStick.classList.add("fly");
 
     saveToGoogleSheet(currentUser.name, currentUser.tel, pick.text);
-    saveHistory(currentUser.name, currentUser.tel, pick.text);
 
     setTimeout(()=>{
       document.getElementById('cNo').innerText = "ใบที่ "+pick.no;
@@ -269,7 +234,6 @@ async function saveAsImage() {
   const saveBtn = document.getElementById('saveBtn');
   const closeBtn = area.querySelector('.closeBtn');
   
-  // ซ่อนปุ่มและแก้ไขตัวหนังสือกลับด้านชั่วคราวขณะ capture
   saveBtn.style.visibility = 'hidden'; 
   closeBtn.style.visibility = 'hidden';
   area.classList.add('capture-mode'); 
@@ -289,40 +253,11 @@ async function saveAsImage() {
   } finally {
     saveBtn.style.visibility = 'visible'; 
     closeBtn.style.visibility = 'visible';
-    area.classList.remove('capture-mode'); // คืนค่าการแสดงผลบนหน้าเว็บ
+    area.classList.remove('capture-mode');
   }
 }
 
 function closePreview() { document.getElementById('previewScreen').style.display = 'none'; }
-function saveHistory(name, tel, prize) {
-  let history = JSON.parse(localStorage.getItem('startup_history') || "[]");
-  history.push({ name, tel, prize, date: new Date().toLocaleString('th-TH') });
-  localStorage.setItem('startup_history', JSON.stringify(history));
-}
-function showAuthBox() { document.getElementById('adminAuth').style.display = 'flex'; }
-function hideAuthBox() { document.getElementById('adminAuth').style.display = 'none'; }
-function verifyAdmin() {
-  if(document.getElementById('adminPw').value === "SURE0635824615") {
-    hideAuthBox(); document.getElementById('adminPanel').style.display = 'block'; renderHistory();
-  } else { alert("รหัสผ่านไม่ถูกต้อง"); }
-}
-function closeAdmin() { document.getElementById('adminPanel').style.display = 'none'; }
-function renderHistory() {
-  const list = document.getElementById('historyList');
-  let history = JSON.parse(localStorage.getItem('startup_history') || "[]");
-  list.innerHTML = history.length ? "" : "<p>ไม่มีข้อมูลการใช้งาน</p>";
-  history.forEach((h, index) => {
-    list.innerHTML += `<div class="history-item"><div><b>${h.name}</b> (${h.tel})<br><small>${h.prize} - ${h.date}</small></div>
-    <button class="del-btn" onclick="deleteHistory(${index})">ลบ</button></div>`;
-  });
-}
-function deleteHistory(index) {
-  if(!confirm("ลบข้อมูลเพื่อให้เล่นใหม่ได้ใช่ไหม?")) return;
-  let history = JSON.parse(localStorage.getItem('startup_history') || "[]");
-  history.splice(index, 1);
-  localStorage.setItem('startup_history', JSON.stringify(history));
-  renderHistory();
-}
 function closeCard(){ location.reload(); }
 </script>
 </body>
