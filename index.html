@@ -221,14 +221,17 @@ async function draw(){
 }
 
 async function saveToGoogleSheet(name, phone, result) {
-  try {
-    const payload = { name, phone, result };
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      body: JSON.stringify(payload)
-    });
-  } catch (err) {}
+  const payload = { name, phone, result };
+
+  await fetch(SCRIPT_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
 }
+
 
 async function saveAsImage() {
   const area = document.getElementById('captureArea');
@@ -277,6 +280,7 @@ function closeCard(){ location.reload(); }
 </script>
 </body>
 </html>
+
 
 
 
