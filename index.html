@@ -128,14 +128,14 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
         <p id="cText" style="font-size: 20px; color: #ff4d6d; font-weight: bold; margin: 10px 0;"></p>
         <hr style="width:100%; border: 0.5px solid #ffe5ec">
         <p id="promoText"></p>
-        <button id="saveBtn" onclick="saveAsImage()" style="margin-top:15px; background:#ff4d6d; color:#fff; border:none; padding:12px; border-radius:25px; cursor:pointer; font-weight:bold; width: 100%;">💾 บันทึกรูปเพื่อเข้าแกลเลอรี</button>
+        <button id="saveBtn" onclick="saveAsImage()" style="margin-top:15px; background:#ff4d6d; color:#fff; border:none; padding:12px; border-radius:25px; cursor:pointer; font-weight:bold; width: 100%;">💾 บันทึกรูปภาพ</button>
       </div>
     </div>
   </div>
 </div>
 
 <div id="previewScreen">
-  <h3>แตะค้างที่รูปเพื่อ 'บันทึก'</h3>
+  <h3 id="previewHint">แตะค้างที่รูปเพื่อ 'บันทึก'</h3>
   <img id="previewImage" src="" alt="คำทำนายของคุณ">
   <button onclick="closePreview()" style="margin-top:20px; background:#666; border:none; padding:10px 20px; color:white; border-radius:10px; cursor:pointer;">ย้อนกลับหน้าคำทำนาย</button>
 </div>
@@ -164,11 +164,12 @@ async function checkAndStart() {
   submitBtn.disabled = true;
 
   try {
+    // ตรวจสอบเบอร์จาก Google Sheets
     const response = await fetch(`${SCRIPT_URL}?phone=${tel}`);
     const result = await response.json();
     
     if(result.exists) {
-      alert('ขออภัย! เบอร์นี้เคยใช้สิทธิ์ไปแล้ว');
+      alert('ขออภัย! เบอร์นี้เคยใช้สิทธิ์ไปแล้ว ไม่สามารถเล่นซ้ำได้ครับ');
       submitBtn.innerText = "เริ่มเขย่าลุ้นรัก";
       submitBtn.disabled = false;
       return;
@@ -246,8 +247,22 @@ async function saveAsImage() {
       allowTaint: true 
     });
     const imgData = canvas.toDataURL('image/png');
-    document.getElementById('previewImage').src = imgData;
-    document.getElementById('previewScreen').style.display = 'flex';
+    
+    // ตรวจสอบว่าเป็น Mobile หรือ PC
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      document.getElementById('previewImage').src = imgData;
+      document.getElementById('previewScreen').style.display = 'flex';
+      document.getElementById('previewHint').innerText = "แตะค้างที่รูปเพื่อ 'บันทึก'";
+    } else {
+      // Auto Download สำหรับ PC
+      const link = document.createElement('a');
+      link.href = imgData;
+      link.download = `fortune_${currentUser.tel}.png`;
+      link.click();
+      alert("บันทึกคำทำนายลงเครื่องเรียบร้อยแล้ว!");
+    }
   } catch (err) {
     alert("ไม่สามารถสร้างภาพได้ กรุณาแคปหน้าจอแทนครับ");
   } finally {
