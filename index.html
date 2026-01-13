@@ -9,14 +9,19 @@
 *{box-sizing:border-box}
 html, body { height: 100%; width: 100%; overflow: hidden; position: fixed; margin: 0; padding: 0; background-color: #ff4d6d; }
 
-/* แก้ไขพื้นหลังให้แสดงผลได้แน่นอน */
 .bg-container {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background-image: url('https://images.unsplash.com/photo-1516589174184-c68526514b4c?q=80&w=2000&auto=format&fit=crop');
   background-size: cover; background-position: center; background-repeat: no-repeat; z-index: -1;
 }
 
-.bg-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.2); z-index: -1; }
+@media (max-width: 768px) {
+  .bg-container {
+    background-image: url('https://images.unsplash.com/photo-1516589174184-c68526514b4c?q=80&w=1000&auto=format&fit=crop');
+  }
+}
+
+.bg-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.1); z-index: -1; }
 body { font-family: 'Sarabun', sans-serif; color: white; display: flex; flex-direction: column; align-items: center; justify-content: space-between; }
 h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); z-index: 5; }
 
@@ -51,9 +56,10 @@ h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); te
   position: absolute; bottom: 0; width: 100%; height: 100%;
   background: linear-gradient(90deg, #ff4d6d 0%, #ff85a1 20%, #ffb3c1 50%, #ff85a1 80%, #ff4d6d 100%);
   border-radius: 0 0 40px 40px; box-shadow: inset 0 15px 15px rgba(255,255,255,0.4), 0 10px 20px rgba(0,0,0,0.3);
-  border: 2px solid #ff0a54; display: flex; justify-content: center; align-items: center; 
+  border: 2px solid #ff0a54; 
+  display: flex; justify-content: center; align-items: center; 
 }
-.tubeLogo { width: 80%; height: auto; mix-blend-mode: multiply; display: block; filter: contrast(1.1); }
+.tubeLogo { width: 80%; height: auto; mix-blend-mode: multiply; display: block; }
 .stick { position: absolute; width: 24px; height: 260px; background: linear-gradient(to bottom, #fff0f3 0%, #ffccd5 15%, #ff85a1 15%, #ff4d6d 100%); border-radius: 6px 6px 2px 2px; bottom: 100px; z-index: 3; display: flex; justify-content: center; padding-top: 8px; font-size: 16px; font-weight: bold; color: #ff0a54; }
 
 .s1{left:20px; transform: rotate(-5deg); --r:-5deg; --t:0.35s;} 
@@ -88,6 +94,7 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
 .del-btn { background: #ff4d6d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
 </style>
 </head>
+
 <body>
 <div class="bg-container"></div>
 <div class="bg-overlay"></div>
@@ -158,7 +165,7 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
 </div>
 
 <script>
-// --- เชื่อมต่อ Google Sheet ---
+// --- เชื่อมต่อ Google Sheet SCRIPT ---
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzyz9fL8UNW0fdqzELT31UEts5mDgsFsj-7xwLDMWmlNHsXzJfjRaXQfzzKJrfvbgqtdQ/exec";
 
 let currentUser = null;
@@ -181,14 +188,24 @@ async function checkAndStart() {
   submitBtn.disabled = true;
 
   try {
+    // 1. ตรวจสอบเบอร์ซ้ำจาก Google Sheet โดยใช้ doGet
     const response = await fetch(`${SCRIPT_URL}?phone=${tel}`);
     const result = await response.json();
     
     if(result.exists) {
-      alert('ขออภัย! เบอร์นี้เคยใช้สิทธิ์ไปแล้ว (ตรวจสอบข้ามอุปกรณ์)');
+      alert('ขออภัย! เบอร์นี้เคยใช้สิทธิ์ไปแล้ว (ตรวจสอบข้ามเครื่อง)');
       submitBtn.innerText = "เริ่มเขย่าลุ้นรัก";
       submitBtn.disabled = false;
       return;
+    }
+
+    // 2. ตรวจสอบ LocalStorage ด้วย
+    let localHistory = JSON.parse(localStorage.getItem('startup_history') || "[]");
+    if(localHistory.find(h => h.tel === tel)) {
+       alert('เบอร์นี้เคยใช้สิทธิ์ไปแล้วครับ');
+       submitBtn.innerText = "เริ่มเขย่าลุ้นรัก";
+       submitBtn.disabled = false;
+       return;
     }
 
     currentUser = { name, tel };
@@ -206,12 +223,14 @@ async function checkAndStart() {
 async function draw(){
   const drawBtn = document.getElementById('drawBtn');
   drawBtn.disabled = true;
+  
   const overlay = document.getElementById('overlay');
   const card = document.getElementById('card');
   const mainStick = document.getElementById('mainStick');
   const shakeGroup = document.getElementById('shakeGroup');
   
   overlay.classList.remove("show"); card.classList.remove("flip"); mainStick.classList.remove("fly");
+  document.querySelectorAll('.stick').forEach(s => s.innerText = "❤");
   shakeGroup.classList.add("shake");
 
   setTimeout(async ()=>{
@@ -222,7 +241,9 @@ async function draw(){
     mainStick.innerText = pick.no; 
     mainStick.classList.add("fly");
 
-    saveToSheet(currentUser.name, currentUser.tel, pick.text);
+    // บันทึกลง Google Sheet ผ่าน doPost
+    await saveToGoogleSheet(currentUser.name, currentUser.tel, pick.text);
+    // บันทึกลง LocalHistory
     saveHistory(currentUser.name, currentUser.tel, pick.text);
 
     setTimeout(()=>{
@@ -235,13 +256,20 @@ async function draw(){
   }, 1200);
 }
 
-async function saveToSheet(name, phone, result) {
+async function saveToGoogleSheet(name, phone, result) {
   try {
+    const payload = {
+      name: name,
+      phone: phone,
+      result: result
+    };
     await fetch(SCRIPT_URL, {
       method: 'POST',
-      body: JSON.stringify({ name: name, phone: phone, result: result })
+      body: JSON.stringify(payload)
     });
-  } catch (err) { console.error("Sheet save error:", err); }
+  } catch (err) {
+    console.error("บันทึก Sheet ไม่สำเร็จ:", err);
+  }
 }
 
 async function saveAsImage() {
@@ -266,19 +294,24 @@ async function saveAsImage() {
 }
 
 function closePreview() { document.getElementById('previewScreen').style.display = 'none'; }
+
 function saveHistory(name, tel, prize) {
   let history = JSON.parse(localStorage.getItem('startup_history') || "[]");
   history.push({ name, tel, prize, date: new Date().toLocaleString('th-TH') });
   localStorage.setItem('startup_history', JSON.stringify(history));
 }
+
 function showAuthBox() { document.getElementById('adminAuth').style.display = 'flex'; }
 function hideAuthBox() { document.getElementById('adminAuth').style.display = 'none'; }
+
 function verifyAdmin() {
   if(document.getElementById('adminPw').value === "SURE0635824615") {
     hideAuthBox(); document.getElementById('adminPanel').style.display = 'block'; renderHistory();
   } else { alert("รหัสผ่านไม่ถูกต้อง"); }
 }
+
 function closeAdmin() { document.getElementById('adminPanel').style.display = 'none'; }
+
 function renderHistory() {
   const list = document.getElementById('historyList');
   let history = JSON.parse(localStorage.getItem('startup_history') || "[]");
@@ -288,6 +321,7 @@ function renderHistory() {
     <button class="del-btn" onclick="deleteHistory(${index})">ลบ</button></div>`;
   });
 }
+
 function deleteHistory(index) {
   if(!confirm("ลบข้อมูลเพื่อให้เล่นใหม่ได้ใช่ไหม?")) return;
   let history = JSON.parse(localStorage.getItem('startup_history') || "[]");
@@ -295,6 +329,7 @@ function deleteHistory(index) {
   localStorage.setItem('startup_history', JSON.stringify(history));
   renderHistory();
 }
+
 function closeCard(){ location.reload(); }
 </script>
 </body>
