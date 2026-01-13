@@ -9,16 +9,16 @@
 *{box-sizing:border-box}
 html, body { height: 100%; width: 100%; overflow: hidden; position: fixed; margin: 0; padding: 0; background-color: #ff4d6d; }
 
-/* แก้ไขลิงก์รูปพื้นหลัง */
+/* แก้ไขลิงก์พื้นหลังตามที่ระบุ */
 .bg-container {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background-image: url('https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU');
+  background-image: url('https://lh3.googleusercontent.com/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E');
   background-size: cover; background-position: center; background-repeat: no-repeat; z-index: -1;
 }
 
 @media (max-width: 768px) {
   .bg-container {
-    background-image: url('https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU');
+    background-image: url('https://lh3.googleusercontent.com/d/1ERUqVLPAj1DBJl_AhkY-1TCClSK1rTnq');
   }
 }
 
@@ -34,13 +34,23 @@ h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); te
 #adminAuth { position: fixed; inset: 0; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 3000; }
 #scene { position: relative; width: 100%; max-width: 360px; height: 55vh; display: flex; align-items: center; justify-content: center; }
 #shakeGroup { position: relative; width: 180px; height: 400px; transform-origin: bottom center; transition: transform 0.1s; }
-.shake { animation: shakeTube 0.4s infinite ease-in-out; }
+
+/* อนิเมชั่นเขย่ากระบอก ปรับเป็น 5 วินาทีต่อ 1 รอบ loop */
+.shake { animation: shakeTube 0.5s infinite ease-in-out; } 
 @keyframes shakeTube {
-  0%, 100% { transform: rotate(0deg) translateY(0); }
-  25% { transform: rotate(4deg) translateY(-5px); }
-  75% { transform: rotate(-4deg) translateY(-3px); }
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
 }
-.shake .stick { animation: stickSwirl var(--t) infinite ease-in-out; }
+
+/* ปรับปรุงไม้ให้ขยับวนไปมาในกระบอกให้สมจริง */
+.shake .stick { animation: stickInternalMove var(--t) infinite alternate ease-in-out; }
+@keyframes stickInternalMove {
+  0% { transform: rotate(var(--r)) translateY(0); }
+  50% { transform: rotate(calc(var(--r) + 8deg)) translateY(-15px); }
+  100% { transform: rotate(calc(var(--r) - 8deg)) translateY(-5px); }
+}
+
 #tubeWrap { position: absolute; bottom: 0; width: 100%; height: 300px; z-index: 10; }
 #tube {
   position: absolute; bottom: 0; width: 100%; height: 100%;
@@ -49,23 +59,24 @@ h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); te
   border: 2px solid #ff0a54; 
   display: flex; justify-content: center; align-items: center; 
 }
-/* ปรับแต่งรูปภาพบนกระบอก */
 .tubeLogo { width: 85%; height: auto; border-radius: 10px; display: block; }
-.stick { position: absolute; width: 24px; height: 260px; background: linear-gradient(to bottom, #fff0f3 0%, #ffccd5 15%, #ff85a1 15%, #ff4d6d 100%); border-radius: 6px 6px 2px 2px; bottom: 100px; z-index: 3; display: flex; justify-content: center; padding-top: 8px; font-size: 16px; font-weight: bold; color: #ff0a54; }
-.s1{left:20px; transform: rotate(-5deg); --r:-5deg; --t:0.35s;} 
-.s2{left:50px; transform: rotate(-2deg); --r:-2deg; --t:0.42s;} 
-.s3{left:80px; transform: rotate(1deg); --r:1deg; --t:0.38s;} 
-.s4{left:110px; transform: rotate(3deg); --r:3deg; --t:0.45s;} 
-.s5{left:135px; transform: rotate(6deg); --r:6deg; --t:0.32s;} 
-#mainStick{ left:78px; --r:0deg; --t:0.4s;}
-.fly { z-index: 99 !important; animation: shootUp 0.4s ease-out forwards, projectileDrop 0.8s 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
-@keyframes shootUp { 100% { transform: translateY(-300px) rotate(15deg); } }
-@keyframes projectileDrop { 0% { transform: translateY(-300px) rotate(15deg); } 100% { transform: translate(60px, 230px) rotate(81deg); } }
+.stick { position: absolute; width: 24px; height: 260px; background: linear-gradient(to bottom, #fff0f3 0%, #ffccd5 15%, #ff85a1 15%, #ff4d6d 100%); border-radius: 6px 6px 2px 2px; bottom: 100px; z-index: 3; display: flex; justify-content: center; padding-top: 8px; font-size: 16px; font-weight: bold; color: #ff0a54; transition: transform 0.2s; }
+.s1{left:20px; transform: rotate(-8deg); --r:-8deg; --t:0.4s;} 
+.s2{left:50px; transform: rotate(-3deg); --r:-3deg; --t:0.5s;} 
+.s3{left:80px; transform: rotate(2deg); --r:2deg; --t:0.45s;} 
+.s4{left:110px; transform: rotate(5deg); --r:5deg; --t:0.55s;} 
+.s5{left:135px; transform: rotate(10deg); --r:10deg; --t:0.42s;} 
+#mainStick{ left:78px; --r:0deg; --t:0.48s;}
+
+.fly { z-index: 99 !important; animation: shootUp 0.3s ease-out forwards, projectileDrop 0.6s 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+@keyframes shootUp { 100% { transform: translateY(-320px) rotate(15deg); } }
+@keyframes projectileDrop { 0% { transform: translateY(-320px) rotate(15deg); } 100% { transform: translate(60px, 230px) rotate(81deg); } }
+
 button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; border: none; border-radius: 40px; background: linear-gradient(#ff85a1, #ff4d6d); color: white; font-weight: bold; box-shadow: 0 6px 0 #c9184a, 0 8px 15px rgba(0,0,0,0.3); cursor: pointer; margin-bottom: 5vh; }
-#overlay{ position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.4s; z-index:999; }
+#overlay{ position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.3s; z-index:999; }
 #overlay.show{ opacity:1; pointer-events:auto; }
 .card { width: 300px; height: 420px; }
-.cardInner{ width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:.9s; }
+.cardInner{ width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:.6s; }
 .card.flip .cardInner{ transform:rotateY(180deg); }
 .face{ position:absolute; inset:0; backface-visibility:hidden; border-radius:20px; padding:24px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
 .front{ background:#ff758f; color:white; font-size: 28px; font-weight: bold; border: 4px solid white; }
@@ -130,7 +141,6 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
         <p id="cText" style="font-size: 20px; color: #ff4d6d; font-weight: bold; margin: 10px 0;"></p>
         <hr style="width:100%; border: 0.5px solid #ffe5ec">
         <p id="promoText"></p>
-        <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" style="width:120px; margin-top:10px;">
         <button id="saveBtn" onclick="saveAsImage()" style="margin-top:15px; background:#ff4d6d; color:#fff; border:none; padding:12px; border-radius:25px; cursor:pointer; font-weight:bold; width: 100%;">💾 บันทึกรูปเพื่อเข้าแกลเลอรี</button>
       </div>
     </div>
@@ -157,7 +167,6 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzyz9fL8UNW0fdqzELT3
 let currentUser = null;
 const data=[{no:"1", text:"ทริปดินเนอร์หรู + โซฟาคู่รัก"},{no:"2", text:"ตู้เย็นใหญ่ + ชุดเครื่องครัวชมพู"},{no:"3", text:"แอร์เย็นฉ่ำ + ที่นอนคิงไซส์"},{no:"4", text:"แหวนทองคำแทนใจ 1 สลึง"}];
 
-// อัปเดตข้อความชวนกู้บ้านแบบ 2 บรรทัด
 const slogans = [
   "กู้ง่าย อนุมัติไว ได้บ้านในฝันกับ Startup Up Real Estate\nผ่อนสบายกว่าเช่า ดอกเบี้ยพิเศษ ยื่นกู้วันนี้รับโชคฟรี!",
   "อยากมีบ้านไม่ใช่เรื่องยาก Startup Up จัดให้กู้ง่ายทันใจ\nวงเงินกู้สูง กู้เต็มร้อยไม่ต้องดาวน์ พร้อมรับสิทธิพิเศษ!",
@@ -219,6 +228,7 @@ async function draw(){
   document.querySelectorAll('.stick').forEach(s => s.innerText = "❤");
   shakeGroup.classList.add("shake");
 
+  // ปรับเวลาเขย่าให้เป็น 300ms (3 วินาที)
   setTimeout(async ()=>{
     shakeGroup.classList.remove("shake");
     const pick = data[Math.floor(Math.random()*data.length)];
@@ -227,7 +237,7 @@ async function draw(){
     mainStick.innerText = pick.no; 
     mainStick.classList.add("fly");
 
-    await saveToGoogleSheet(currentUser.name, currentUser.tel, pick.text);
+    saveToGoogleSheet(currentUser.name, currentUser.tel, pick.text);
     saveHistory(currentUser.name, currentUser.tel, pick.text);
 
     setTimeout(()=>{
@@ -235,21 +245,19 @@ async function draw(){
       document.getElementById('cText').innerText = "คุณได้รับ: " + pick.text;
       document.getElementById('promoText').innerText = randomSlogan;
       overlay.classList.add("show");
-      setTimeout(()=>card.classList.add("flip"), 300);
-    }, 1000);
-  }, 1200);
+      setTimeout(()=>card.classList.add("flip"), 200);
+    }, 600); 
+  }, 3000); // แก้ไขตรงนี้เป็น 3000
 }
 
 async function saveToGoogleSheet(name, phone, result) {
   try {
     const payload = { name, phone, result };
-    await fetch(SCRIPT_URL, {
+    fetch(SCRIPT_URL, {
       method: 'POST',
       body: JSON.stringify(payload)
     });
-  } catch (err) {
-    console.error("บันทึก Sheet ไม่สำเร็จ:", err);
-  }
+  } catch (err) {}
 }
 
 async function saveAsImage() {
