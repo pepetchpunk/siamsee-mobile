@@ -99,7 +99,7 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
     color:#fff;
     text-align:center;
     padding:14px;
-    border-radius:30px;
+    border-radius:20px;
     font-weight:bold;
     text-decoration:none;
   "
@@ -132,6 +132,17 @@ const slogans = [
   "เขย่าเจอรัก รับบ้านใหม่สร้างครอบครัวกับข้อเสนอสุดคุ้ม\nดอกเบี้ยต่ำ ผ่อนน้อยยาวๆ เริ่มต้นบ้านในฝันได้ทันที!",
   "รักแท้คือการสร้างอนาคต ยื่นกู้บ้านกับ Startup Up วันนี้\nกู้ผ่านง่าย อนุมัติไว พร้อมรับของตกแต่งบ้านสุดพิเศษมากมาย!"
 ];
+
+// ฟังก์ชันซ่อนปุ่มบันทึกรูปภาพบนมือถือ
+window.addEventListener('DOMContentLoaded', (event) => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+        const saveBtn = document.getElementById('saveBtn');
+        if (saveBtn) {
+            saveBtn.style.display = 'none';
+        }
+    }
+});
 
 async function checkAndStart() {
   const name = document.getElementById('uName').value;
@@ -189,7 +200,14 @@ async function draw(){
       document.getElementById('displayUserInfo').innerText = `ผู้รับโชค: ${currentUser.name} (${currentUser.tel})`;
       document.getElementById('promoText').innerText = randomSlogan;
       document.getElementById('overlay').classList.add("show");
-      setTimeout(()=>document.getElementById('card').classList.add("flip"), 200);
+      
+      setTimeout(() => {
+        document.getElementById('card').classList.add("flip");
+        // แจ้งเตือนให้แคปภาพหน้าจอหลังจากพลิกบัตรเสร็จ
+        setTimeout(() => {
+          alert("อย่าลืมแคปภาพหน้าจอ ใบเซียมซีด้วยนะครับ\n**เพื่อเก็บไว้เป็นหลักฐาน**");
+        }, 800);
+      }, 200);
     }, 600); 
   }, 3000); 
 }
@@ -283,4 +301,3 @@ function closeCard(){ location.reload(); }
 </script>
 </body>
 </html>
-
