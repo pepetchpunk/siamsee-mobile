@@ -203,9 +203,9 @@ async function draw(){
       
       setTimeout(() => {
         document.getElementById('card').classList.add("flip");
-        // แจ้งเตือนให้แคปภาพหน้าจอหลังจากพลิกบัตรเสร็จ
+        // แจ้งเตือนข้อความกระชับ ตัดชื่อเว็บออก
         setTimeout(() => {
-          alert("อย่าลืมแคปภาพหน้าจอ ใบเซียมซีด้วยนะครับ\n**เพื่อเก็บไว้เป็นหลักฐาน**");
+          alert("อย่าลืมแคปภาพหน้าจอใบเซียมซีไว้เป็นหลักฐานนะครับ");
         }, 800);
       }, 200);
     }, 600); 
@@ -301,3 +301,4 @@ function closeCard(){ location.reload(); }
 </script>
 </body>
 </html>
+
