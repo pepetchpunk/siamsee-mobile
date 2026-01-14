@@ -210,19 +210,56 @@ async function saveToGoogleSheet(name, phone, result, note) {
 async function saveAsImage() {
   const area = document.getElementById('captureArea');
   const cardInner = document.getElementById('cardInner');
+  const noteInput = document.getElementById('noteInput');
+  
+  // 1. แก้ไขปัญหาข้อความหลุดกรอบ: สร้างสำเนาข้อความเพื่อการแสดงผลในรูปภาพโดยเฉพาะ
+  const originalNoteValue = noteInput.value;
+  const noteDisplay = document.createElement('div');
+  if (originalNoteValue) {
+    noteDisplay.style.cssText = "font-size: 13px; color: #333; word-break: break-all; white-space: normal; text-align: left; width: 100%; margin-top: 5px; border: 1px dashed #ffb3c1; padding: 5px; border-radius: 5px;";
+    noteDisplay.innerText = originalNoteValue;
+    noteInput.parentElement.appendChild(noteDisplay);
+    noteInput.style.display = 'none'; // ซ่อน Input ชั่วคราว
+  }
+
+  // เตรียม UI ก่อนแคป
   document.getElementById('saveBtn').style.visibility = 'hidden';
   document.getElementById('btnNote').style.visibility = 'hidden';
   area.querySelector('.closeBtn').style.visibility = 'hidden';
   cardInner.classList.add('capture-fix');
   area.classList.add('capture-fix');
+
   try {
-    const canvas = await html2canvas(area, { backgroundColor: "#ffffff", scale: 3, useCORS: true });
-    const imgData = canvas.toDataURL('image/png');
+    // 2. ปรับความชัด: เพิ่ม Scale เป็น 4 เท่า และใช้เทคนิคจัดการรอยหยัก
+    const canvas = await html2canvas(area, { 
+      backgroundColor: "#ffffff", 
+      scale: 4, // เพิ่มความละเอียดภาพ (ชัดมาก)
+      useCORS: true,
+      logging: false,
+      allowTaint: true
+    });
+
+    const imgData = canvas.toDataURL('image/png', 1.0);
+
+    // 3. ระบบ Auto Save สำหรับคอมพิวเตอร์
+    const link = document.createElement('a');
+    link.download = `Siamsee-StartupUp-${currentUser.name}.png`;
+    link.href = imgData;
+    link.click(); // สั่งดาวน์โหลดอัตโนมัติ
+
+    // แสดง Preview เผื่อไว้สำหรับคนใช้มือถือ
     document.getElementById('previewImage').src = imgData;
     document.getElementById('previewScreen').style.display = 'flex';
+
   } catch (err) {
-    alert("กรุณาแคปหน้าจอแทนครับ");
+    console.error(err);
+    alert("ระบบบันทึกภาพขัดข้อง กรุณาใช้การแคปหน้าจอแทนครับ");
   } finally {
+    // คืนค่า UI กลับมาเหมือนเดิม
+    if (originalNoteValue) {
+      noteInput.style.display = 'block';
+      noteDisplay.remove();
+    }
     document.getElementById('saveBtn').style.visibility = 'visible';
     document.getElementById('btnNote').style.visibility = 'visible';
     area.querySelector('.closeBtn').style.visibility = 'visible';
@@ -230,8 +267,6 @@ async function saveAsImage() {
     area.classList.remove('capture-fix');
   }
 }
-function closePreview() { document.getElementById('previewScreen').style.display = 'none'; }
-function closeCard(){ location.reload(); }
 </script>
 </body>
 </html>
