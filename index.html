@@ -117,6 +117,13 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
   <button onclick="closePreview()" style="margin-top:20px; background:#666; border:none; padding:10px 20px; color:white; border-radius:10px; cursor: pointer;">ย้อนกลับ</button>
 </div>
 
+<div id="customAlert" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:10000; align-items:center; justify-content:center;">
+  <div style="background:white; padding:30px; border-radius:20px; width:85%; max-width:300px; text-align:center; color:#333; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+    <p style="font-size:18px; font-weight:bold; margin-bottom:20px; line-height:1.5;">อย่าลืมแคปภาพหน้าจอ<br>ใบเซียมซีไว้เป็นหลักฐานนะครับ</p>
+    <button onclick="closeCustomAlert()" style="width:100%; padding:12px; background:#ff4d6d; color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">ตกลง</button>
+  </div>
+</div>
+
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9zHGwLl6Z7NzUGvwAaoPsRaeBj7UxHjAhAl87xNkFrn6XI6SFFmpMUC2Aic1G-Y2qzQ/exec";
 
@@ -124,7 +131,6 @@ let currentUser = null;
 let lastResultText = ""; 
 const data=[{no:"1", text:"ทริปดินเนอร์หรู + โซฟาคู่รัก"},{no:"2", text:"ตู้เย็นใหญ่ + ชุดเครื่องครัวชมพู"},{no:"3", text:"แอร์เย็นฉ่ำ + ที่นอนคิงไซส์"},{no:"4", text:"แหวนทองคำแทนใจ 1 สลึง"}];
 
-/* --- ข้อความชวนยื่นกู้บ้าน Startup Up Real Estate --- */
 const slogans = [
   "กู้ง่าย อนุมัติไว ได้บ้านในฝันกับ Startup Up Real Estate\nผ่อนสบายกว่าเช่า ดอกเบี้ยพิเศษ ยื่นกู้วันนี้รับโชคฟรีทันใจ!",
   "อยากมีบ้านไม่ใช่เรื่องยาก Startup Up จัดให้กู้ง่ายทันใจ\nวงเงินกู้สูง กู้เต็มร้อยไม่ต้องดาวน์ พร้อมดูแลทุกขั้นตอน!",
@@ -133,14 +139,16 @@ const slogans = [
   "รักแท้คือการสร้างอนาคต ยื่นกู้บ้านกับ Startup Up วันนี้\nกู้ผ่านง่าย อนุมัติไว พร้อมรับของตกแต่งบ้านสุดพิเศษมากมาย!"
 ];
 
+// ฟังก์ชันเปิด/ปิด Custom Alert
+function showCustomAlert() { document.getElementById('customAlert').style.display = 'flex'; }
+function closeCustomAlert() { document.getElementById('customAlert').style.display = 'none'; }
+
 // ฟังก์ชันซ่อนปุ่มบันทึกรูปภาพบนมือถือ
 window.addEventListener('DOMContentLoaded', (event) => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
         const saveBtn = document.getElementById('saveBtn');
-        if (saveBtn) {
-            saveBtn.style.display = 'none';
-        }
+        if (saveBtn) { saveBtn.style.display = 'none'; }
     }
 });
 
@@ -155,7 +163,6 @@ async function checkAndStart() {
   try {
     const response = await fetch(`${SCRIPT_URL}?phone=${tel}`);
     const result = await response.json();
-    
     if(result.exists) {
       alert('ขออภัยครับ เบอร์โทรศัพท์นี้ได้ใช้สิทธิ์เขย่าเซียมซีไปแล้ว');
       submitBtn.innerText = "ใช้สิทธิ์ไปแล้ว";
@@ -163,7 +170,6 @@ async function checkAndStart() {
       submitBtn.style.background = "#888";
       return;
     }
-    
     currentUser = { name, tel };
     document.getElementById('regForm').style.display = 'none';
     const drawBtn = document.getElementById('drawBtn');
@@ -203,10 +209,8 @@ async function draw(){
       
       setTimeout(() => {
         document.getElementById('card').classList.add("flip");
-        // แจ้งเตือนข้อความกระชับ ตัดชื่อเว็บออก
-        setTimeout(() => {
-          alert("อย่าลืมแคปภาพหน้าจอใบเซียมซีไว้เป็นหลักฐานนะครับ");
-        }, 800);
+        // เรียก Custom Alert แทน alert ปกติ
+        setTimeout(() => { showCustomAlert(); }, 800);
       }, 200);
     }, 600); 
   }, 3000); 
@@ -230,12 +234,7 @@ async function saveToGoogleSheet(name, phone, result, note) {
     formData.append('phone', phone);
     formData.append('result', result);
     formData.append('note', note);
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors', 
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: formData.toString()
-    });
+    fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: formData.toString() });
   } catch (err) {}
 }
 
@@ -243,7 +242,6 @@ async function saveAsImage() {
   const area = document.getElementById('captureArea');
   const cardInner = document.getElementById('cardInner');
   const noteInput = document.getElementById('noteInput');
-  
   const originalNoteValue = noteInput.value;
   const noteDisplay = document.createElement('div');
   if (originalNoteValue) {
@@ -252,39 +250,25 @@ async function saveAsImage() {
     noteInput.parentElement.appendChild(noteDisplay);
     noteInput.style.display = 'none';
   }
-
   document.getElementById('saveBtn').style.visibility = 'hidden';
   document.getElementById('btnNote').style.visibility = 'hidden';
   area.querySelector('.closeBtn').style.visibility = 'hidden';
   cardInner.classList.add('capture-fix');
   area.classList.add('capture-fix');
-
   try {
-    const canvas = await html2canvas(area, { 
-      backgroundColor: "#ffffff", 
-      scale: 4, 
-      useCORS: true,
-      logging: false
-    });
-
+    const canvas = await html2canvas(area, { backgroundColor: "#ffffff", scale: 4, useCORS: true, logging: false });
     const imgData = canvas.toDataURL('image/png', 1.0);
-
     const link = document.createElement('a');
     link.download = `Siamsee-StartupUp-${currentUser.name}.png`;
     link.href = imgData;
     link.click();
-
     document.getElementById('previewImage').src = imgData;
     document.getElementById('previewScreen').style.display = 'flex';
-
   } catch (err) {
     console.error(err);
     alert("ระบบบันทึกภาพขัดข้อง กรุณาใช้การแคปหน้าจอแทนครับ");
   } finally {
-    if (originalNoteValue) {
-      noteInput.style.display = 'block';
-      noteDisplay.remove();
-    }
+    if (originalNoteValue) { noteInput.style.display = 'block'; noteDisplay.remove(); }
     document.getElementById('saveBtn').style.visibility = 'visible';
     document.getElementById('btnNote').style.visibility = 'visible';
     area.querySelector('.closeBtn').style.visibility = 'visible';
@@ -293,12 +277,8 @@ async function saveAsImage() {
   }
 }
 
-function closePreview() { 
-  document.getElementById('previewScreen').style.display = 'none'; 
-}
-
+function closePreview() { document.getElementById('previewScreen').style.display = 'none'; }
 function closeCard(){ location.reload(); }
 </script>
 </body>
 </html>
-
