@@ -98,7 +98,7 @@ button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; 
 <div id="previewScreen">
   <h3 id="previewHint">แตะค้างที่รูปเพื่อ 'บันทึก'</h3>
   <img id="previewImage" src="">
-  <button onclick="closePreview()" style="margin-top:20px; background:#666; border:none; padding:10px 20px; color:white; border-radius:10px;">ย้อนกลับ</button>
+  <button onclick="closePreview()" style="margin-top:20px; background:#666; border:none; padding:10px 20px; color:white; border-radius:10px; cursor: pointer;">ย้อนกลับ</button>
 </div>
 
 <script>
@@ -129,7 +129,6 @@ async function checkAndStart() {
     const response = await fetch(`${SCRIPT_URL}?phone=${tel}`);
     const result = await response.json();
     
-    // ตรวจสอบจากฐานข้อมูลว่าเบอร์นี้ใช้ไปหรือยัง
     if(result.exists) {
       alert('ขออภัยครับ เบอร์โทรศัพท์นี้ได้ใช้สิทธิ์เขย่าเซียมซีไปแล้ว');
       submitBtn.innerText = "ใช้สิทธิ์ไปแล้ว";
@@ -166,7 +165,6 @@ async function draw(){
     document.getElementById('mainStick').classList.add("fly");
     lastResultText = pick.text;
 
-    // บันทึกลง Google Sheet ทันทีที่เขย่าได้ผล
     saveToGoogleSheet(currentUser.name, currentUser.tel, pick.text, "ใช้สิทธิ์แล้ว"); 
 
     setTimeout(()=>{
@@ -212,17 +210,15 @@ async function saveAsImage() {
   const cardInner = document.getElementById('cardInner');
   const noteInput = document.getElementById('noteInput');
   
-  // 1. แก้ไขปัญหาข้อความหลุดกรอบ: สร้างสำเนาข้อความเพื่อการแสดงผลในรูปภาพโดยเฉพาะ
   const originalNoteValue = noteInput.value;
   const noteDisplay = document.createElement('div');
   if (originalNoteValue) {
     noteDisplay.style.cssText = "font-size: 13px; color: #333; word-break: break-all; white-space: normal; text-align: left; width: 100%; margin-top: 5px; border: 1px dashed #ffb3c1; padding: 5px; border-radius: 5px;";
     noteDisplay.innerText = originalNoteValue;
     noteInput.parentElement.appendChild(noteDisplay);
-    noteInput.style.display = 'none'; // ซ่อน Input ชั่วคราว
+    noteInput.style.display = 'none';
   }
 
-  // เตรียม UI ก่อนแคป
   document.getElementById('saveBtn').style.visibility = 'hidden';
   document.getElementById('btnNote').style.visibility = 'hidden';
   area.querySelector('.closeBtn').style.visibility = 'hidden';
@@ -230,24 +226,20 @@ async function saveAsImage() {
   area.classList.add('capture-fix');
 
   try {
-    // 2. ปรับความชัด: เพิ่ม Scale เป็น 4 เท่า และใช้เทคนิคจัดการรอยหยัก
     const canvas = await html2canvas(area, { 
       backgroundColor: "#ffffff", 
-      scale: 4, // เพิ่มความละเอียดภาพ (ชัดมาก)
+      scale: 4, 
       useCORS: true,
-      logging: false,
-      allowTaint: true
+      logging: false
     });
 
     const imgData = canvas.toDataURL('image/png', 1.0);
 
-    // 3. ระบบ Auto Save สำหรับคอมพิวเตอร์
     const link = document.createElement('a');
     link.download = `Siamsee-StartupUp-${currentUser.name}.png`;
     link.href = imgData;
-    link.click(); // สั่งดาวน์โหลดอัตโนมัติ
+    link.click();
 
-    // แสดง Preview เผื่อไว้สำหรับคนใช้มือถือ
     document.getElementById('previewImage').src = imgData;
     document.getElementById('previewScreen').style.display = 'flex';
 
@@ -255,7 +247,6 @@ async function saveAsImage() {
     console.error(err);
     alert("ระบบบันทึกภาพขัดข้อง กรุณาใช้การแคปหน้าจอแทนครับ");
   } finally {
-    // คืนค่า UI กลับมาเหมือนเดิม
     if (originalNoteValue) {
       noteInput.style.display = 'block';
       noteDisplay.remove();
@@ -267,6 +258,12 @@ async function saveAsImage() {
     area.classList.remove('capture-fix');
   }
 }
+
+function closePreview() { 
+  document.getElementById('previewScreen').style.display = 'none'; 
+}
+
+function closeCard(){ location.reload(); }
 </script>
 </body>
 </html>
