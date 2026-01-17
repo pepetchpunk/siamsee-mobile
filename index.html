@@ -87,7 +87,7 @@
 </div>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9zHGwLl6Z7NzUGvwAaoPsRaeBj7UxHjAhAl87xNkFrn6XI6SFFmpMUC2Aic1G-Y2qzQ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5FsRsogKg7wFYj8etWUJsLCOozH-EZgNvB2-UHi-ASAgLoLKlGBnnqCZYVS8NPkOKSQ/exec";
 let currentUser = null;
 let lastResultText = ""; 
 const data=[{no:"1", text:"ทริปดินเนอร์หรู + โซฟาคู่รัก"},{no:"2", text:"ตู้เย็นใหญ่ + ชุดเครื่องครัวชมพู"},{no:"3", text:"แอร์เย็นฉ่ำ + ที่นอนคิงไซส์"},{no:"4", text:"แหวนทองคำแทนใจ 1 สลึง"}];
@@ -113,35 +113,54 @@ async function checkAndStart() {
   const name = document.getElementById('uName').value;
   const tel = document.getElementById('uTel').value;
   if(!name || tel.length < 10) return showAlert('กรุณากรอกข้อมูลให้ครบและถูกต้องครับ', "⚠️");
+  
   const submitBtn = document.getElementById('regSubmitBtn');
   submitBtn.innerText = "กำลังตรวจสอบสิทธิ์...";
   submitBtn.disabled = true;
+
   try {
-    const response = await fetch(`${SCRIPT_URL}?phone=${tel}`);
+    // เพิ่ม redirect: 'follow' เพื่อให้ fetch ทำงานร่วมกับ Google Script ได้ลื่นไหลขึ้น
+    const response = await fetch(`${SCRIPT_URL}?phone=${tel}&action=check`, {
+      method: 'GET',
+      redirect: 'follow'
+    });
+    
+    if (!response.ok) throw new Error('Network response was not ok');
     const result = await response.json();
+    
     if(result.exists) {
       currentUser = { name: result.name || name, tel: tel };
-      lastResultText = result.result || "ของรางวัลเดิมของคุณ";
+      lastResultText = result.result || "ของรางวัลพิเศษ"; 
+
+      // หาเลขใบที่ตรงกับรางวัล
       let foundNo = "1";
       data.forEach(d => { if(lastResultText.includes(d.text)) foundNo = d.no; });
+      
+      // *** จุดที่หายไป: สั่งให้หน้าจอเปลี่ยนไปแสดงผล ***
       document.getElementById('regForm').style.display = 'none';
       document.getElementById('cNo').innerText = "ใบที่ " + foundNo;
-      document.getElementById('cText').innerText = "คุณได้รับ: " + lastResultText;
+      document.getElementById('cText').innerText = "คุณได้รับ: " + lastResultText; 
       document.getElementById('displayUserInfo').innerText = `ผู้รับโชค: ${currentUser.name} (${currentUser.tel})`;
       document.getElementById('promoText').innerText = slogans[0]; 
+      
       document.getElementById('overlay').classList.add("show");
       document.getElementById('card').classList.add("flip");
+      
       showAlert(`คุณเคยใช้สิทธิ์ไปแล้วครับ\nรางวัลที่คุณได้รับคือ: ${lastResultText}`, "✅");
       return;
     }
+    
+    // กรณีเป็นผู้ใช้ใหม่
     currentUser = { name, tel };
     document.getElementById('regForm').style.display = 'none';
     const drawBtn = document.getElementById('drawBtn');
     drawBtn.disabled = false;
     drawBtn.style.opacity = '1';
     drawBtn.innerText = 'คลิกเพื่อเขย่าหัวใจ';
+
   } catch (err) {
-    showAlert("ระบบขัดข้อง กรุณาลองใหม่ครู่เดียวครับ", "⚙️");
+    console.error("Detailed Error:", err);
+    showAlert("การเชื่อมต่อล่าช้า กรุณาลองใหม่อีกครั้งครับ", "⚙️");
     submitBtn.disabled = false;
     submitBtn.innerText = "เริ่มเขย่าลุ้นรัก";
   }
@@ -235,52 +254,75 @@ function closePreview() {
   card.classList.add("flip"); 
 }
 
-// 2. แก้ไขฟังก์ชันบันทึกภาพ (เพิ่มการคืนค่ากลับมาให้แสดงผลค้างไว้)
 function saveAsImage() {
   const area = document.getElementById('captureArea');
   const cardInner = document.getElementById('cardInner');
   const saveBtn = document.getElementById('saveBtn');
   const closeBtn = area.querySelector('.closeBtn');
   const overlay = document.getElementById('overlay');
+  
+  // --- เพิ่มส่วนนี้: อ้างอิงถึงปุ่ม LINE OA ---
+  const lineBtn = area.querySelector('a[href*="line.me"]'); 
+  // ---------------------------------------
 
+  const noteInput = document.getElementById('noteInput');
+  const noteContainer = document.querySelector('.note-container');
+  const noteVal = noteInput.value;
+  
+  const tempNoteDisplay = document.createElement('p');
+  tempNoteDisplay.innerText = noteVal ? noteVal : "-";
+  tempNoteDisplay.style.cssText = "font-size: 13px; color: #333; padding: 8px; border: 1px solid #ffb3c1; border-radius: 5px; width: 100%; min-height: 35px; text-align: left; background: #ffffff; margin: 5px 0; word-break: break-all;";
+  
+  // 1. ซ่อนปุ่มต่างๆ รวมถึงปุ่ม LINE OA ก่อนแคปภาพ
   saveBtn.style.display = 'none';
   if(closeBtn) closeBtn.style.display = 'none';
+  if(lineBtn) lineBtn.style.display = 'none'; // <-- สั่งซ่อนตรงนี้
+  noteContainer.style.display = 'none';
+  
+  noteContainer.parentNode.insertBefore(tempNoteDisplay, noteContainer.nextSibling);
   cardInner.style.transform = 'none'; 
   area.style.transform = 'none';
 
-  html2canvas(area, {
-    backgroundColor: "#ffffff",
-    scale: 2,
-    useCORS: true,
-    logging: false
-  }).then(canvas => {
-    saveBtn.style.display = 'block';
-    if(closeBtn) closeBtn.style.display = 'block';
+  setTimeout(() => {
+    html2canvas(area, {
+      backgroundColor: "#ffffff",
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      allowTaint: true
+    }).then(canvas => {
+      // 2. คืนค่าการแสดงผลปุ่มต่างๆ กลับมาเหมือนเดิมหลังจากแคปเสร็จ
+      saveBtn.style.display = 'block';
+      if(closeBtn) closeBtn.style.display = 'block';
+      if(lineBtn) lineBtn.style.display = 'block'; // <-- สั่งให้แสดงกลับมา
+      tempNoteDisplay.remove();
+      noteContainer.style.display = 'flex';
 
-    const imageData = canvas.toDataURL("image/png");
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const imageData = canvas.toDataURL("image/png");
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    if (isMobile) {
-      document.getElementById('previewImage').src = imageData;
-      document.getElementById('previewScreen').style.display = 'flex';
-      // ซ่อนชั่วคราวระหว่างพรีวิว
-      overlay.style.opacity = "0";
-      overlay.style.pointerEvents = "none";
-    } else {
-      const link = document.createElement('a');
-      link.download = `Siamsee-StartupUp-${currentUser.tel}.png`;
-      link.href = imageData;
-      link.click();
-      showAlert("บันทึกรูปภาพเรียบร้อยแล้วครับ", "💾");
-      
-      // *** จุดสำคัญ: เมื่อกดบันทึกในคอม ต้องคืนค่าให้หน้าคำทำนายยังอยู่ ***
-      closePreview(); 
-    }
-  }).catch(err => {
-    saveBtn.style.display = 'block';
-    closePreview(); // คืนค่าหน้าจอหากเกิดข้อผิดพลาด
-    showAlert("ไม่สามารถบันทึกภาพได้", "❌");
-  });
+      if (isMobile) {
+        document.getElementById('previewImage').src = imageData;
+        document.getElementById('previewScreen').style.display = 'flex';
+        overlay.style.opacity = "0";
+        overlay.style.pointerEvents = "none";
+      } else {
+        const link = document.createElement('a');
+        link.download = `Siamsee-StartupUp-${currentUser.tel}.png`;
+        link.href = imageData;
+        link.click();
+        showAlert("บันทึกรูปภาพเรียบร้อยแล้วครับ", "💾");
+        closePreview(); 
+      }
+    }).catch(err => {
+      saveBtn.style.display = 'block';
+      if(lineBtn) lineBtn.style.display = 'block'; // คืนค่าหากเกิด Error
+      if(tempNoteDisplay) tempNoteDisplay.remove();
+      noteContainer.style.display = 'flex';
+      closePreview();
+      showAlert("ไม่สามารถบันทึกภาพได้", "❌");
+    });
+  }, 150);
 }
   function lockResultDisplay() {
   const overlay = document.getElementById('overlay');
