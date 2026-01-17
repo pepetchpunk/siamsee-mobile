@@ -7,7 +7,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 /* CSS ทุกอย่างคงเดิมตามที่คุณกำหนด */
-*{box-sizing:border-box} html, body { height: 100%; width: 100%; overflow: hidden; position: fixed; margin: 0; padding: 0; background-color: #ff4d6d; } .bg-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://lh3.googleusercontent.com/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: -1; } @media (max-width: 768px) { .bg-container { background-image: url('https://lh3.googleusercontent.com/d/1ERUqVLPAj1DBJl_AhkY-1TCClSK1rTnq'); } } .bg-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.1); z-index: -1; } body { font-family: 'Sarabun', sans-serif; color: white; display: flex; flex-direction: column; align-items: center; justify-content: space-between; } h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); z-index: 5; } #regForm { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 1000; } .reg-box { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 320px; color: #333; } .reg-box h2 { color: #ff4d6d; margin-top: 0; text-align: center; } .reg-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; } .reg-box button { width: 100%; padding: 12px; background: #ff4d6d; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; } #scene { position: relative; width: 100%; max-width: 360px; height: 55vh; display: flex; align-items: center; justify-content: center; } #shakeGroup { position: relative; width: 180px; height: 400px; transform-origin: bottom center; transition: transform 0.1s; } .shake { animation: shakeTube 0.5s infinite ease-in-out; } @keyframes shakeTube { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(6deg); } 75% { transform: rotate(-6deg); } } .shake .stick { animation: stickDance 0.3s infinite alternate ease-in-out; } @keyframes stickDance { 0% { transform: rotate(var(--r)) translateY(0); } 100% { transform: rotate(calc(var(--r) * -1.2)) translateY(-20px); } } #tubeWrap { position: absolute; bottom: 0; width: 100%; height: 300px; z-index: 30; } #tube { position: absolute; bottom: 0; width: 100%; height: 100%; background: linear-gradient(90deg, #ff4d6d 0%, #ff85a1 20%, #ffb3c1 50%, #ff85a1 80%, #ff4d6d 100%); border-radius: 0 0 40px 40px; box-shadow: inset 0 15px 15px rgba(255,255,255,0.4), 0 10px 20px rgba(0,0,0,0.3); border: 2px solid #ff0a54; display: flex; justify-content: center; align-items: center; } .tubeLogo { width: 85%; height: auto; border-radius: 10px; display: block; } .stick { position: absolute; width: 24px; height: 260px; background: linear-gradient(to bottom, #fff0f3 0%, #ffccd5 15%, #ff85a1 15%, #ff4d6d 100%); border-radius: 6px 6px 2px 2px; bottom: 100px; z-index: 3; display: flex; justify-content: center; padding-top: 8px; font-size: 16px; font-weight: bold; color: #ff0a54; transition: transform 0.2s; } .s1{left:20px; transform: rotate(-8deg); --r:-8deg; animation-delay: 0.1s;} .s2{left:50px; transform: rotate(-3deg); --r:-3deg; animation-delay: 0.2s;} .s3{left:80px; transform: rotate(2deg); --r:2deg; animation-delay: 0.05s;} .s4{left:110px; transform: rotate(5deg); --r:5deg; animation-delay: 0.15s;} .s5{left:135px; transform: rotate(10deg); --r:10deg; animation-delay: 0.25s;} #mainStick{ left:78px; --r:0deg; animation-delay: 0.12s;} .fly { z-index: 20 !important; animation: smoothFly 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; } @keyframes smoothFly { 0% { transform: translateY(100px) rotate(0deg); opacity: 0; } 15% { opacity: 1; transform: translateY(-50px) rotate(5deg); } 40% { transform: translateY(-300px) rotate(20deg); } 70% { transform: translate(60px, -100px) rotate(90deg); } 100% { transform: translate(130px, 120px) rotate(160deg); } } button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; border: none; border-radius: 40px; background: linear-gradient(#ff85a1, #ff4d6d); color: white; font-weight: bold; box-shadow: 0 6px 0 #c9184a, 0 8px 15px rgba(0,0,0,0.3); cursor: pointer; margin-bottom: 5vh; } #overlay{ position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.3s; z-index:999; } #overlay.show{ opacity:1; pointer-events:auto; } .card { width: 300px; height: auto; min-height: 420px; } .cardInner{ width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:.6s; } .card.flip .cardInner{ transform:rotateY(180deg); } .face{ position:absolute; inset:0; backface-visibility:hidden; border-radius:20px; padding:20px; display:flex; flex-direction:column; align-items:center; justify-content:center; } .front{ background:#ff758f; color:white; font-size: 28px; font-weight: bold; border: 4px solid white; height: 420px; } .back{ background:#fff; color:#ff0a54; transform:rotateY(180deg); text-align: center; border: 4px solid #ff85a1; position: relative; height: auto; min-height: 420px;} .capture-fix { transform: none !important; backface-visibility: visible !important; } .closeBtn{ position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%; background:#ff4d6d; color:white; border: none; z-index: 10; } #promoText { margin-top: 10px; font-weight: bold; line-height: 1.4; color: #333; font-size: 13px; white-space: pre-line; } #previewScreen { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 10px; } #previewImage { max-width: 240px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); } .note-container { display: flex; gap: 5px; margin-top: 5px; width: 100%; } .note-send-btn { background: #4caf50; color: white; border: none; border-radius: 5px; padding: 0 12px; font-size: 12px; cursor: pointer; font-weight: bold; }
+*{box-sizing:border-box} html, body { height: 100%; width: 100%; overflow: hidden; position: fixed; margin: 0; padding: 0; background-color: #ff4d6d; } .bg-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://lh3.googleusercontent.com/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: -1; } @media (max-width: 768px) { .bg-container { background-image: url('https://lh3.googleusercontent.com/d/1ERUqVLPAj1DBJl_AhkY-1TCClSK1rTnq'); } } .bg-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.1); z-index: -1; } body { font-family: 'Sarabun', sans-serif; color: white; display: flex; flex-direction: column; align-items: center; justify-content: space-between; } h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); z-index: 5; } #regForm { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 1000; } .reg-box { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 320px; color: #333; } .reg-box h2 { color: #ff4d6d; margin-top: 0; text-align: center; } .reg-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; } .reg-box button { width: 100%; padding: 12px; background: #ff4d6d; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; } #scene { position: relative; width: 100%; max-width: 360px; height: 55vh; display: flex; align-items: center; justify-content: center; } #shakeGroup { position: relative; width: 180px; height: 400px; transform-origin: bottom center; transition: transform 0.1s; } .shake { animation: shakeTube 0.5s infinite ease-in-out; } @keyframes shakeTube { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(6deg); } 75% { transform: rotate(-6deg); } } .shake .stick { animation: stickDance 0.3s infinite alternate ease-in-out; } @keyframes stickDance { 0% { transform: rotate(var(--r)) translateY(0); } 100% { transform: rotate(calc(var(--r) * -1.2)) translateY(-20px); } } #tubeWrap { position: absolute; bottom: 0; width: 100%; height: 300px; z-index: 30; } #tube { position: absolute; bottom: 0; width: 100%; height: 100%; background: linear-gradient(90deg, #ff4d6d 0%, #ff85a1 20%, #ffb3c1 50%, #ff85a1 80%, #ff4d6d 100%); border-radius: 0 0 40px 40px; box-shadow: inset 0 15px 15px rgba(255,255,255,0.4), 0 10px 20px rgba(0,0,0,0.3); border: 2px solid #ff0a54; display: flex; justify-content: center; align-items: center; } .tubeLogo { width: 85%; height: auto; border-radius: 10px; display: block; } .stick { position: absolute; width: 24px; height: 260px; background: linear-gradient(to bottom, #fff0f3 0%, #ffccd5 15%, #ff85a1 15%, #ff4d6d 100%); border-radius: 6px 6px 2px 2px; bottom: 100px; z-index: 3; display: flex; justify-content: center; padding-top: 8px; font-size: 16px; font-weight: bold; color: #ff0a54; transition: transform 0.2s; } .s1{left:20px; transform: rotate(-8deg); --r:-8deg; animation-delay: 0.1s;} .s2{left:50px; transform: rotate(-3deg); --r:-3deg; animation-delay: 0.2s;} .s3{left:80px; transform: rotate(2deg); --r:2deg; animation-delay: 0.05s;} .s4{left:110px; transform: rotate(5deg); --r:5deg; animation-delay: 0.15s;} .s5{left:135px; transform: rotate(10deg); --r:10deg; animation-delay: 0.25s;} #mainStick{ left:78px; --r:0deg; animation-delay: 0.12s;} .fly { z-index: 20 !important; animation: smoothFly 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; } @keyframes smoothFly { 0% { transform: translateY(100px) rotate(0deg); opacity: 0; } 15% { opacity: 1; transform: translateY(-50px) rotate(5deg); } 40% { transform: translateY(-300px) rotate(20deg); } 70% { transform: translate(60px, -100px) rotate(90deg); } 100% { transform: translate(130px, 120px) rotate(160deg); } } button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; border: none; border-radius: 40px; background: linear-gradient(#ff85a1, #ff4d6d); color: white; font-weight: bold; box-shadow: 0 6px 0 #c9184a, 0 8px 15px rgba(0,0,0,0.3); cursor: pointer; margin-bottom: 5vh; } #overlay{ position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.3s; z-index:999; } #overlay.show{ opacity:1; pointer-events:auto; } .card { width: 300px; height: auto; min-height: 420px; } .cardInner{ width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:.6s; } .card.flip .cardInner{ transform:rotateY(180deg); } .face{ position:absolute; inset:0; backface-visibility:hidden; border-radius:20px; padding:20px; display:flex; flex-direction:column; align-items:center; justify-content:center; } .front{ background:#ff758f; color:white; font-size: 28px; font-weight: bold; border: 4px solid white; height: 420px; } .back{ background:#fff; color:#ff0a54; transform:rotateY(180deg); text-align: center; border: 4px solid #ff85a1; position: relative; height: auto; min-height: 420px;} .capture-fix { transform: none !important; backface-visibility: visible !important; } .closeBtn{ position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%; background:#ff4d6d; color:white; border: none; z-index: 10; } #promoText { margin-top: 10px; font-weight: bold; line-height: 1.4; color: #333; font-size: 13px; white-space: pre-line; } #previewScreen { 
+  position: fixed; 
+  inset: 0; 
+  background: rgba(0,0,0,0.95); 
+  z-index: 9999; 
+  display: none; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 10px; 
+} #previewImage { max-width: 240px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); } .note-container { display: flex; gap: 5px; margin-top: 5px; width: 100%; } .note-send-btn { background: #4caf50; color: white; border: none; border-radius: 5px; padding: 0 12px; font-size: 12px; cursor: pointer; font-weight: bold; }
 </style>
 </head>
 
@@ -73,7 +83,7 @@
 <div id="previewScreen">
   <h3 id="previewHint">แตะค้างที่รูปเพื่อ 'บันทึก'</h3>
   <img id="previewImage" src="">
-  <button onclick="closePreview()" style="margin-top:20px; background:#666; border:none; padding:10px 20px; color:white; border-radius:10px; cursor: pointer;">ย้อนกลับ</button>
+  <button onclick="closePreview()" style="margin-top:20px; background:#4caf50; border:none; padding:12px 25px; color:white; border-radius:15px; font-weight:bold; cursor: pointer;">ตกลง (ดูคำทำนายต่อ)</button>
 </div>
 
 <script>
@@ -94,7 +104,10 @@ function showAlert(msg, icon = "📢") {
   document.getElementById('alertIcon').innerText = icon;
   document.getElementById('customAlert').style.display = 'flex';
 }
-function closeAlert() { document.getElementById('customAlert').style.display = 'none'; }
+function closeAlert() {
+  document.getElementById('customAlert').style.display = 'none';
+  // ลบคำสั่งสั่งเปิด Overlay/Card ที่เคยมีในนี้ออกให้หมด
+}
 
 async function checkAndStart() {
   const name = document.getElementById('uName').value;
@@ -106,31 +119,21 @@ async function checkAndStart() {
   try {
     const response = await fetch(`${SCRIPT_URL}?phone=${tel}`);
     const result = await response.json();
-    
-    // หากพบว่าเคยลงทะเบียนแล้ว
     if(result.exists) {
       currentUser = { name: result.name || name, tel: tel };
       lastResultText = result.result || "ของรางวัลเดิมของคุณ";
-      
-      // ดึงเลขใบเซียมซีจากข้อความผลลัพธ์
       let foundNo = "1";
       data.forEach(d => { if(lastResultText.includes(d.text)) foundNo = d.no; });
-
       document.getElementById('regForm').style.display = 'none';
-      
-      // แสดงหน้าผลลัพธ์เดิมทันที
       document.getElementById('cNo').innerText = "ใบที่ " + foundNo;
       document.getElementById('cText').innerText = "คุณได้รับ: " + lastResultText;
       document.getElementById('displayUserInfo').innerText = `ผู้รับโชค: ${currentUser.name} (${currentUser.tel})`;
       document.getElementById('promoText').innerText = slogans[0]; 
       document.getElementById('overlay').classList.add("show");
       document.getElementById('card').classList.add("flip");
-      
-      // แจ้งเตือนพร้อมระบุของรางวัลที่เคยได้รับ
       showAlert(`คุณเคยใช้สิทธิ์ไปแล้วครับ\nรางวัลที่คุณได้รับคือ: ${lastResultText}`, "✅");
       return;
     }
-    
     currentUser = { name, tel };
     document.getElementById('regForm').style.display = 'none';
     const drawBtn = document.getElementById('drawBtn');
@@ -171,22 +174,128 @@ async function draw(){
 }
 
 function closeCard() {
-  document.getElementById('overlay').classList.remove("show");
-  document.getElementById('card').classList.remove("flip");
+  const overlay = document.getElementById('overlay');
+  
+  // ปิดการแสดงผล Overlay
+  overlay.classList.remove("show");
+  
+  // ใช้ setTimeout เล็กน้อยเพื่อให้ CSS Transition ทำงานเสร็จก่อนค่อยซ่อน display
+  setTimeout(() => {
+    if(!overlay.classList.contains("show")) {
+      overlay.style.display = "none";
+    }
+  }, 300);
+
+  // หมายเหตุ: ไม่ต้อง remove("flip") เพื่อให้การ์ดค้างหน้าหลังไว้ตามต้องการ
+
   const drawBtn = document.getElementById('drawBtn');
   drawBtn.innerText = 'ดูผลเซียมซีอีกครั้ง';
   drawBtn.disabled = false;
   drawBtn.style.opacity = '1';
+  
+  // แก้ไขให้ปุ่มเปิดกลับมาทำงานได้ถูกต้อง
   drawBtn.onclick = function() {
-    document.getElementById('overlay').classList.add("show");
-    setTimeout(() => { document.getElementById('card').classList.add("flip"); }, 200);
+    overlay.style.display = "flex";
+    setTimeout(() => {
+      overlay.classList.add("show");
+    }, 10);
   };
 }
 
-async function saveNoteOnly() { const noteVal = document.getElementById('noteInput').value; if(!noteVal) return showAlert("พิมพ์หมายเหตุก่อนครับ", "✍️"); await saveToGoogleSheet(currentUser.name, currentUser.tel, lastResultText, noteVal); showAlert("บันทึกหมายเหตุแล้ว", "✅"); }
+async function saveNoteOnly() { 
+  const noteVal = document.getElementById('noteInput').value; 
+  if(!noteVal) return showAlert("พิมพ์หมายเหตุก่อนครับ", "✍️"); 
+  if(!currentUser) return showAlert("ไม่พบข้อมูลผู้ใช้", "❌");
+  await saveToGoogleSheet(currentUser.name, currentUser.tel, lastResultText, noteVal); 
+  showAlert("บันทึกหมายเหตุลงระบบเรียบร้อยแล้วครับ", "✅"); 
+}
+
 async function saveToGoogleSheet(name, phone, result, note) { try { const formData = new URLSearchParams(); formData.append('name', name); formData.append('phone', phone); formData.append('result', result); formData.append('note', note); fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: formData.toString() }); } catch (err) {} }
-function closePreview() { document.getElementById('previewScreen').style.display = 'none'; }
-function saveAsImage() { /* ฟังก์ชันบันทึกภาพเดิม */ }
+
+// 1. แก้ไขฟังก์ชันปิดพรีวิว (คืนค่าแบบเจาะจง ไม่ลบสไตล์ทั้งหมด)
+function closePreview() { 
+  document.getElementById('previewScreen').style.display = 'none'; 
+  
+  const overlay = document.getElementById('overlay');
+  const card = document.getElementById('card');
+  const cardInner = document.getElementById('cardInner');
+  const area = document.getElementById('captureArea');
+
+  // คืนค่าเฉพาะตัวที่มีปัญหาตอนแคปรูป
+  area.style.transform = ""; 
+  cardInner.style.transform = ""; 
+
+  // บังคับการแสดงผลให้กลับมา 100% ทันที
+  overlay.style.display = "flex";
+  overlay.style.opacity = "1";
+  overlay.style.pointerEvents = "auto";
+  overlay.style.visibility = "visible";
+  
+  overlay.classList.add("show");
+  card.classList.add("flip"); 
+}
+
+// 2. แก้ไขฟังก์ชันบันทึกภาพ (เพิ่มการคืนค่ากลับมาให้แสดงผลค้างไว้)
+function saveAsImage() {
+  const area = document.getElementById('captureArea');
+  const cardInner = document.getElementById('cardInner');
+  const saveBtn = document.getElementById('saveBtn');
+  const closeBtn = area.querySelector('.closeBtn');
+  const overlay = document.getElementById('overlay');
+
+  saveBtn.style.display = 'none';
+  if(closeBtn) closeBtn.style.display = 'none';
+  cardInner.style.transform = 'none'; 
+  area.style.transform = 'none';
+
+  html2canvas(area, {
+    backgroundColor: "#ffffff",
+    scale: 2,
+    useCORS: true,
+    logging: false
+  }).then(canvas => {
+    saveBtn.style.display = 'block';
+    if(closeBtn) closeBtn.style.display = 'block';
+
+    const imageData = canvas.toDataURL("image/png");
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      document.getElementById('previewImage').src = imageData;
+      document.getElementById('previewScreen').style.display = 'flex';
+      // ซ่อนชั่วคราวระหว่างพรีวิว
+      overlay.style.opacity = "0";
+      overlay.style.pointerEvents = "none";
+    } else {
+      const link = document.createElement('a');
+      link.download = `Siamsee-StartupUp-${currentUser.tel}.png`;
+      link.href = imageData;
+      link.click();
+      showAlert("บันทึกรูปภาพเรียบร้อยแล้วครับ", "💾");
+      
+      // *** จุดสำคัญ: เมื่อกดบันทึกในคอม ต้องคืนค่าให้หน้าคำทำนายยังอยู่ ***
+      closePreview(); 
+    }
+  }).catch(err => {
+    saveBtn.style.display = 'block';
+    closePreview(); // คืนค่าหน้าจอหากเกิดข้อผิดพลาด
+    showAlert("ไม่สามารถบันทึกภาพได้", "❌");
+  });
+}
+  function lockResultDisplay() {
+  const overlay = document.getElementById('overlay');
+  const card = document.getElementById('card');
+  const cardInner = document.getElementById('cardInner');
+
+  overlay.style.display = "flex";
+  overlay.classList.add("show");
+  overlay.style.opacity = "1";
+  overlay.style.pointerEvents = "auto";
+
+  // บังคับให้เป็นด้านหลังเสมอ
+  card.classList.add("flip");
+  cardInner.style.transform = "";
+}
 </script>
 </body>
 </html>
