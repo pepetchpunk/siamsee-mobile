@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content=" ">
     <meta property="og:description" content=" ">
-
     <meta property="og:image" content="https://lh3.googleusercontent.com/u/0/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -201,7 +202,7 @@ html, body {
           </div>
         </div>
         <button id="saveBtn" onclick="saveAsImage()" style="margin-top:15px; background:#ff4d6d; color:#fff; border:none; padding:10px; border-radius:25px; font-weight:bold; width: 100%;">💾 บันทึกรูปภาพ</button>
-        <a href="https://line.me/R/oaMessage/@sure141/🎉เขย่าเซียมซีเรียบร้อยแล้ว🎉" target="_blank" rel="noopener noreferrer" style="display:block; background:#06c755; color:#fff; text-align:center; padding:14px; border-radius:20px; font-weight:bold; text-decoration:none; margin-top: 10px;">💬 กดยืนยันสิทธิ์ผ่าน LINE</a>
+         <a href="https://line.me/R/oaMessage/@sure141/🎉เขย่าเซียมซีเรียบร้อยแล้ว🎉" target="_blank" rel="noopener noreferrer" style="display:block; background:#06c755; color:#fff; text-align:center; padding:14px; border-radius:20px; font-weight:bold; text-decoration:none; margin-top: 10px;">💬 กดยืนยันสิทธิ์ผ่าน LINE</a>
       </div>
     </div>
   </div>
@@ -629,6 +630,20 @@ function showInitialRules() {
 
 // สั่งให้ทำงานทันทีที่เปิดหน้าเว็บ
 window.addEventListener('load', showInitialRules);
+function handleLineLink() {
+    // เช็คว่าเป็นมือถือหรือไม่
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        // ถ้าเป็นมือถือ: ให้ใช้ลิงก์เดิมเพื่อพิมพ์ข้อความอัตโนมัติ
+        window.location.href = "https://line.me/R/oaMessage/@sure141/🎉เขย่าเซียมซีเรียบร้อยแล้ว🎉";
+    } else {
+        // ถ้าเป็นคอมพิวเตอร์: ให้ไปหน้าที่มี ID LINE / QR Code (หน้า Add Friend)
+        // หน้าที่ถูกต้องคือ https://line.me/ti/p/@sure141
+        window.open("https://line.me/ti/p/@sure141", "_blank");
+    }
+}
 </script>
 </body>
 </html>
+
