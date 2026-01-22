@@ -3,11 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>เขย่าเซียมซีลุ้นรักลุ้นบ้าน - Startup Up Real Estate</title>
+<title>เขย่าเซียมซีลุ้นโชคลุ้นรางวัล - Startup Up Real Estate</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
-/* CSS ทุกอย่างคงเดิมตามที่คุณกำหนด */
-*{box-sizing:border-box} html, body { height: 100%; width: 100%; overflow: hidden; position: fixed; margin: 0; padding: 0; background-color: #ff4d6d; } .bg-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://lh3.googleusercontent.com/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: -1; } @media (max-width: 768px) { .bg-container { background-image: url('https://lh3.googleusercontent.com/d/1ERUqVLPAj1DBJl_AhkY-1TCClSK1rTnq'); } } .bg-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.1); z-index: -1; } body { font-family: 'Sarabun', sans-serif; color: white; display: flex; flex-direction: column; align-items: center; justify-content: space-between; } h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); z-index: 5; } #regForm { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 1000; } .reg-box { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 320px; color: #333; } .reg-box h2 { color: #ff4d6d; margin-top: 0; text-align: center; } .reg-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; } .reg-box button { width: 100%; padding: 12px; background: #ff4d6d; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; } #scene { position: relative; width: 100%; max-width: 360px; height: 55vh; display: flex; align-items: center; justify-content: center; } #shakeGroup { position: relative; width: 180px; height: 400px; transform-origin: bottom center; transition: transform 0.1s; } .shake { animation: shakeTube 0.5s infinite ease-in-out; } @keyframes shakeTube { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(6deg); } 75% { transform: rotate(-6deg); } } .shake .stick { animation: stickDance 0.3s infinite alternate ease-in-out; } @keyframes stickDance { 0% { transform: rotate(var(--r)) translateY(0); } 100% { transform: rotate(calc(var(--r) * -1.2)) translateY(-20px); } } #tubeWrap { position: absolute; bottom: 0; width: 100%; height: 300px; z-index: 30; } #tube { position: absolute; bottom: 0; width: 100%; height: 100%; background: linear-gradient(90deg, #ff4d6d 0%, #ff85a1 20%, #ffb3c1 50%, #ff85a1 80%, #ff4d6d 100%); border-radius: 0 0 40px 40px; box-shadow: inset 0 15px 15px rgba(255,255,255,0.4), 0 10px 20px rgba(0,0,0,0.3); border: 2px solid #ff0a54; display: flex; justify-content: center; align-items: center; } .tubeLogo { width: 85%; height: auto; border-radius: 10px; display: block; } .stick { position: absolute; width: 24px; height: 260px; background: linear-gradient(to bottom, #fff0f3 0%, #ffccd5 15%, #ff85a1 15%, #ff4d6d 100%); border-radius: 6px 6px 2px 2px; bottom: 100px; z-index: 3; display: flex; justify-content: center; padding-top: 8px; font-size: 16px; font-weight: bold; color: #ff0a54; transition: transform 0.2s; } .s1{left:20px; transform: rotate(-8deg); --r:-8deg; animation-delay: 0.1s;} .s2{left:50px; transform: rotate(-3deg); --r:-3deg; animation-delay: 0.2s;} .s3{left:80px; transform: rotate(2deg); --r:2deg; animation-delay: 0.05s;} .s4{left:110px; transform: rotate(5deg); --r:5deg; animation-delay: 0.15s;} .s5{left:135px; transform: rotate(10deg); --r:10deg; animation-delay: 0.25s;} #mainStick{ left:78px; --r:0deg; animation-delay: 0.12s;} .fly { z-index: 20 !important; animation: smoothFly 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; } @keyframes smoothFly { 0% { transform: translateY(100px) rotate(0deg); opacity: 0; } 15% { opacity: 1; transform: translateY(-50px) rotate(5deg); } 40% { transform: translateY(-300px) rotate(20deg); } 70% { transform: translate(60px, -100px) rotate(90deg); } 100% { transform: translate(130px, 120px) rotate(160deg); } } button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; border: none; border-radius: 40px; background: linear-gradient(#ff85a1, #ff4d6d); color: white; font-weight: bold; box-shadow: 0 6px 0 #c9184a, 0 8px 15px rgba(0,0,0,0.3); cursor: pointer; margin-bottom: 5vh; } #overlay{ position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.3s; z-index:999; } #overlay.show{ opacity:1; pointer-events:auto; } .card { width: 300px; height: auto; min-height: 420px; } .cardInner{ width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:.6s; } .card.flip .cardInner{ transform:rotateY(180deg); } .face{ position:absolute; inset:0; backface-visibility:hidden; border-radius:20px; padding:20px; display:flex; flex-direction:column; align-items:center; justify-content:center; } .front{ background:#ff758f; color:white; font-size: 28px; font-weight: bold; border: 4px solid white; height: 420px; } .back{ background:#fff; color:#ff0a54; transform:rotateY(180deg); text-align: center; border: 4px solid #ff85a1; position: relative; height: auto; min-height: 420px;} .capture-fix { transform: none !important; backface-visibility: visible !important; } .closeBtn{ position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%; background:#ff4d6d; color:white; border: none; z-index: 10; } #promoText { margin-top: 10px; font-weight: bold; line-height: 1.4; color: #333; font-size: 13px; white-space: pre-line; } #previewScreen { 
+  @keyframes glow-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 10, 84, 0.4); opacity: 1; }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 10, 84, 0.8); opacity: 0.9; }
+  100% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 10, 84, 0.4); opacity: 1; }
+}
+
+/* ประยุกต์ใช้กับปุ่มของรางวัล (ฝั่งขวา) */
+#prizeListBtn {
+    animation: glow-pulse 1.5s infinite ease-in-out !important;
+}
+
+/* ประยุกต์ใช้กับปุ่มเขย่าเซียมซี (เมื่อเปิดใช้งาน) */
+#drawBtn:not(:disabled) {
+    animation: glow-pulse 1.5s infinite ease-in-out !important;
+    border: 2px solid #fff; /* เพิ่มขอบขาวบางๆ ให้ดูเด่นขึ้นเวลาเรืองแสง */
+}
+* { box-sizing: border-box; }
+  
+  #termsBtn {
+    animation: glow-pulse 1.5s infinite ease-in-out !important;
+}
+
+html, body { 
+    height: 100%; 
+    width: 100%; 
+    overflow: hidden; 
+    position: fixed; 
+    margin: 0; 
+    padding: 0; 
+}
+
+.bg-container { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-image: url('https://lh3.googleusercontent.com/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E'); 
+    background-size: cover;        
+    background-position: center;  
+    background-repeat: no-repeat; 
+    z-index: -1; 
+}
+
+@media (max-width: 768px) {
+    #saveBtn {
+        display: none !important;
+    }
+    .bg-container { 
+        background-image: url('https://lh3.googleusercontent.com/d/1ERUqVLPAj1DBJl_AhkY-1TCClSK1rTnq'); 
+    }
+}
+
+.bg-overlay { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.1); 
+    z-index: -1; 
+}
+  body { font-family: 'Sarabun', sans-serif; color: white; display: flex; flex-direction: column; align-items: center; justify-content: space-between; } h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); z-index: 5; } #regForm { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 1000; } .reg-box { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 320px; color: #333; } .reg-box h2 { color: #ff4d6d; margin-top: 0; text-align: center; } .reg-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; } .reg-box button { width: 100%; padding: 12px; background: #ff4d6d; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; } #scene { position: relative; width: 100%; max-width: 360px; height: 55vh; display: flex; align-items: center; justify-content: center; } #shakeGroup { position: relative; width: 180px; height: 400px; transform-origin: bottom center; transition: transform 0.1s; } .shake { animation: shakeTube 0.5s infinite ease-in-out; } @keyframes shakeTube { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(6deg); } 75% { transform: rotate(-6deg); } } .shake .stick { animation: stickDance 0.3s infinite alternate ease-in-out; } @keyframes stickDance { 0% { transform: rotate(var(--r)) translateY(0); } 100% { transform: rotate(calc(var(--r) * -1.2)) translateY(-20px); } } #tubeWrap { position: absolute; bottom: 0; width: 100%; height: 300px; z-index: 30; } #tube { position: absolute; bottom: 0; width: 100%; height: 100%; background: linear-gradient(90deg, #ff4d6d 0%, #ff85a1 20%, #ffb3c1 50%, #ff85a1 80%, #ff4d6d 100%); border-radius: 0 0 40px 40px; box-shadow: inset 0 15px 15px rgba(255,255,255,0.4), 0 10px 20px rgba(0,0,0,0.3); border: 2px solid #ff0a54; display: flex; justify-content: center; align-items: center; } .tubeLogo { width: 85%; height: auto; border-radius: 10px; display: block; } .stick { position: absolute; width: 24px; height: 260px; background: linear-gradient(to bottom, #fff0f3 0%, #ffccd5 15%, #ff85a1 15%, #ff4d6d 100%); border-radius: 6px 6px 2px 2px; bottom: 100px; z-index: 20; display: flex; justify-content: center; padding-top: 8px; font-size: 16px; font-weight: bold; color: #ff0a54; transition: transform 0.2s; } .s1{left:20px; transform: rotate(-8deg); --r:-8deg; animation-delay: 0.1s;} .s2{left:50px; transform: rotate(-3deg); --r:-3deg; animation-delay: 0.2s;} .s3{left:80px; transform: rotate(2deg); --r:2deg; animation-delay: 0.05s;} .s4{left:110px; transform: rotate(5deg); --r:5deg; animation-delay: 0.15s;} .s5{left:135px; transform: rotate(10deg); --r:10deg; animation-delay: 0.25s;} #mainStick{ left:78px; --r:0deg; animation-delay: 0.12s;} 
+  
+@keyframes smoothFly {
+  0% { 
+    transform: translateY(100px) rotate(0deg); 
+    opacity: 0;
+  }
+  20% { 
+    opacity: 1; 
+    transform: translateY(-200px) rotate(-15deg); /* ลดระยะพุ่งขึ้นเล็กน้อยเพื่อความสมดุล */
+  }
+  40% { 
+    transform: translateY(-280px) rotate(-30deg); /* จุดสูงสุด (นิ่งชั่วขณะ) */
+  }
+  100% { 
+    /* ปรับจาก 130px เป็น 185px เพื่อให้ระนาบเดียวกับก้นกระบอก */
+    transform: translate(0, 230px) rotate(80deg); 
+    opacity: 1;
+    z-index: 100;
+  }
+}
+
+.fly {
+  z-index: 100 !important; /* ดีดเลเยอร์มาข้างหน้าทันที */
+  animation: smoothFly 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+  
+  button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; border: none; border-radius: 40px; background: linear-gradient(#ff85a1, #ff4d6d); color: white; font-weight: bold; box-shadow: 0 6px 0 #c9184a, 0 8px 15px rgba(0,0,0,0.3); cursor: pointer; margin-bottom: 5vh; } #overlay{ position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.3s; z-index:999; } #overlay.show{ opacity:1; pointer-events:auto; } .card { width: 300px; height: auto; min-height: 420px; } .cardInner{ width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:.6s; } .card.flip .cardInner{ transform:rotateY(180deg); } .face{ position:absolute; inset:0; backface-visibility:hidden; border-radius:20px; padding:20px; display:flex; flex-direction:column; align-items:center; justify-content:center; } .front{ background:#ff758f; color:white; font-size: 28px; font-weight: bold; border: 4px solid white; height: 420px; } .back{ background:#fff; color:#ff0a54; transform:rotateY(180deg); text-align: center; border: 4px solid #ff85a1; position: relative; height: auto; min-height: 420px;} .capture-fix { transform: none !important; backface-visibility: visible !important; } .closeBtn{ position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%; background:#ff4d6d; color:white; border: none; z-index: 10; } #promoText { margin-top: 10px; font-weight: bold; line-height: 1.4; color: #333; font-size: 13px; white-space: pre-line; } #previewScreen { 
   position: fixed; 
   inset: 0; 
   background: rgba(0,0,0,0.95); 
@@ -18,6 +103,12 @@
   justify-content: center; 
   padding: 10px; 
 } #previewImage { max-width: 240px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); } .note-container { display: flex; gap: 5px; margin-top: 5px; width: 100%; } .note-send-btn { background: #4caf50; color: white; border: none; border-radius: 5px; padding: 0 12px; font-size: 12px; cursor: pointer; font-weight: bold; }
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
 </style>
 </head>
 
@@ -38,15 +129,16 @@
     <h2>ลงทะเบียนลุ้นโชค</h2>
     <input type="text" id="uName" placeholder="ชื่อของคุณ">
     <input type="tel" id="uTel" placeholder="เบอร์โทรศัพท์ (10 หลัก)" maxlength="10">
-    <button id="regSubmitBtn" onclick="checkAndStart()">เริ่มเขย่าลุ้นรัก</button>
+    <button id="regSubmitBtn" onclick="checkAndStart()">เริ่มเขย่าเซียมซี</button>
   </div>
 </div>
 
-<h1>💖 เขย่าเซียมซีลุ้นรักลุ้นบ้าน 💖</h1>
+<h1>💖 เขย่าเซียมซีลุ้นโชคลุ้นรางวัล 💖</h1>
 <div id="scene">
   <div id="shakeGroup">
     <div class="stick s1">❤</div><div class="stick s2">❤</div><div class="stick s3">❤</div>
-    <div class="stick s4">❤</div><div class="stick s5">❤</div><div class="stick" id="mainStick">❤</div>
+    <div class="stick s4">❤</div><div class="stick s5">❤</div>
+    <div class="stick" id="mainStick" style="display: none;">❤</div>
     <div id="tubeWrap"><div id="tube"><img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" class="tubeLogo"></div></div>
   </div>
 </div>
@@ -61,6 +153,11 @@
         <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" style="width: 100px; margin-bottom: 5px;">
         <h2 id="cNo" style="margin:0; font-size: 18px;"></h2>
         <p id="cText" style="font-size: 18px; color: #ff4d6d; font-weight: bold; margin: 5px 0;"></p>
+        
+        <div style="background: #ff0a54; color: white; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; margin: 8px 0; display: inline-block; animation: pulse 1.5s infinite;">
+           📸 อย่าลืมแคปภาพหน้าจอไว้ยืนยันสิทธิ์
+        </div>
+
         <div style="font-size: 13px; color: #555; background: #fff0f3; padding: 5px 10px; border-radius: 10px; margin: 5px 0; width: 100%;">
           <span id="displayUserInfo"></span>
         </div>
@@ -74,7 +171,7 @@
           </div>
         </div>
         <button id="saveBtn" onclick="saveAsImage()" style="margin-top:15px; background:#ff4d6d; color:#fff; border:none; padding:10px; border-radius:25px; font-weight:bold; width: 100%;">💾 บันทึกรูปภาพ</button>
-        <a href="https://line.me/R/oaMessage/@sure141/🎉เขย่าเซียมซีเรียบร้อยแล้ว🎉" target="_blank" rel="noopener noreferrer" style="display:block; background:#06c755; color:#fff; text-align:center; padding:14px; border-radius:20px; font-weight:bold; text-decoration:none; margin-top: 10px;">💬 ยืนยันสิทธิ์ผ่าน LINE OA</a>
+        <a href="https://line.me/R/oaMessage/@sure141/🎉เขย่าเซียมซีเรียบร้อยแล้ว🎉" target="_blank" rel="noopener noreferrer" style="display:block; background:#06c755; color:#fff; text-align:center; padding:14px; border-radius:20px; font-weight:bold; text-decoration:none; margin-top: 10px;">💬 กดยืนยันสิทธิ์ผ่าน LINE OA</a>
       </div>
     </div>
   </div>
@@ -86,17 +183,66 @@
   <button onclick="closePreview()" style="margin-top:20px; background:#4caf50; border:none; padding:12px 25px; color:white; border-radius:15px; font-weight:bold; cursor: pointer;">ตกลง (ดูคำทำนายต่อ)</button>
 </div>
 
+<button id="prizeListBtn" onclick="togglePrizeSidebar()" style="position: fixed; right: 0; top: 15%; background: #ff4d6d; color: white; border: none; padding: 10px 15px; border-radius: 20px 0 0 20px; z-index: 900; font-weight: bold; box-shadow: -2px 2px 10px rgba(0,0,0,0.2); cursor: pointer;">🎁ดูของรางวัล</button>
+  
+  <button id="termsBtn" onclick="toggleTermsSidebar()" style="position: fixed; left: 0; top: 15%; background: #ff4d6d; color: white; border: none; padding: 10px 15px; border-radius: 0 20px 20px 0; z-index: 900; font-weight: bold; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); cursor: pointer;">⚠️ เงื่อนไข</button>
+
+<div id="termsSidebar" style="position: fixed; left: -300px; top: 0; width: 280px; height: 100%; background: white; z-index: 1001; transition: 0.4s; box-shadow: 5px 0 20px rgba(0,0,0,0.3); padding: 20px; overflow-y: auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="color: #ff4d6d; margin: 0;">เงื่อนไขกิจกรรม</h3>
+        <button onclick="toggleTermsSidebar()" style="background: none; border: none; font-size: 24px; color: #888; cursor: pointer;">×</button>
+    </div>
+    <div style="color: #555; font-size: 14px; line-height: 1.8;">
+        <ul style="padding-left: 20px; margin: 0;">
+            <li style="margin-bottom: 10px;">สามารถใช้ได้ <b>1 สิทธิ ต่อบ้าน 1 หลัง</b> เท่านั้น</li>
+            <li style="margin-bottom: 10px;">ไม่สามารถใช้ร่วมกับ <b>‘บัตรกำนัล’</b> อื่นของบริษัท สตาร์ทอัพ อัพ ได้</li>
+            <li style="margin-bottom: 10px;"><b>ไม่สามารถโอนสิทธิ์</b> ให้ผู้อื่นได้</li>
+            <li style="margin-bottom: 10px;">หากยกเลิกสัญญา <b>‘จะซื้อจะขาย’</b> ภายหลัง ถือว่าสิทธิ์เป็นโมฆะ</li>
+            <li style="margin-bottom: 10px;">บริษัทขอสงวนสิทธิ์ในการเปลี่ยนแปลงเงื่อนไขโดยไม่ต้องแจ้งให้ทราบล่วงหน้า</li>
+        </ul>
+    </div>
+</div>
+
+<div id="prizeSidebar" style="position: fixed; right: -300px; top: 0; width: 280px; height: 100%; background: white; z-index: 1001; transition: 0.4s; box-shadow: -5px 0 20px rgba(0,0,0,0.3); padding: 20px; overflow-y: auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="color: #ff4d6d; margin: 0;">รายการของรางวัล</h3>
+        <button onclick="togglePrizeSidebar()" style="background: none; border: none; font-size: 24px; color: #888; cursor: pointer;">×</button>
+    </div>
+    <div id="prizeItemsContainer">
+        </div>
+</div>
+<div id="sidebarOverlay" onclick="togglePrizeSidebar()" style="position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: none;"></div>
+
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5FsRsogKg7wFYj8etWUJsLCOozH-EZgNvB2-UHi-ASAgLoLKlGBnnqCZYVS8NPkOKSQ/exec";
 let currentUser = null;
 let lastResultText = ""; 
-const data=[{no:"1", text:"ทริปดินเนอร์หรู + โซฟาคู่รัก"},{no:"2", text:"ตู้เย็นใหญ่ + ชุดเครื่องครัวชมพู"},{no:"3", text:"แอร์เย็นฉ่ำ + ที่นอนคิงไซส์"},{no:"4", text:"แหวนทองคำแทนใจ 1 สลึง"}];
+const data = [
+  {no:"1", text:"ชุดเฟอร์นิเจอร์ห้องนอน", img:"https://lh3.googleusercontent.com/u/0/d/1Ql_aDFN0ntGbDpDW006tgfmQGzYLpAz-"},
+  {no:"2", text:"แอร์ 9,000 BTU", img:"https://lh3.googleusercontent.com/u/0/d/1z8EjO_Rm6nTt2Q4srDrUGJuzANJ557D-"},
+  {no:"3", text:"โซฟา", img:"https://lh3.googleusercontent.com/u/0/d/1NR3c2b_WpWcvRVkFQoktWfoBEElVF_XU"},
+  {no:"4", text:"โต๊ะรับประทานอาหาร", img:"https://lh3.googleusercontent.com/u/0/d/1G8-8lCWhCU1Vva7RFa2F1n2lYTdFtKH7"},
+  {no:"5", text:"ผ้าม่านทั้งหลัง", img:"https://lh3.googleusercontent.com/u/0/d/1Jp8I3vckpuQ3sUuWTTgnNjRc7hQRgs_l"},
+  {no:"6", text:"ส่วนลดเงินสด 20,000 บาท", img:"https://lh3.googleusercontent.com/u/0/d/1Lq6JuSmpXYu0EduuS4-TWYpHYY1yQ63v"},
+  {no:"7", text:"ทีวี 55 นิ้ว", img:"https://lh3.googleusercontent.com/u/0/d/1lQTqCGZxMgDwjnQIlQnVWryzQYNPUJi0"},
+  {no:"8", text:"ตู้เย็น 6.4 คิว 2 ประตู", img:"https://lh3.googleusercontent.com/u/0/d/1jDQviAtim4_D4g6WlfpcZhDjoWhVs5ON"}
+];
 const slogans = [
-  "กู้ง่าย อนุมัติไว ได้บ้านในฝันกับ Startup Up Real Estate\nผ่อนสบายกว่าเช่า ดอกเบี้ยพิเศษ ยื่นกู้วันนี้รับโชคฟรีทันใจ!",
-  "อยากมีบ้านไม่ใช่เรื่องยาก Startup Up จัดให้กู้ง่ายทันใจ\nวงเงินกู้สูง กู้เต็มร้อยไม่ต้องดาวน์ พร้อมดูแลทุกขั้นตอน!",
-  "รักหวานบ้านสวย ยื่นกู้บ้านกับ Startup Up อนุมัติเร็วชัวร์\nดูแลทุกขั้นตอนให้เรื่องบ้านเป็นเรื่องง่ายและมั่นคงสำหรับคุณ",
-  "เขย่าเจอรัก รับบ้านใหม่สร้างครอบครัวกับข้อเสนอสุดคุ้ม\nดอกเบี้ยต่ำ ผ่อนน้อยยาวๆ เริ่มต้นบ้านในฝันได้ทันที!",
-  "รักแท้คือการสร้างอนาคต ยื่นกู้บ้านกับ Startup Up วันนี้\nกู้ผ่านง่าย อนุมัติไว พร้อมรับของตกแต่งบ้านสุดพิเศษมากมาย!"
+  "📍 คำทำนาย : ช่วงนี้ออร่าความสำเร็จจับมาก! 🍃 พลังงานชีวิตของคุณอยู่ในจังหวะที่ลงตัวสุดๆ\nดวงการเงินกำลังหมุนเวียนคล่องตัว มีเกณฑ์ได้รับข่าวดีเรื่องสินเชื่อที่รอคอย 🔋\nเตรียมตัวชาร์จพลังในบ้านหลังใหม่ที่อบอุ่นและช่วยจัดระเบียบชีวิตให้พุ่งทะยาน 👨‍👩‍👧‍👦\n✅ สรุป : ดวงเศรษฐีจับ! เตรียมรับ Quality Time ในบ้านในฝันได้เลย 🏠💖",
+  
+  "📍 คำทำนาย : ดวงชะตาของคุณกำลังเปิดรับทรัพย์สินก้อนใหญ่ 💰 โดยเฉพาะด้านอสังหาฯ\nหูตาสว่างไสว ทันโลก ทันเหตุการณ์ มีเกณฑ์ได้ลาภลอยจากที่อยู่อาศัยใหม่ 🌎\nช่วงนี้หยิบจับอะไรเป็นเงินเป็นทอง ยื่นกู้ที่ไหนก็ผ่านฉลุยเพราะดวงการเงินแข็งแกร่งมาก 💎✨\n✅ สรุป : อยู่แล้วรวย! เงินทองไหลเข้ามาไม่ขาดสาย เตรียมตัวเป็นเจ้าของคลังสมบัติ 💸🌈",
+  
+  "📍 คำทำนาย : วาสนาเศรษฐี! คุณกำลังจะได้ครอบครองที่อยู่อาศัยบนทำเลศักยภาพ 📍\nดวงการเงินสว่างจ้า สถาบันการเงินพร้อมอนุมัติสินเชื่อบนโลเคชั่นที่คุ้าค่าที่สุด 🎉\nบ้านหลังนี้จะเป็นจุดยุทธศาสตร์ที่นำพาความมั่งคั่งและโอกาสดีๆ มาให้คุณไม่ขาดสาย 🥰\n✅ สรุป : ทำเลดีมีชัยไปกว่าครึ่ง! ยื่นกู้ผ่านง่าย บนพื้นที่ที่พร้อมเติบโต 📈✨",
+  
+  "📍 คำทำนาย : ถึงเวลา 'อัปเกรด' ชีวิตสู่ความมั่งคั่ง! 🚀 จังหวะชีวิตตอนนี้คือที่สุดของความโชคดี\nคุณจะได้รับดีลที่คุ้มค่าเกินคาดหมาย ดวงด้านการทำสัญญาและสินเชื่ออยู่ในช่วงขาขึ้น 🌈\nการโยกย้ายครั้งนี้จะนำคุณไปสู่สังคมระดับพรีเมียม ตัดความกังวลเก่าๆ ทิ้งไปได้เลย\n✅ สรุป : ดวงเปลี่ยนชีวิต! ถึงเวลา Upgrade ที่อยู่อาศัยให้สมฐานะ 🎉🏠",
+
+  "📍 คำทำนาย : ดวงของคุณคือ 'นารีอุปถัมภ์/บุรุษหนุนนำ' และมีดวงได้ครอบครองทำเลทอง 📍\nหยิบจับอสังหาฯ ช่วงนี้คือการลงทุนที่ชาญฉลาดที่สุด มูลค่าทรัพย์สินจะทวีคูณอย่างรวดเร็ว 📈\nเครดิตทางการเงินของคุณอยู่ในเกณฑ์ดีเยี่ยม ยื่นกู้บ้านได้ยอดสูงจนใครๆ ก็อิจฉา 🏆✨\n✅ สรุป : รวยเพราะทำเล! เป็นการลงทุนที่มั่นคงและคุ้มค่าที่สุดในชีวิต 📈🥇",
+
+  "📍 คำทำนาย : คุณคือคนดวงเฮงที่จับจังหวะชีวิตได้แม่นยำ! 🏙️ เตรียมรับโชคใหญ่จากที่อยู่อาศัย\nช่วงนี้ดวงสินเชื่อผ่านฉลุยแบบไร้อุปสรรค เพราะการเงินของคุณมีพลังงานด้านบวกสูงมาก 💼\nทำเลบ้านใหม่จะช่วยเปิดทางให้ธุรกิจและหน้าที่การงานเติบโตแบบก้าวกระโดด 🚦✅\n✅ สรุป : ดวงรุ่งพุ่งแรง! ทำเลดีมีชัยไปกว่าครึ่ง ชีวิตสะดวกสบายทุกมิติ 🚦💰",
+
+  "📍 คำทำนาย : พลังบุญหนุนนำให้คุณพบเจอจุดเริ่มต้นใหม่ที่สมบูรณ์แบบที่สุด 🌅\nสภาพแวดล้อมรอบตัวจะเปลี่ยนไปในทางที่ดี ดวงการเงินนิ่งและมั่นคงพร้อมสำหรับการมีทรัพย์สินใหญ่\nยื่นกู้บ้านหลังนี้จะได้รับดอกเบี้ยพิเศษและเงื่อนไขที่ถูกใจ ปัดเป่าความกังวลให้หายไป 🕊️\n✅ สรุป : ดวงดีไร้อุปสรรค! บ้านที่อยู่แล้วร่มเย็นและเป็นสุขอย่างยั่งยืน 🏡💙",
+
+  "📍 คำทำนาย : บารมีของคุณสูงส่ง เตรียมได้รับข่าวดีที่สะท้อนความสำเร็จในชีวิต 🏰\nดวงการเงินแข็งแกร่งจนสถาบันการเงินต้องแย่งตัว สัญญาณการอนุมัติบ้านใหม่ชัดเจนมาก 👑\nบ้านหลังนี้จะส่งเสริมบารมีและฐานะทางสังคมให้คุณดูดีมีระดับยิ่งขึ้นไปอีก 🎉🌟\n✅ สรุป : ดวงผู้ชนะ! บ้านที่สะท้อนความสำเร็จและวาสนาอันสูงส่งของคุณ 🎉🌟"
 ];
 
 function showAlert(msg, icon = "📢") {
@@ -106,20 +252,18 @@ function showAlert(msg, icon = "📢") {
 }
 function closeAlert() {
   document.getElementById('customAlert').style.display = 'none';
-  // ลบคำสั่งสั่งเปิด Overlay/Card ที่เคยมีในนี้ออกให้หมด
 }
 
 async function checkAndStart() {
   const name = document.getElementById('uName').value;
   const tel = document.getElementById('uTel').value;
-  if(!name || tel.length < 10) return showAlert('กรุณากรอกข้อมูลให้ครบและถูกต้องครับ', "⚠️");
+  if(!name || tel.length < 10) return showAlert('กรุณากรอกข้อมูลให้ครบและถูกต้อง', "⚠️");
   
   const submitBtn = document.getElementById('regSubmitBtn');
   submitBtn.innerText = "กำลังตรวจสอบสิทธิ์...";
   submitBtn.disabled = true;
 
   try {
-    // เพิ่ม redirect: 'follow' เพื่อให้ fetch ทำงานร่วมกับ Google Script ได้ลื่นไหลขึ้น
     const response = await fetch(`${SCRIPT_URL}?phone=${tel}&action=check`, {
       method: 'GET',
       redirect: 'follow'
@@ -132,11 +276,9 @@ async function checkAndStart() {
       currentUser = { name: result.name || name, tel: tel };
       lastResultText = result.result || "ของรางวัลพิเศษ"; 
 
-      // หาเลขใบที่ตรงกับรางวัล
       let foundNo = "1";
       data.forEach(d => { if(lastResultText.includes(d.text)) foundNo = d.no; });
       
-      // *** จุดที่หายไป: สั่งให้หน้าจอเปลี่ยนไปแสดงผล ***
       document.getElementById('regForm').style.display = 'none';
       document.getElementById('cNo').innerText = "ใบที่ " + foundNo;
       document.getElementById('cText').innerText = "คุณได้รับ: " + lastResultText; 
@@ -146,73 +288,147 @@ async function checkAndStart() {
       document.getElementById('overlay').classList.add("show");
       document.getElementById('card').classList.add("flip");
       
-      showAlert(`คุณเคยใช้สิทธิ์ไปแล้วครับ\nรางวัลที่คุณได้รับคือ: ${lastResultText}`, "✅");
+      showAlert(`คุณเคยใช้สิทธิ์ไปแล้ว\nรางวัลที่คุณได้รับคือ: ${lastResultText}`, "✅");
       return;
     }
     
-    // กรณีเป็นผู้ใช้ใหม่
     currentUser = { name, tel };
     document.getElementById('regForm').style.display = 'none';
     const drawBtn = document.getElementById('drawBtn');
     drawBtn.disabled = false;
     drawBtn.style.opacity = '1';
-    drawBtn.innerText = 'คลิกเพื่อเขย่าหัวใจ';
+    drawBtn.innerText = 'คลิกเพื่อเขย่าเซียมซี';
 
   } catch (err) {
     console.error("Detailed Error:", err);
-    showAlert("การเชื่อมต่อล่าช้า กรุณาลองใหม่อีกครั้งครับ", "⚙️");
+    showAlert("การเชื่อมต่อล่าช้า กรุณาลองใหม่อีกครั้ง", "⚙️");
     submitBtn.disabled = false;
     submitBtn.innerText = "เริ่มเขย่าลุ้นรัก";
   }
 }
 
-async function draw(){
-  const drawBtn = document.getElementById('drawBtn');
-  drawBtn.disabled = true;
-  document.getElementById('shakeGroup').classList.add("shake");
-  setTimeout(async ()=>{
-    document.getElementById('shakeGroup').classList.remove("shake");
-    const pick = data[Math.floor(Math.random()*data.length)];
-    const randomSlogan = slogans[Math.floor(Math.random()*slogans.length)];
-    document.getElementById('mainStick').innerText = pick.no; 
-    document.getElementById('mainStick').classList.add("fly");
-    lastResultText = pick.text;
-    saveToGoogleSheet(currentUser.name, currentUser.tel, pick.text, "ใช้สิทธิ์แล้ว"); 
-    setTimeout(()=>{
-      document.getElementById('cNo').innerText = "ใบที่ "+pick.no;
-      document.getElementById('cText').innerText = "คุณได้รับ: " + pick.text;
-      document.getElementById('displayUserInfo').innerText = `ผู้รับโชค: ${currentUser.name} (${currentUser.tel})`;
-      document.getElementById('promoText').innerText = randomSlogan;
-      document.getElementById('overlay').classList.add("show");
-      setTimeout(() => {
-        document.getElementById('card').classList.add("flip");
-        setTimeout(() => { showAlert("อย่าลืมแคปภาพหน้าจอใบเซียมซี\nไว้เป็นหลักฐานนะครับ", "📸"); }, 800);
-      }, 200);
-    }, 600); 
-  }, 3000); 
+let clickCount = 0;
+let tempPicks = [];
+
+async function draw() {
+    const drawBtn = document.getElementById('drawBtn');
+    drawBtn.disabled = true;
+    
+    // รีเซ็ตไม้หลักก่อนเขย่า
+    const mainStick = document.getElementById('mainStick');
+    mainStick.style.display = "none";
+    mainStick.innerText = "";
+    mainStick.classList.remove("fly");
+
+    document.getElementById('shakeGroup').classList.add("shake");
+
+    setTimeout(async () => {
+        document.getElementById('shakeGroup').classList.remove("shake");
+        let currentPick;
+
+        if (clickCount === 0) {
+            currentPick = data[Math.floor(Math.random() * data.length)];
+            tempPicks.push(currentPick);
+            animateStick(currentPick.no);
+            clickCount++;
+            setTimeout(() => {
+                drawBtn.disabled = false;
+                drawBtn.innerText = "ดวงเฮงมาก! เขย่าต่อครั้งที่ 2 🚀";
+                showStepAlert(`รางวัลที่ 1: ${currentPick.text}`, currentPick.img, "เขย่าต่อเพื่อรับใบที่ 2");
+            }, 1800);
+        } else {
+            let secondIndex;
+            do {
+                secondIndex = Math.floor(Math.random() * data.length);
+            } while (data[secondIndex].no === tempPicks[0].no);
+
+            currentPick = data[secondIndex];
+            tempPicks.push(currentPick);
+            animateStick(currentPick.no);
+
+            const combinedText = `${tempPicks[0].text} และ ${tempPicks[1].text}`;
+            const combinedNo = `${tempPicks[0].no}, ${tempPicks[1].no}`;
+            const randomSlogan = slogans[Math.floor(Math.random() * slogans.length)];
+            lastResultText = combinedText;
+
+            saveToGoogleSheet(currentUser.name, currentUser.tel, combinedText, "เขย่า 2 ครั้ง (แสดงรูป)");
+
+            setTimeout(() => {
+                showStepAlert(`รางวัลที่ 2: ${currentPick.text}`, currentPick.img, "ดูสรุปคำทำนายและรับรางวัล", () => {
+                    document.getElementById('cNo').innerText = "ใบที่ " + combinedNo;
+                    document.getElementById('cText').innerHTML = `
+                        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                            <div style="text-align: center; flex:1;">
+                                <img src="${tempPicks[0].img}" style="width: 100%; max-width: 90px; height: 90px; object-fit: cover; border-radius: 10px; border: 2px solid #ff4d6d;">
+                                <p style="font-size: 10px; margin: 5px 0;">${tempPicks[0].text}</p>
+                            </div>
+                            <div style="align-self: center; font-size: 20px; font-weight: bold; color:#ff4d6d;">+</div>
+                            <div style="text-align: center; flex:1;">
+                                <img src="${tempPicks[1].img}" style="width: 100%; max-width: 90px; height: 90px; object-fit: cover; border-radius: 10px; border: 2px solid #ff4d6d;">
+                                <p style="font-size: 10px; margin: 5px 0;">${tempPicks[1].text}</p>
+                            </div>
+                        </div>
+                    `;
+                    document.getElementById('displayUserInfo').innerText = `ผู้รับโชค: ${currentUser.name} (${currentUser.tel})`;
+                    document.getElementById('promoText').innerText = randomSlogan;
+                    document.getElementById('overlay').classList.add("show");
+                    
+                    setTimeout(() => {
+                        document.getElementById('card').classList.add("flip");
+                        clickCount = 0;
+                        tempPicks = [];
+                    }, 200);
+                });
+            }, 1800);
+        }
+    }, 3000);
+}
+
+function showStepAlert(title, imgUrl, btnText, callback = null) {
+    const alertMsg = document.getElementById('alertMsg');
+    const alertIcon = document.getElementById('alertIcon');
+    alertIcon.innerHTML = `<img src="${imgUrl}" style="width:120px; height:120px; border-radius:15px; border: 3px solid #ff4d6d; object-fit:cover;">`;
+    alertMsg.innerHTML = `<span style="color:#333;">${title}</span>`;
+    const alertBtn = document.querySelector('#customAlert button');
+    alertBtn.innerText = btnText;
+    const originalClose = window.closeAlert;
+    window.closeAlert = function() {
+        document.getElementById('customAlert').style.display = 'none';
+        window.closeAlert = originalClose;
+        if(callback) callback();
+    };
+    document.getElementById('customAlert').style.display = 'flex';
+}
+
+function animateStick(no) {
+    const mainStick = document.getElementById('mainStick');
+    mainStick.style.display = "none";
+    mainStick.innerText = "";
+    mainStick.classList.remove("fly");
+    
+    setTimeout(() => {
+        mainStick.innerText = no;
+        mainStick.style.display = "flex";
+        mainStick.style.left = "78px"; 
+        void mainStick.offsetWidth;
+        mainStick.classList.add("fly");
+    }, 50);
 }
 
 function closeCard() {
   const overlay = document.getElementById('overlay');
-  
-  // ปิดการแสดงผล Overlay
   overlay.classList.remove("show");
-  
-  // ใช้ setTimeout เล็กน้อยเพื่อให้ CSS Transition ทำงานเสร็จก่อนค่อยซ่อน display
   setTimeout(() => {
     if(!overlay.classList.contains("show")) {
       overlay.style.display = "none";
     }
   }, 300);
 
-  // หมายเหตุ: ไม่ต้อง remove("flip") เพื่อให้การ์ดค้างหน้าหลังไว้ตามต้องการ
-
   const drawBtn = document.getElementById('drawBtn');
   drawBtn.innerText = 'ดูผลเซียมซีอีกครั้ง';
   drawBtn.disabled = false;
   drawBtn.style.opacity = '1';
   
-  // แก้ไขให้ปุ่มเปิดกลับมาทำงานได้ถูกต้อง
   drawBtn.onclick = function() {
     overlay.style.display = "flex";
     setTimeout(() => {
@@ -223,33 +439,26 @@ function closeCard() {
 
 async function saveNoteOnly() { 
   const noteVal = document.getElementById('noteInput').value; 
-  if(!noteVal) return showAlert("พิมพ์หมายเหตุก่อนครับ", "✍️"); 
+  if(!noteVal) return showAlert("พิมพ์หมายเหตุก่อน", "✍️"); 
   if(!currentUser) return showAlert("ไม่พบข้อมูลผู้ใช้", "❌");
   await saveToGoogleSheet(currentUser.name, currentUser.tel, lastResultText, noteVal); 
-  showAlert("บันทึกหมายเหตุลงระบบเรียบร้อยแล้วครับ", "✅"); 
+  showAlert("บันทึกหมายเหตุลงระบบเรียบร้อยแล้ว", "✅"); 
 }
 
 async function saveToGoogleSheet(name, phone, result, note) { try { const formData = new URLSearchParams(); formData.append('name', name); formData.append('phone', phone); formData.append('result', result); formData.append('note', note); fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: formData.toString() }); } catch (err) {} }
 
-// 1. แก้ไขฟังก์ชันปิดพรีวิว (คืนค่าแบบเจาะจง ไม่ลบสไตล์ทั้งหมด)
 function closePreview() { 
   document.getElementById('previewScreen').style.display = 'none'; 
-  
   const overlay = document.getElementById('overlay');
   const card = document.getElementById('card');
   const cardInner = document.getElementById('cardInner');
   const area = document.getElementById('captureArea');
-
-  // คืนค่าเฉพาะตัวที่มีปัญหาตอนแคปรูป
   area.style.transform = ""; 
   cardInner.style.transform = ""; 
-
-  // บังคับการแสดงผลให้กลับมา 100% ทันที
   overlay.style.display = "flex";
   overlay.style.opacity = "1";
   overlay.style.pointerEvents = "auto";
   overlay.style.visibility = "visible";
-  
   overlay.classList.add("show");
   card.classList.add("flip"); 
 }
@@ -260,29 +469,20 @@ function saveAsImage() {
   const saveBtn = document.getElementById('saveBtn');
   const closeBtn = area.querySelector('.closeBtn');
   const overlay = document.getElementById('overlay');
-  
-  // --- เพิ่มส่วนนี้: อ้างอิงถึงปุ่ม LINE OA ---
   const lineBtn = area.querySelector('a[href*="line.me"]'); 
-  // ---------------------------------------
-
   const noteInput = document.getElementById('noteInput');
   const noteContainer = document.querySelector('.note-container');
   const noteVal = noteInput.value;
-  
   const tempNoteDisplay = document.createElement('p');
   tempNoteDisplay.innerText = noteVal ? noteVal : "-";
   tempNoteDisplay.style.cssText = "font-size: 13px; color: #333; padding: 8px; border: 1px solid #ffb3c1; border-radius: 5px; width: 100%; min-height: 35px; text-align: left; background: #ffffff; margin: 5px 0; word-break: break-all;";
-  
-  // 1. ซ่อนปุ่มต่างๆ รวมถึงปุ่ม LINE OA ก่อนแคปภาพ
   saveBtn.style.display = 'none';
   if(closeBtn) closeBtn.style.display = 'none';
-  if(lineBtn) lineBtn.style.display = 'none'; // <-- สั่งซ่อนตรงนี้
+  if(lineBtn) lineBtn.style.display = 'none';
   noteContainer.style.display = 'none';
-  
   noteContainer.parentNode.insertBefore(tempNoteDisplay, noteContainer.nextSibling);
   cardInner.style.transform = 'none'; 
   area.style.transform = 'none';
-
   setTimeout(() => {
     html2canvas(area, {
       backgroundColor: "#ffffff",
@@ -291,16 +491,13 @@ function saveAsImage() {
       logging: false,
       allowTaint: true
     }).then(canvas => {
-      // 2. คืนค่าการแสดงผลปุ่มต่างๆ กลับมาเหมือนเดิมหลังจากแคปเสร็จ
       saveBtn.style.display = 'block';
       if(closeBtn) closeBtn.style.display = 'block';
-      if(lineBtn) lineBtn.style.display = 'block'; // <-- สั่งให้แสดงกลับมา
+      if(lineBtn) lineBtn.style.display = 'block';
       tempNoteDisplay.remove();
       noteContainer.style.display = 'flex';
-
       const imageData = canvas.toDataURL("image/png");
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
       if (isMobile) {
         document.getElementById('previewImage').src = imageData;
         document.getElementById('previewScreen').style.display = 'flex';
@@ -311,12 +508,12 @@ function saveAsImage() {
         link.download = `Siamsee-StartupUp-${currentUser.tel}.png`;
         link.href = imageData;
         link.click();
-        showAlert("บันทึกรูปภาพเรียบร้อยแล้วครับ", "💾");
+        showAlert("บันทึกรูปภาพเรียบร้อยแล้ว", "💾");
         closePreview(); 
       }
     }).catch(err => {
       saveBtn.style.display = 'block';
-      if(lineBtn) lineBtn.style.display = 'block'; // คืนค่าหากเกิด Error
+      if(lineBtn) lineBtn.style.display = 'block';
       if(tempNoteDisplay) tempNoteDisplay.remove();
       noteContainer.style.display = 'flex';
       closePreview();
@@ -324,19 +521,61 @@ function saveAsImage() {
     });
   }, 150);
 }
-  function lockResultDisplay() {
+
+function lockResultDisplay() {
   const overlay = document.getElementById('overlay');
   const card = document.getElementById('card');
   const cardInner = document.getElementById('cardInner');
-
   overlay.style.display = "flex";
   overlay.classList.add("show");
   overlay.style.opacity = "1";
   overlay.style.pointerEvents = "auto";
-
-  // บังคับให้เป็นด้านหลังเสมอ
   card.classList.add("flip");
   cardInner.style.transform = "";
+}
+
+// เพิ่มฟังก์ชันเปิด-ปิด Sidebar ของรางวัล
+function togglePrizeSidebar() {
+    const sidebar = document.getElementById('prizeSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (sidebar.style.right === '0px') {
+        sidebar.style.right = '-300px';
+        overlay.style.display = 'none';
+    } else {
+        sidebar.style.right = '0px';
+        overlay.style.display = 'block';
+        renderPrizeList(); // สร้างรายการทุกครั้งที่เปิด
+    }
+}
+
+// ฟังก์ชันสร้างรายการของรางวัลจากตัวแปร data
+function renderPrizeList() {
+    const container = document.getElementById('prizeItemsContainer');
+    container.innerHTML = ''; // ล้างค่าเก่า
+    
+    data.forEach(item => {
+        const itemHtml = `
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #eee;">
+                <img src="${item.img}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 1px solid #ffccd5;">
+                <div style="flex: 1;">
+                    <div style="font-size: 12px; color: #ff4d6d; font-weight: bold;">ใบที่ ${item.no}</div>
+                    <div style="font-size: 14px; color: #333;">${item.text}</div>
+                </div>
+            </div>
+        `;
+        container.innerHTML += itemHtml;
+    });
+}
+  function toggleTermsSidebar() {
+    const sidebar = document.getElementById('termsSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (sidebar.style.left === '0px') {
+        sidebar.style.left = '-300px';
+        overlay.style.display = 'none';
+    } else {
+        sidebar.style.left = '0px';
+        overlay.style.display = 'block';
+    }
 }
 </script>
 </body>
