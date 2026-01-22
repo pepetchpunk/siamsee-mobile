@@ -109,6 +109,29 @@ html, body {
   50% { transform: scale(1.05); opacity: 0.8; }
   100% { transform: scale(1); opacity: 1; }
 }
+.rules-list {
+    text-align: left;
+    font-size: clamp(14px, 4vw, 16px); /* ปรับขนาดฟอนต์ตามหน้าจออัตโนมัติ */
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.highlight-red {
+    color: red;
+    font-weight: bold;
+}
+ .highlight-line {
+    color: #06C755; /* สีเขียวทางการของ Line */
+    font-weight: bold;
+}
+
+/* เพิ่มส่วนนี้เพื่อขยายขนาดกล่อง Alert เฉพาะหน้ากติกา */
+#customAlert > div {
+    max-width: 380px !important; /* ขยายจาก 320px เป็น 380px */
+    width: 95%;
+    padding: 25px !important;
+}
 </style>
 </head>
 
@@ -171,7 +194,7 @@ html, body {
           </div>
         </div>
         <button id="saveBtn" onclick="saveAsImage()" style="margin-top:15px; background:#ff4d6d; color:#fff; border:none; padding:10px; border-radius:25px; font-weight:bold; width: 100%;">💾 บันทึกรูปภาพ</button>
-        <a href="https://line.me/R/oaMessage/@sure141/🎉เขย่าเซียมซีเรียบร้อยแล้ว🎉" target="_blank" rel="noopener noreferrer" style="display:block; background:#06c755; color:#fff; text-align:center; padding:14px; border-radius:20px; font-weight:bold; text-decoration:none; margin-top: 10px;">💬 กดยืนยันสิทธิ์ผ่าน LINE OA</a>
+        <a href="https://line.me/R/oaMessage/@sure141/🎉เขย่าเซียมซีเรียบร้อยแล้ว🎉" target="_blank" rel="noopener noreferrer" style="display:block; background:#06c755; color:#fff; text-align:center; padding:14px; border-radius:20px; font-weight:bold; text-decoration:none; margin-top: 10px;">💬 กดยืนยันสิทธิ์ผ่าน LINE</a>
       </div>
     </div>
   </div>
@@ -194,7 +217,7 @@ html, body {
     </div>
     <div style="color: #555; font-size: 14px; line-height: 1.8;">
         <ul style="padding-left: 20px; margin: 0;">
-            <li style="margin-bottom: 10px;">สามารถใช้ได้ <b>1 สิทธิ ต่อบ้าน 1 หลัง</b> เท่านั้น</li>
+            <li style="margin-bottom: 10px;">สามารถใช้ได้ <b>1 สิทธิ์ ต่อบ้าน 1 หลัง</b> เท่านั้น</li>
             <li style="margin-bottom: 10px;">ไม่สามารถใช้ร่วมกับ <b>‘บัตรกำนัล’</b> อื่นของบริษัท สตาร์ทอัพ อัพ ได้</li>
             <li style="margin-bottom: 10px;"><b>ไม่สามารถโอนสิทธิ์</b> ให้ผู้อื่นได้</li>
             <li style="margin-bottom: 10px;">หากยกเลิกสัญญา <b>‘จะซื้อจะขาย’</b> ภายหลัง ถือว่าสิทธิ์เป็นโมฆะ</li>
@@ -334,7 +357,7 @@ async function draw() {
             setTimeout(() => {
                 drawBtn.disabled = false;
                 drawBtn.innerText = "ดวงเฮงมาก! เขย่าต่อครั้งที่ 2 🚀";
-                showStepAlert(`รางวัลที่ 1: ${currentPick.text}`, currentPick.img, "เขย่าต่อเพื่อรับใบที่ 2");
+                showStepAlert(`รางวัลชิ้นที่ 1: ${currentPick.text}`, currentPick.img, "เขย่าต่อเพื่อรับใบที่ 2");
             }, 1800);
         } else {
             let secondIndex;
@@ -354,7 +377,7 @@ async function draw() {
             saveToGoogleSheet(currentUser.name, currentUser.tel, combinedText, "เขย่า 2 ครั้ง (แสดงรูป)");
 
             setTimeout(() => {
-                showStepAlert(`รางวัลที่ 2: ${currentPick.text}`, currentPick.img, "ดูสรุปคำทำนายและรับรางวัล", () => {
+                showStepAlert(`รางวัลชิ้นที่ 2: ${currentPick.text}`, currentPick.img, "ดูสรุปคำทำนายและรับรางวัล", () => {
                     document.getElementById('cNo').innerText = "ใบที่ " + combinedNo;
                     document.getElementById('cText').innerHTML = `
                         <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
@@ -577,6 +600,28 @@ function renderPrizeList() {
         overlay.style.display = 'block';
     }
 }
+function showInitialRules() {
+    const alertMsg = document.getElementById('alertMsg');
+    const alertIcon = document.getElementById('alertIcon');
+    
+    alertIcon.innerHTML = "📜";
+    alertMsg.innerHTML = `
+        <div class="rules-list">
+            <b style="font-size: 20px; color: #ff4d6d; display: block; text-align: center; margin-bottom: 15px;">กติกาการเล่นกิจกรรม</b>
+            1. ลงทะเบียนเพื่อเข้าร่วมกิจกรรม<br>
+            2. เขย่าเซียมซี <span class="highlight-red">ทั้งหมด 2 ครั้ง</span> (มี 2 รางวัล)<br>
+            3. แคปหน้าจอใบเซียมซีที่ได้รางวัล<br>
+            4. กดยืนยันสิทธิ์ส่งรูปภาพมาที่ <span class="highlight-line">LINE
+        </div>
+    `;
+    
+    const alertBtn = document.querySelector('#customAlert button');
+    alertBtn.innerText = "ตกลง เข้าสู่หน้าลงทะเบียน";
+    document.getElementById('customAlert').style.display = 'flex';
+}
+
+// สั่งให้ทำงานทันทีที่เปิดหน้าเว็บ
+window.addEventListener('load', showInitialRules);
 </script>
 </body>
 </html>
