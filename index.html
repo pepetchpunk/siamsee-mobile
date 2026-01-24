@@ -643,7 +643,29 @@ function handleLineLink() {
         window.open("https://line.me/ti/p/@sure141", "_blank");
     }
 }
+(function() {
+    function fixLineLinkForPC() {
+      // เช็คว่าเป็นคอมพิวเตอร์หรือไม่ (ถ้าไม่ใช่ Mobile)
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      if (!isMobile) {
+        // ค้นหาปุ่มที่มีลิงก์ Line
+        const lineBtn = document.querySelector('a[href*="line.me/R/oaMessage"]');
+        if (lineBtn) {
+          // เปลี่ยนลิงก์ให้ไปหน้าเพิ่มเพื่อน/สแกน QR Code ของ @sure141 โดยตรง
+          lineBtn.href = "https://line.me/ti/p/@sure141";
+        }
+      }
+    }
+    // รันทันทีเมื่อโหลดหน้าเว็บ
+    fixLineLinkForPC();
+    // รันซ้ำเมื่อมีการกดเซียมซี เพื่อให้มั่นใจว่าปุ่มที่เกิดใหม่ถูกเปลี่ยนลิงก์ด้วย
+    document.addEventListener('click', function(e) {
+      if (e.target.id === 'drawBtn' || e.target.id === 'regSubmitBtn') {
+        setTimeout(fixLineLinkForPC, 1000);
+      }
+    });
+  })();
 </script>
 </body>
 </html>
-
