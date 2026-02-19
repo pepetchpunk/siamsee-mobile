@@ -2,663 +2,1607 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content=" ">
-    <meta property="og:description" content=" ">
-    <meta property="og:image" content="https://lh3.googleusercontent.com/u/0/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:image" content="https://lh3.googleusercontent.com/u/0/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E">
-    
-    <title>❤️เขย่าเซียมซีลุ้นโชค❤️</title> 
-</head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<style>
-  @keyframes glow-pulse {
-  0% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 10, 84, 0.4); opacity: 1; }
-  50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 10, 84, 0.8); opacity: 0.9; }
-  100% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 10, 84, 0.4); opacity: 1; }
-}
-
-/* ประยุกต์ใช้กับปุ่มของรางวัล (ฝั่งขวา) */
-#prizeListBtn {
-    animation: glow-pulse 1.5s infinite ease-in-out !important;
-}
-
-/* ประยุกต์ใช้กับปุ่มเขย่าเซียมซี (เมื่อเปิดใช้งาน) */
-#drawBtn:not(:disabled) {
-    animation: glow-pulse 1.5s infinite ease-in-out !important;
-    border: 2px solid #fff; /* เพิ่มขอบขาวบางๆ ให้ดูเด่นขึ้นเวลาเรืองแสง */
-}
-* { box-sizing: border-box; }
-  
-  #termsBtn {
-    animation: glow-pulse 1.5s infinite ease-in-out !important;
-}
-
-html, body { 
-    height: 100%; 
-    width: 100%; 
-    overflow: hidden; 
-    position: fixed; 
-    margin: 0; 
-    padding: 0; 
-}
-
-.bg-container { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-image: url('https://lh3.googleusercontent.com/d/1K0BRvOY_r6-6YXI6VUbKDSMPivc9AE_E'); 
-    background-size: cover;        
-    background-position: center;  
-    background-repeat: no-repeat; 
-    z-index: -1; 
-}
-
-@media (max-width: 768px) {
-    #saveBtn {
-        display: none !important;
-    }
-    .bg-container { 
-        background-image: url('https://lh3.googleusercontent.com/d/1ERUqVLPAj1DBJl_AhkY-1TCClSK1rTnq'); 
-    }
-}
-
-.bg-overlay { 
-    position: fixed; 
-    inset: 0; 
-    background: rgba(0,0,0,0.1); 
-    z-index: -1; 
-}
-  body { font-family: 'Sarabun', sans-serif; color: white; display: flex; flex-direction: column; align-items: center; justify-content: space-between; } h1 { text-align:center; margin: 4vh 0 0 0; font-size: clamp(18px, 5vw, 24px); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); z-index: 5; } #regForm { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 1000; } .reg-box { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 320px; color: #333; } .reg-box h2 { color: #ff4d6d; margin-top: 0; text-align: center; } .reg-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; } .reg-box button { width: 100%; padding: 12px; background: #ff4d6d; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; } #scene { position: relative; width: 100%; max-width: 360px; height: 55vh; display: flex; align-items: center; justify-content: center; } #shakeGroup { position: relative; width: 180px; height: 400px; transform-origin: bottom center; transition: transform 0.1s; } .shake { animation: shakeTube 0.5s infinite ease-in-out; } @keyframes shakeTube { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(6deg); } 75% { transform: rotate(-6deg); } } .shake .stick { animation: stickDance 0.3s infinite alternate ease-in-out; } @keyframes stickDance { 0% { transform: rotate(var(--r)) translateY(0); } 100% { transform: rotate(calc(var(--r) * -1.2)) translateY(-20px); } } #tubeWrap { position: absolute; bottom: 0; width: 100%; height: 300px; z-index: 30; } #tube { position: absolute; bottom: 0; width: 100%; height: 100%; background: linear-gradient(90deg, #ff4d6d 0%, #ff85a1 20%, #ffb3c1 50%, #ff85a1 80%, #ff4d6d 100%); border-radius: 0 0 40px 40px; box-shadow: inset 0 15px 15px rgba(255,255,255,0.4), 0 10px 20px rgba(0,0,0,0.3); border: 2px solid #ff0a54; display: flex; justify-content: center; align-items: center; } .tubeLogo { width: 85%; height: auto; border-radius: 10px; display: block; } .stick { position: absolute; width: 24px; height: 260px; background: linear-gradient(to bottom, #fff0f3 0%, #ffccd5 15%, #ff85a1 15%, #ff4d6d 100%); border-radius: 6px 6px 2px 2px; bottom: 100px; z-index: 20; display: flex; justify-content: center; padding-top: 8px; font-size: 16px; font-weight: bold; color: #ff0a54; transition: transform 0.2s; } .s1{left:20px; transform: rotate(-8deg); --r:-8deg; animation-delay: 0.1s;} .s2{left:50px; transform: rotate(-3deg); --r:-3deg; animation-delay: 0.2s;} .s3{left:80px; transform: rotate(2deg); --r:2deg; animation-delay: 0.05s;} .s4{left:110px; transform: rotate(5deg); --r:5deg; animation-delay: 0.15s;} .s5{left:135px; transform: rotate(10deg); --r:10deg; animation-delay: 0.25s;} #mainStick{ left:78px; --r:0deg; animation-delay: 0.12s;} 
-  
-@keyframes smoothFly {
-  0% { 
-    transform: translateY(100px) rotate(0deg); 
-    opacity: 0;
-  }
-  20% { 
-    opacity: 1; 
-    transform: translateY(-200px) rotate(-15deg); /* ลดระยะพุ่งขึ้นเล็กน้อยเพื่อความสมดุล */
-  }
-  40% { 
-    transform: translateY(-280px) rotate(-30deg); /* จุดสูงสุด (นิ่งชั่วขณะ) */
-  }
-  100% { 
-    /* ปรับจาก 130px เป็น 185px เพื่อให้ระนาบเดียวกับก้นกระบอก */
-    transform: translate(0, 230px) rotate(80deg); 
-    opacity: 1;
-    z-index: 100;
-  }
-}
-
-.fly {
-  z-index: 100 !important; /* ดีดเลเยอร์มาข้างหน้าทันที */
-  animation: smoothFly 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
-}
-  
-  button.draw-btn { width: 80%; max-width: 280px; padding: 16px; font-size: 20px; border: none; border-radius: 40px; background: linear-gradient(#ff85a1, #ff4d6d); color: white; font-weight: bold; box-shadow: 0 6px 0 #c9184a, 0 8px 15px rgba(0,0,0,0.3); cursor: pointer; margin-bottom: 5vh; } #overlay{ position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.3s; z-index:999; } #overlay.show{ opacity:1; pointer-events:auto; } .card { width: 280px; height: auto; min-height: 300px; } .cardInner{ width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:.6s; } .card.flip .cardInner{ transform:rotateY(180deg); } .face{ position:absolute; inset:0; backface-visibility:hidden; border-radius:20px; padding:10px 15px; display:flex; flex-direction:column; align-items:center; justify-content:center; } .front{ background:#ff758f; color:white; font-size: 28px; font-weight: bold; border: 4px solid white; height: 380px; } .back{ background:#fff; color:#ff0a54; transform:rotateY(180deg); text-align: center; border: 4px solid #ff85a1; position: relative; height: auto; min-height: 380px;} .capture-fix { transform: none !important; backface-visibility: visible !important; } .closeBtn{ position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%; background:#ff4d6d; color:white; border: none; z-index: 10; } #promoText { margin-top: 3px 0; font-weight: bold; line-height: 1.4; color: #333; font-size: 12px; white-space: pre-line; } #previewScreen { 
-  position: fixed; 
-  inset: 0; 
-  background: rgba(0,0,0,0.95); 
-  z-index: 9999; 
-  display: none; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  padding: 10px; 
-} #previewImage { max-width: 240px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); } .note-container { display: flex; gap: 5px; margin-top: 5px; width: 100%; } .note-send-btn { background: #4caf50; color: white; border: none; border-radius: 5px; padding: 0 12px; font-size: 12px; cursor: pointer; font-weight: bold; }
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
-}
-.rules-list {
-    text-align: left;
-    font-size: clamp(14px, 4vw, 16px); /* ปรับขนาดฟอนต์ตามหน้าจออัตโนมัติ */
-    color: #333;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    width: 100%;
-}
-.highlight-red {
-    color: red;
-    font-weight: bold;
-}
- .highlight-line {
-    color: #06C755; /* สีเขียวทางการของ Line */
-    font-weight: bold;
-}
-
-/* เพิ่มส่วนนี้เพื่อขยายขนาดกล่อง Alert เฉพาะหน้ากติกา */
-#customAlert > div {
-    max-width: 380px !important; /* ขยายจาก 320px เป็น 380px */
-    width: 95%;
-    padding: 25px !important;
-}
-</style>
-</head>
-
-<body>
-<div class="bg-container"></div>
-<div class="bg-overlay"></div>
-
-<div id="customAlert" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:10000; align-items:center; justify-content:center; padding: 20px;">
-  <div style="background:white; padding:30px; border-radius:25px; width:100%; max-width:320px; text-align:center; color:#333; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
-    <div id="alertIcon" style="font-size: 40px; margin-bottom: 15px;">📢</div>
-    <p id="alertMsg" style="font-size:18px; font-weight:bold; margin-bottom:25px; line-height:1.5; color:#ff0a54;"></p>
-    <button onclick="closeAlert()" style="width:100%; padding:14px; background:linear-gradient(#ff85a1, #ff4d6d); color:white; border:none; border-radius:15px; font-weight:bold; font-size:18px; cursor:pointer;">ตกลง</button>
-  </div>
-</div>
-
-<div id="regForm">
-  <div class="reg-box">
-    <h2>ลงทะเบียนลุ้นโชค</h2>
-    <input type="text" id="uName" placeholder="ชื่อของคุณ">
-    <input type="tel" id="uTel" placeholder="เบอร์โทรศัพท์ (10 หลัก)" maxlength="10">
-    <button id="regSubmitBtn" onclick="checkAndStart()">เริ่มเขย่าเซียมซี</button>
-  </div>
-</div>
-
-<h1>💖 เขย่าเซียมซีลุ้นโชคลุ้นรางวัล 💖</h1>
-<div id="scene">
-  <div id="shakeGroup">
-    <div class="stick s1">❤</div><div class="stick s2">❤</div><div class="stick s3">❤</div>
-    <div class="stick s4">❤</div><div class="stick s5">❤</div>
-    <div class="stick" id="mainStick" style="display: none;">❤</div>
-    <div id="tubeWrap"><div id="tube"><img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" class="tubeLogo"></div></div>
-  </div>
-</div>
-<button class="draw-btn" id="drawBtn" onclick="draw()" disabled style="opacity:0.5;">กรุณาลงทะเบียนก่อน</button>
-
-<div id="overlay">
-  <div class="card" id="card">
-    <div class="cardInner" id="cardInner">
-      <div class="face front">เปิดคำทำนายรัก</div>
-      <div class="face back" id="captureArea">
-        <button class="closeBtn" onclick="closeCard()">×</button>
-        <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" style="width: 80px; margin-bottom: 5px;">
-        <h2 id="cNo" style="margin:0; font-size: 18px;"></h2>
-        <p id="cText" style="font-size: 18px; color: #ff4d6d; font-weight: bold; margin: 5px 0;"></p>
-        
-        <div style="background: #ff0a54; color: white; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; margin: 8px 0; display: inline-block; animation: pulse 1.5s infinite;">
-           📸 อย่าลืมแคปภาพหน้าจอไว้ยืนยันสิทธิ์
-        </div>
-
-        <div style="font-size: 13px; color: #555; background: #fff0f3; padding: 5px 10px; border-radius: 10px; margin: 5px 0; width: 100%;">
-          <span id="displayUserInfo"></span>
-        </div>
-        <hr style="width:100%; border: 0.5px solid #ffe5ec; margin: 5px 0;">
-        <p id="promoText" style="margin: 5px 0;"></p>
-        <div style="width: 100%; text-align: left; margin-top: 5px;">
-          <label style="font-size: 11px; color: #888;">หมายเหตุ:</label>
-          <div class="note-container">
-            <input type="text" id="noteInput" placeholder="พิมพ์ข้อความที่นี่..." style="flex: 1; border: 1px dashed #ffb3c1; border-radius: 5px; padding: 5px; font-size: 13px; outline: none; color: #333;">
-            <button id="btnNote" class="note-send-btn" onclick="saveNoteOnly()">ส่ง</button>
-          </div>
-        </div>
-        <button id="saveBtn" onclick="saveAsImage()" style="margin-top:15px; background:#ff4d6d; color:#fff; border:none; padding:10px; border-radius:25px; font-weight:bold; width: 100%;">💾 บันทึกรูปภาพ</button>
-         <a href="https://line.me/R/oaMessage/@sure141/🎉เขย่าเซียมซีเรียบร้อยแล้ว🎉" target="_blank" rel="noopener noreferrer" style="display:block; background:#06c755; color:#fff; text-align:center; padding:14px; border-radius:20px; font-weight:bold; text-decoration:none; margin-top: 10px;">💬 กดยืนยันสิทธิ์ผ่าน LINE</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="previewScreen">
-  <h3 id="previewHint">แตะค้างที่รูปเพื่อ 'บันทึก'</h3>
-  <img id="previewImage" src="">
-  <button onclick="closePreview()" style="margin-top:20px; background:#4caf50; border:none; padding:12px 25px; color:white; border-radius:15px; font-weight:bold; cursor: pointer;">ตกลง (ดูคำทำนายต่อ)</button>
-</div>
-
-<button id="prizeListBtn" onclick="togglePrizeSidebar()" style="position: fixed; right: 0; top: 15%; background: #ff4d6d; color: white; border: none; padding: 10px 15px; border-radius: 20px 0 0 20px; z-index: 900; font-weight: bold; box-shadow: -2px 2px 10px rgba(0,0,0,0.2); cursor: pointer;">🎁ดูของรางวัล</button>
-  
-  <button id="termsBtn" onclick="toggleTermsSidebar()" style="position: fixed; left: 0; top: 15%; background: #ff4d6d; color: white; border: none; padding: 10px 15px; border-radius: 0 20px 20px 0; z-index: 900; font-weight: bold; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); cursor: pointer;">⚠️ เงื่อนไข</button>
-
-<div id="termsSidebar" style="position: fixed; left: -300px; top: 0; width: 280px; height: 100%; background: white; z-index: 1001; transition: 0.4s; box-shadow: 5px 0 20px rgba(0,0,0,0.3); padding: 20px; overflow-y: auto;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h3 style="color: #ff4d6d; margin: 0;">เงื่อนไขกิจกรรม</h3>
-        <button onclick="toggleTermsSidebar()" style="background: none; border: none; font-size: 24px; color: #888; cursor: pointer;">×</button>
-    </div>
-    <div style="color: #555; font-size: 14px; line-height: 1.8;">
-        <ul style="padding-left: 20px; margin: 0;">
-            <li style="margin-bottom: 10px;">สามารถใช้ได้ <b>1 สิทธิ์ ต่อบ้าน 1 หลัง</b> เท่านั้น</li>
-            <li style="margin-bottom: 10px;">ไม่สามารถใช้ร่วมกับ <b>‘บัตรกำนัล’</b> อื่นของบริษัท สตาร์ทอัพ อัพ ได้</li>
-            <li style="margin-bottom: 10px;"><b>ไม่สามารถโอนสิทธิ์</b> ให้ผู้อื่นได้</li>
-            <li style="margin-bottom: 10px;">หากยกเลิกสัญญา <b>‘จะซื้อจะขาย’</b> ภายหลัง ถือว่าสิทธิ์เป็นโมฆะ</li>
-            <li style="margin-bottom: 10px;">บริษัทขอสงวนสิทธิ์ในการเปลี่ยนแปลงเงื่อนไขโดยไม่ต้องแจ้งให้ทราบล่วงหน้า</li>
-        </ul>
-    </div>
-</div>
-
-<div id="prizeSidebar" style="position: fixed; right: -300px; top: 0; width: 280px; height: 100%; background: white; z-index: 1001; transition: 0.4s; box-shadow: -5px 0 20px rgba(0,0,0,0.3); padding: 20px; overflow-y: auto;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h3 style="color: #ff4d6d; margin: 0;">รายการของรางวัล</h3>
-        <button onclick="togglePrizeSidebar()" style="background: none; border: none; font-size: 24px; color: #888; cursor: pointer;">×</button>
-    </div>
-    <div id="prizeItemsContainer">
-        </div>
-</div>
-<div id="sidebarOverlay" onclick="togglePrizeSidebar()" style="position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: none;"></div>
-
-<script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5FsRsogKg7wFYj8etWUJsLCOozH-EZgNvB2-UHi-ASAgLoLKlGBnnqCZYVS8NPkOKSQ/exec";
-let currentUser = null;
-let lastResultText = ""; 
-const data = [
-  {no:"1", text:"ชุดเฟอร์นิเจอร์ห้องนอน", img:"https://lh3.googleusercontent.com/u/0/d/1Ql_aDFN0ntGbDpDW006tgfmQGzYLpAz-"},
-  {no:"2", text:"แอร์ 9,000 BTU", img:"https://lh3.googleusercontent.com/u/0/d/1z8EjO_Rm6nTt2Q4srDrUGJuzANJ557D-"},
-  {no:"3", text:"โซฟา", img:"https://lh3.googleusercontent.com/u/0/d/1NR3c2b_WpWcvRVkFQoktWfoBEElVF_XU"},
-  {no:"4", text:"โต๊ะรับประทานอาหาร", img:"https://lh3.googleusercontent.com/u/0/d/1G8-8lCWhCU1Vva7RFa2F1n2lYTdFtKH7"},
-  {no:"5", text:"ผ้าม่านทั้งหลัง", img:"https://lh3.googleusercontent.com/u/0/d/1Jp8I3vckpuQ3sUuWTTgnNjRc7hQRgs_l"},
-  {no:"6", text:"ส่วนลดเงินสด 20,000 บาท", img:"https://lh3.googleusercontent.com/u/0/d/1Lq6JuSmpXYu0EduuS4-TWYpHYY1yQ63v"},
-  {no:"7", text:"ทีวี 55 นิ้ว", img:"https://lh3.googleusercontent.com/u/0/d/1lQTqCGZxMgDwjnQIlQnVWryzQYNPUJi0"},
-  {no:"8", text:"ตู้เย็น 6.4 คิว 2 ประตู", img:"https://lh3.googleusercontent.com/u/0/d/1jDQviAtim4_D4g6WlfpcZhDjoWhVs5ON"}
-];
-const slogans = [
-  "📍 คำทำนาย: ออร่าความสำเร็จจับ! จังหวะชีวิตลงตัว 🍃 การเงินคล่องตัว เตรียมรับข่าวดีเรื่องสินเชื่อบ้าน 🔋 เพื่อก้าวสู่บ้านหลังใหม่ที่ช่วยชาร์จพลังให้คุณและครอบครัว 👨‍👩‍👧‍👦\n✅ สรุป: ดวงเศรษฐีจับ! พร้อมเป็นเจ้าของบ้านในฝัน 🏠💖",
-  "📍 คำทำนาย: ดวงชะตาเปิดรับทรัพย์ก้อนใหญ่ 💰 มีเกณฑ์ได้ลาภลอยจากที่อยู่อาศัยใหม่ เครดิตดีเยี่ยมยื่นกู้ที่ไหนก็ผ่านฉลุย 💎✨\n✅ สรุป: อยู่แล้วรวย! เตรียมตัวเป็นเจ้าของคลังสมบัติส่วนตัว 💸🌈",
-  "📍 คำทำนาย: วาสนาเศรษฐีทำเลทอง! 📍 สถาบันการเงินพร้อมอนุมัติสินเชื่อบนโลเคชั่นที่คุ้มค่าที่สุด บ้านหลังนี้จะนำพาความมั่งคั่งและโอกาสดีๆ มาให้ 🥰\n✅ สรุป: ทำเลดีมีชัยไปกว่าครึ่ง! พื้นที่ทองคำเพื่ออนาคต 📈✨",
-  "📍 คำทำนาย: ถึงเวลาอัปเกรดชีวิตสู่ความมั่งคั่ง! 🚀 จังหวะสินเชื่ออยู่ในช่วงขาขึ้น ยกระดับสู่สังคมพรีเมียมและชีวิตที่สมฐานะ 🌈\n✅ สรุป: ดวงเปลี่ยนชีวิต! Upgrade ที่อยู่อาศัยใหม่วันนี้ 🎉🏠",
-  "📍 คำทำนาย: ดวงนารีอุปถัมภ์/บุรุษหนุนนำ 📈 เครดิตดีเยี่ยมยื่นกู้ได้ยอดสูงบนทำเลที่มูลค่าทวีคูณอย่างรวดเร็ว 🏆✨\n✅ สรุป: รวยเพราะทำเล! การลงทุนที่มั่นคงและคุ้มค่าที่สุด 📈🥇",
-  "📍 คำทำนาย: ดวงเฮงจับจังหวะชีวิตแม่นยำ! 🏙️ สินเชื่อผ่านฉลุยไร้อุปสรรค ทำเลบ้านใหม่ช่วยเสริมธุรกิจและการงานให้เติบโตแบบก้าวกระโดด 🚦✅\n✅ สรุป: ดวงรุ่งพุ่งแรง! สะดวกสบายทุกมิติ 🚦💰",
-  "📍 คำทำนาย: พลังบุญหนุนนำพบจุดเริ่มต้นใหม่ที่สมบูรณ์แบบ 🌅 ยื่นกู้บ้านรับดอกเบี้ยพิเศษและเงื่อนไขที่ถูกใจ ปัดเป่าความกังวลให้หายไป 🕊️\n✅ สรุป: ดวงดีไร้อุปสรรค! บ้านที่อยู่แล้วร่มเย็นและเป็นสุข 🏡💙",
-  "📍 คำทำนาย: บารมีสูงส่ง เตรียมรับข่าวดีสะท้อนความสำเร็จ 🏰 สินเชื่อบ้านใหม่ชัดเจนมาก ช่วยส่งเสริมฐานะและบารมีให้โดดเด่น 🎉🌟\n✅ สรุป: ดวงผู้ชนะ! รางวัลแห่งวาสนาอันสูงส่งของคุณ 🎉🌟"
-];
-
-function showAlert(msg, icon = "📢") {
-  document.getElementById('alertMsg').innerText = msg;
-  document.getElementById('alertIcon').innerText = icon;
-  document.getElementById('customAlert').style.display = 'flex';
-}
-function closeAlert() {
-  document.getElementById('customAlert').style.display = 'none';
-}
-
-async function checkAndStart() {
-  const name = document.getElementById('uName').value;
-  const tel = document.getElementById('uTel').value;
-  if(!name || tel.length < 10) return showAlert('กรุณากรอกข้อมูลให้ครบและถูกต้อง', "⚠️");
-  
-  const submitBtn = document.getElementById('regSubmitBtn');
-  submitBtn.innerText = "กำลังตรวจสอบสิทธิ์...";
-  submitBtn.disabled = true;
-
-  try {
-    const response = await fetch(`${SCRIPT_URL}?phone=${tel}&action=check`, {
-      method: 'GET',
-      redirect: 'follow'
-    });
-    
-    if (!response.ok) throw new Error('Network response was not ok');
-    const result = await response.json();
-    
-    if(result.exists) {
-      currentUser = { name: result.name || name, tel: tel };
-      lastResultText = result.result || "ของรางวัลพิเศษ"; 
-
-      let foundNo = "1";
-      data.forEach(d => { if(lastResultText.includes(d.text)) foundNo = d.no; });
-      
-      document.getElementById('regForm').style.display = 'none';
-      document.getElementById('cNo').innerText = "ใบที่ " + foundNo;
-      document.getElementById('cText').innerText = "คุณได้รับ: " + lastResultText; 
-      document.getElementById('displayUserInfo').innerText = `ผู้รับโชค: ${currentUser.name} (${currentUser.tel})`;
-      document.getElementById('promoText').innerText = slogans[0]; 
-      
-      document.getElementById('overlay').classList.add("show");
-      document.getElementById('card').classList.add("flip");
-      
-      showAlert(`คุณเคยใช้สิทธิ์ไปแล้ว\nรางวัลที่คุณได้รับคือ: ${lastResultText}`, "✅");
-      return;
-    }
-    
-    currentUser = { name, tel };
-    document.getElementById('regForm').style.display = 'none';
-    const drawBtn = document.getElementById('drawBtn');
-    drawBtn.disabled = false;
-    drawBtn.style.opacity = '1';
-    drawBtn.innerText = 'คลิกเพื่อเขย่าเซียมซี';
-
-  } catch (err) {
-    console.error("Detailed Error:", err);
-    showAlert("การเชื่อมต่อล่าช้า กรุณาลองใหม่อีกครั้ง", "⚙️");
-    submitBtn.disabled = false;
-    submitBtn.innerText = "เริ่มเขย่าลุ้นรัก";
-  }
-}
-
-let clickCount = 0;
-let tempPicks = [];
-
-async function draw() {
-    const drawBtn = document.getElementById('drawBtn');
-    drawBtn.disabled = true;
-    
-    // รีเซ็ตไม้หลักก่อนเขย่า
-    const mainStick = document.getElementById('mainStick');
-    mainStick.style.display = "none";
-    mainStick.innerText = "";
-    mainStick.classList.remove("fly");
-
-    document.getElementById('shakeGroup').classList.add("shake");
-
-    setTimeout(async () => {
-        document.getElementById('shakeGroup').classList.remove("shake");
-        let currentPick;
-
-        if (clickCount === 0) {
-            currentPick = data[Math.floor(Math.random() * data.length)];
-            tempPicks.push(currentPick);
-            animateStick(currentPick.no);
-            clickCount++;
-            setTimeout(() => {
-                drawBtn.disabled = false;
-                drawBtn.innerText = "ดวงเฮงมาก! เขย่าต่อครั้งที่ 2 🚀";
-                showStepAlert(`รางวัลชิ้นที่ 1: ${currentPick.text}`, currentPick.img, "เขย่าต่อเพื่อรับใบที่ 2");
-            }, 1800);
-        } else {
-            let secondIndex;
-            do {
-                secondIndex = Math.floor(Math.random() * data.length);
-            } while (data[secondIndex].no === tempPicks[0].no);
-
-            currentPick = data[secondIndex];
-            tempPicks.push(currentPick);
-            animateStick(currentPick.no);
-
-            const combinedText = `${tempPicks[0].text} และ ${tempPicks[1].text}`;
-            const combinedNo = `${tempPicks[0].no}, ${tempPicks[1].no}`;
-            const randomSlogan = slogans[Math.floor(Math.random() * slogans.length)];
-            lastResultText = combinedText;
-
-            saveToGoogleSheet(currentUser.name, currentUser.tel, combinedText, "เขย่า 2 ครั้ง (แสดงรูป)");
-
-            setTimeout(() => {
-                showStepAlert(`รางวัลชิ้นที่ 2: ${currentPick.text}`, currentPick.img, "ดูสรุปคำทำนายและรับรางวัล", () => {
-                    document.getElementById('cNo').innerText = "ใบที่ " + combinedNo;
-                    document.getElementById('cText').innerHTML = `
-                        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
-                            <div style="text-align: center; flex:1;">
-                                <img src="${tempPicks[0].img}" style="width: 100%; max-width: 90px; height: 90px; object-fit: cover; border-radius: 10px; border: 2px solid #ff4d6d;">
-                                <p style="font-size: 10px; margin: 5px 0;">${tempPicks[0].text}</p>
-                            </div>
-                            <div style="align-self: center; font-size: 20px; font-weight: bold; color:#ff4d6d;">+</div>
-                            <div style="text-align: center; flex:1;">
-                                <img src="${tempPicks[1].img}" style="width: 100%; max-width: 90px; height: 90px; object-fit: cover; border-radius: 10px; border: 2px solid #ff4d6d;">
-                                <p style="font-size: 10px; margin: 5px 0;">${tempPicks[1].text}</p>
-                            </div>
-                        </div>
-                    `;
-                    document.getElementById('displayUserInfo').innerText = `ผู้รับโชค: ${currentUser.name} (${currentUser.tel})`;
-                    document.getElementById('promoText').innerText = randomSlogan;
-                    document.getElementById('overlay').classList.add("show");
-                    
-                    setTimeout(() => {
-                        document.getElementById('card').classList.add("flip");
-                        clickCount = 0;
-                        tempPicks = [];
-                    }, 200);
-                });
-            }, 1800);
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Startup Up Real Estate - Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        * {
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+            box-sizing: border-box;
         }
-    }, 3000);
-}
 
-function showStepAlert(title, imgUrl, btnText, callback = null) {
-    const alertMsg = document.getElementById('alertMsg');
-    const alertIcon = document.getElementById('alertIcon');
-    alertIcon.innerHTML = `<img src="${imgUrl}" style="width:120px; height:120px; border-radius:15px; border: 3px solid #ff4d6d; object-fit:cover;">`;
-    alertMsg.innerHTML = `<span style="color:#333;">${title}</span>`;
-    const alertBtn = document.querySelector('#customAlert button');
-    alertBtn.innerText = btnText;
-    const originalClose = window.closeAlert;
-    window.closeAlert = function() {
-        document.getElementById('customAlert').style.display = 'none';
-        window.closeAlert = originalClose;
-        if(callback) callback();
-    };
-    document.getElementById('customAlert').style.display = 'flex';
-}
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f3f4f6;
+            overflow: hidden; 
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overscroll-behavior-y: contain;
+        }
+        
+        /* Intro Animation Styles */
+        #introPage {
+            transition: opacity 1.5s ease-out, visibility 1.5s;
+        }
+        .fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .game-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            position: relative;
+        }
 
-function animateStick(no) {
-    const mainStick = document.getElementById('mainStick');
-    mainStick.style.display = "none";
-    mainStick.innerText = "";
-    mainStick.classList.remove("fly");
-    
-    setTimeout(() => {
-        mainStick.innerText = no;
-        mainStick.style.display = "flex";
-        mainStick.style.left = "78px"; 
-        void mainStick.offsetWidth;
-        mainStick.classList.add("fly");
-    }, 50);
-}
+        .header-section {
+            padding-top: 5px;
+            flex-shrink: 0;
+            text-align: center;
+        }
 
-function closeCard() {
-  const overlay = document.getElementById('overlay');
-  overlay.classList.remove("show");
-  setTimeout(() => {
-    if(!overlay.classList.contains("show")) {
-      overlay.style.display = "none";
-    }
-  }, 300);
+        .game-setup {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            flex: 1;
+            justify-content: center;
+            min-height: 0;
+        }
 
-  const drawBtn = document.getElementById('drawBtn');
-  drawBtn.innerText = 'ดูผลเซียมซีอีกครั้ง';
-  drawBtn.disabled = false;
-  drawBtn.style.opacity = '1';
-  
-  drawBtn.onclick = function() {
-    overlay.style.display = "flex";
-    setTimeout(() => {
-      overlay.classList.add("show");
-    }, 10);
-  };
-}
+        .wheel-container {
+            position: relative;
+            width: 90vw; 
+            max-width: 380px;
+            aspect-ratio: 1 / 1;
+            z-index: 20;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-async function saveNoteOnly() { 
-  const noteVal = document.getElementById('noteInput').value; 
-  if(!noteVal) return showAlert("พิมพ์หมายเหตุก่อน", "✍️"); 
-  if(!currentUser) return showAlert("ไม่พบข้อมูลผู้ใช้", "❌");
-  await saveToGoogleSheet(currentUser.name, currentUser.tel, lastResultText, noteVal); 
-  showAlert("บันทึกหมายเหตุลงระบบเรียบร้อยแล้ว", "✅"); 
-}
+        #wheelCanvas {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 50%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1);
+        }
 
-async function saveToGoogleSheet(name, phone, result, note) { try { const formData = new URLSearchParams(); formData.append('name', name); formData.append('phone', phone); formData.append('result', result); formData.append('note', note); fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: formData.toString() }); } catch (err) {} }
+        .wheel-stand {
+            width: 60%;
+            height: 80px;
+            background-color: #083600;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            margin-top: -30px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 15px;
+            box-shadow: inset 0 10px 20px rgba(0,0,0,0.3);
+            border-bottom: 6px solid #083600;
+        }
 
-function closePreview() { 
-  document.getElementById('previewScreen').style.display = 'none'; 
-  const overlay = document.getElementById('overlay');
-  const card = document.getElementById('card');
-  const cardInner = document.getElementById('cardInner');
-  const area = document.getElementById('captureArea');
-  area.style.transform = ""; 
-  cardInner.style.transform = ""; 
-  overlay.style.display = "flex";
-  overlay.style.opacity = "1";
-  overlay.style.pointerEvents = "auto";
-  overlay.style.visibility = "visible";
-  overlay.classList.add("show");
-  card.classList.add("flip"); 
-}
+        .pointer {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 35px;
+            background-color: #e63946;
+            clip-path: polygon(50% 100%, 0 0, 100% 0);
+            z-index: 40;
+            filter: drop-shadow(0 4px 4px rgba(0,0,0,0.3));
+        }
 
-function saveAsImage() {
-  const area = document.getElementById('captureArea');
-  const cardInner = document.getElementById('cardInner');
-  const saveBtn = document.getElementById('saveBtn');
-  const closeBtn = area.querySelector('.closeBtn');
-  const overlay = document.getElementById('overlay');
-  const lineBtn = area.querySelector('a[href*="line.me"]'); 
-  const noteInput = document.getElementById('noteInput');
-  const noteContainer = document.querySelector('.note-container');
-  const noteVal = noteInput.value;
-  const tempNoteDisplay = document.createElement('p');
-  tempNoteDisplay.innerText = noteVal ? noteVal : "-";
-  tempNoteDisplay.style.cssText = "font-size: 13px; color: #333; padding: 8px; border: 1px solid #ffb3c1; border-radius: 5px; width: 100%; min-height: 35px; text-align: left; background: #ffffff; margin: 5px 0; word-break: break-all;";
-  saveBtn.style.display = 'none';
-  if(closeBtn) closeBtn.style.display = 'none';
-  if(lineBtn) lineBtn.style.display = 'none';
-  noteContainer.style.display = 'none';
-  noteContainer.parentNode.insertBefore(tempNoteDisplay, noteContainer.nextSibling);
-  cardInner.style.transform = 'none'; 
-  area.style.transform = 'none';
-  setTimeout(() => {
-    html2canvas(area, {
-      backgroundColor: "#ffffff",
-      scale: 2,
-      useCORS: true,
-      logging: false,
-      allowTaint: true
-    }).then(canvas => {
-      saveBtn.style.display = 'block';
-      if(closeBtn) closeBtn.style.display = 'block';
-      if(lineBtn) lineBtn.style.display = 'block';
-      tempNoteDisplay.remove();
-      noteContainer.style.display = 'flex';
-      const imageData = canvas.toDataURL("image/png");
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (isMobile) {
-        document.getElementById('previewImage').src = imageData;
-        document.getElementById('previewScreen').style.display = 'flex';
-        overlay.style.opacity = "0";
-        overlay.style.pointerEvents = "none";
-      } else {
-        const link = document.createElement('a');
-        link.download = `Siamsee-StartupUp-${currentUser.tel}.png`;
-        link.href = imageData;
-        link.click();
-        showAlert("บันทึกรูปภาพเรียบร้อยแล้ว", "💾");
-        closePreview(); 
-      }
-    }).catch(err => {
-      saveBtn.style.display = 'block';
-      if(lineBtn) lineBtn.style.display = 'block';
-      if(tempNoteDisplay) tempNoteDisplay.remove();
-      noteContainer.style.display = 'flex';
-      closePreview();
-      showAlert("ไม่สามารถบันทึกภาพได้", "❌");
-    });
-  }, 150);
-}
+        .center-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 30;
+            /* แก้ไข: เปลี่ยนขอบโลโก้ตรงกลางเป็นสีขาว */
+            border: 4px solid #ffffff; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
 
-function lockResultDisplay() {
-  const overlay = document.getElementById('overlay');
-  const card = document.getElementById('card');
-  const cardInner = document.getElementById('cardInner');
-  overlay.style.display = "flex";
-  overlay.classList.add("show");
-  overlay.style.opacity = "1";
-  overlay.style.pointerEvents = "auto";
-  card.classList.add("flip");
-  cardInner.style.transform = "";
-}
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            z-index: 100;
+            animation: fall 3s linear forwards;
+        }
 
-// เพิ่มฟังก์ชันเปิด-ปิด Sidebar ของรางวัล
-function togglePrizeSidebar() {
-    const sidebar = document.getElementById('prizeSidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-    if (sidebar.style.right === '0px') {
-        sidebar.style.right = '-300px';
-        overlay.style.display = 'none';
-    } else {
-        sidebar.style.right = '0px';
-        overlay.style.display = 'block';
-        renderPrizeList(); // สร้างรายการทุกครั้งที่เปิด
-    }
-}
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
 
-// ฟังก์ชันสร้างรายการของรางวัลจากตัวแปร data
-function renderPrizeList() {
-    const container = document.getElementById('prizeItemsContainer');
-    container.innerHTML = ''; // ล้างค่าเก่า
-    
-    data.forEach(item => {
-        const itemHtml = `
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #eee;">
-                <img src="${item.img}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 1px solid #ffccd5;">
-                <div style="flex: 1;">
-                    <div style="font-size: 12px; color: #ff4d6d; font-weight: bold;">ใบที่ ${item.no}</div>
-                    <div style="font-size: 14px; color: #333;">${item.text}</div>
+        .page-overlay {
+            position: fixed;
+            inset: 0;
+            background: #f3f4f6;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #083600;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* เพิ่ม Animation หมุนช้าๆ สำหรับวงล้อหน้าแรก */
+        @keyframes spin-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo-img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain; 
+        }
+
+        .action-area {
+            padding-bottom: 25px;
+            padding-top: 10px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            z-index: 50;
+        }
+
+        #spinBtn {
+            font-size: 1.25rem;
+            padding: 1rem 4rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(8, 54, 0, 0.3);
+        }
+
+        #spinBtn:active {
+            transform: scale(0.95);
+        }
+
+        /* --- Style 2 Capture Area --- */
+        #captureArea, #captureHouseArea {
+            width: 340px;
+            background: #ffffff;
+            border-radius: 35px;
+            padding: 35px 25px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .capture-icon-circle {
+            width: 110px;
+            height: 110px;
+            background: #f9fafb;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            border: 2px solid #e5e7eb;
+        }
+
+        .capture-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+
+        .capture-subtitle {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+        .capture-subtitle.last {
+            margin-bottom: 22px;
+        }
+
+        .capture-prize-box {
+            width: 100%;
+            border: 2px dashed #083600;
+            border-radius: 20px;
+            background-color: #f9fafb;
+            padding: 22px 15px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .capture-prize-label {
+            font-size: 13px;
+            color: #083600;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .capture-prize-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #083600;
+            line-height: 1.1;
+        }
+
+        .capture-footer-text {
+            font-size: 10px;
+            color: #aaa;
+            letter-spacing: 0.1em;
+            font-weight: 300;
+        }
+
+        /* --- Selection Page Styles --- */
+        .selection-card {
+            background: white;
+            padding: 24px;
+            border-radius: 2rem;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            border-bottom: 8px solid #083600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .selection-card:active {
+            transform: scale(0.95);
+        }
+        .icon-bg {
+            width: 80px;
+            height: 80px;
+            background: #f9fafb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 16px;
+            overflow: hidden; 
+        }
+
+        /* --- Image Preview Box --- */
+        .image-preview-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f9fafb;
+            border: 2px dashed #d1d5db;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        #houseBlessingImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Result Cards Style (New) */
+        .prize-result-container {
+            display: flex;
+            width: 100%;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .prize-card {
+            flex: 1;
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .prize-card-img-wrapper {
+            width: 50px;
+            height: 50px;
+            background: transparent; 
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+        .prize-card-img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+        .prize-card-text {
+            font-size: 13px;
+            font-weight: 700;
+            color: #083600;
+            line-height: 1.2;
+        }
+
+        /* Monk Animation CSS */
+        .monk-anim-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: #f9fafb;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .monk-character {
+            position: absolute;
+            bottom: 15px;
+            width: 30px;
+            height: 45px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: walkRight 5s linear infinite;
+        }
+        .monk-character.delay {
+            animation-delay: 1.5s;
+            opacity: 0; 
+            animation-name: walkRightDelayed;
+        }
+        
+        .monk-head {
+            width: 20px;
+            height: 20px;
+            background-color: #ffdbac; 
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        /* Eyes */
+        .monk-head::before, .monk-head::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            width: 2px;
+            height: 2px;
+            background: #333;
+            border-radius: 50%;
+        }
+        .monk-head::before { left: 6px; }
+        .monk-head::after { right: 6px; }
+
+        .monk-body {
+            width: 28px;
+            height: 25px;
+            background-color: #fb923c; 
+            border-radius: 15px 15px 5px 5px;
+            margin-top: -5px;
+            z-index: 1;
+            position: relative;
+        }
+        /* Robe Detail */
+        .monk-body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 28px;
+            height: 25px;
+            background: linear-gradient(110deg, transparent 40%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.1) 100%);
+            border-radius: 15px 15px 5px 5px;
+        }
+
+        @keyframes walkRight {
+            0% { transform: translateX(-60px) translateY(0); opacity: 1; }
+            25% { transform: translateX(-15px) translateY(-3px); }
+            50% { transform: translateX(30px) translateY(0); }
+            75% { transform: translateX(75px) translateY(-3px); }
+            100% { transform: translateX(120px) translateY(0); opacity: 1; }
+        }
+        
+        @keyframes walkRightDelayed {
+            0% { transform: translateX(-60px) translateY(0); opacity: 0; }
+            1% { opacity: 1; }
+            25% { transform: translateX(-15px) translateY(-3px); }
+            50% { transform: translateX(30px) translateY(0); }
+            75% { transform: translateX(75px) translateY(-3px); }
+            100% { transform: translateX(120px) translateY(0); opacity: 1; }
+        }
+
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <!-- Intro Animation Page -->
+    <div id="introPage" class="fixed inset-0 bg-[#f3f4f6] z-[200] flex flex-col items-center justify-center">
+        <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" alt="Logo" class="h-28 mb-8 animate-pulse object-contain">
+        <h1 class="text-3xl font-bold text-[#083600] text-center px-4 mb-3 drop-shadow-sm leading-tight">
+            March Lucky Home
+        </h1>
+        <p class="text-xl text-[#083600] font-medium text-center">จังหวะดี ของการมีบ้าน</p>
+    </div>
+
+    <!-- 0. หน้าเลือกบริการ (New) -->
+    <div id="selectionPage" class="page-overlay hidden">
+        <!-- เพิ่มปุ่มเงื่อนไขที่มุมซ้ายบน -->
+        <button onclick="toggleInfo('conditionModal')" class="absolute top-5 left-5 bg-white/90 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-gray-200 text-xs font-bold text-[#083600] z-50 hover:bg-gray-50 transition-all active:scale-95">
+            เงื่อนไข
+        </button>
+
+        <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" alt="Logo" class="h-16 mb-4">
+        
+        <!-- เพิ่มชื่อแคมเปญหน้าเลือก -->
+        <div class="text-center mb-6">
+            <h2 class="text-xl font-bold text-[#083600]">March Lucky Home</h2>
+            <p class="text-base text-gray-500 font-medium">จังหวะดี ของการมีบ้าน</p>
+        </div>
+
+        <h1 class="text-lg font-bold text-gray-800 mb-6">เลือกโปรโมชั่นที่ต้องการ</h1>
+        <div class="flex flex-col gap-6 w-full items-center">
+            <!-- กล่องที่ 1: สุ่มวงล้อ -->
+            <div onclick="navigateTo('luckyWheel')" class="selection-card">
+                <!-- แก้ไข: ลบขอบสีทองออก ตามคำขอ (border: none) -->
+                <div class="icon-bg" style="background: none; padding: 0; overflow: hidden; border: none; position: relative;">
+                    
+                    <!-- ส่วนวงล้อที่หมุน (ใช้ animation: spin-slow) -->
+                    <div style="width: 100%; height: 100%; position: absolute; inset: 0; animation: spin-slow 10s linear infinite;">
+                         <!-- ปรับสีวงล้อหน้าเลือกให้เป็นเขียวเข้มสลับขาว (ตามที่ขอ) -->
+                         <div style="width: 100%; height: 100%; border-radius: 50%; 
+                         background: repeating-conic-gradient(
+                            #083600 0deg 45deg, 
+                            #ffffff 45deg 90deg
+                         ); 
+                         border: 2px solid #083600;
+                         position: relative; box-shadow: inset 0 0 10px rgba(0,0,0,0.2);"></div>
+                    </div>
+
+                    <!-- ส่วนที่อยู่กับที่ (โลโก้ตรงกลาง) -->
+                    <!-- ปรับขนาดจุดหมุนลงจาก 55% เป็น 34% เพื่อแก้ปัญหาดูเหมือนห่วงยาง -->
+                    <div style="position: absolute; inset: 0; margin: auto; width: 34%; height: 34%; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 10;">
+                         <!-- ปรับขนาดโลโก้ให้เต็มพื้นที่วงกลมเล็ก -->
+                         <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" style="width: 85%; height: 85%; object-fit: contain;">
+                    </div>
+
+                    <!-- ส่วนที่อยู่กับที่ (เข็ม) -->
+                    <div style="position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 16px; height: 20px; background: #e63946; clip-path: polygon(50% 100%, 0 0, 100% 0); filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2)); z-index: 20;"></div>
+                </div>
+                <h3 class="text-xl font-bold text-[#083600]">สุ่มวงล้อรับของรางวัล</h3>
+                <p class="text-sm text-gray-400 mt-2">ทางบริษัทแจกของรางวัลฟรี 2 รายการ</p>
+            </div>
+            <!-- กล่องที่ 2: ทำบุญขึ้นบ้านใหม่ -->
+            <div onclick="navigateTo('houseBlessing')" class="selection-card" style="border-bottom-color: #083600;">
+                <!-- แก้ไข: ใส่ Animation พระเดินแทน Emoji -->
+                <div class="icon-bg" style="background-color: #f9fafb; padding: 0;">
+                    <div class="monk-anim-wrapper">
+                        <!-- Monk 1 -->
+                        <div class="monk-character">
+                            <div class="monk-head"></div>
+                            <div class="monk-body"></div>
+                        </div>
+                        <!-- Monk 2 (Delayed) -->
+                        <div class="monk-character delay">
+                            <div class="monk-head"></div>
+                            <div class="monk-body"></div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-[#083600]">แพ็กเกจทำบุญขึ้นบ้านใหม่</h3>
+                <p class="text-sm text-gray-400 mt-2">ทางบริษัทจัดงานทำบุญขึ้นบ้านใหม่ให้ฟรี</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. กติกา (เดิม) -->
+    <div id="termsPage" class="page-overlay">
+        <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl max-w-sm w-full border-b-[10px] border-[#083600]">
+            <!-- เพิ่มชื่อแคมเปญหน้ากติกา -->
+            <div class="text-center mb-6 border-b border-gray-100 pb-4">
+                <h3 class="text-xl font-bold text-[#083600]">March Lucky Home</h3>
+                <p class="text-sm text-gray-500">จังหวะดี ของการมีบ้าน</p>
+            </div>
+
+            <h2 class="text-2xl font-bold text-[#083600] mb-4 text-center">กติกาการร่วมสนุก</h2>
+            <div class="text-gray-600 space-y-4 mb-8 overflow-y-auto max-h-[40vh] pr-2 text-sm leading-relaxed">
+                <p>1. ผู้เข้าร่วมกิจกรรมต้องลงทะเบียนข้อมูลให้ครบถ้วน</p>
+                <p>2. จำกัดสิทธิ์ 1 ท่าน ต่อ 1 สิทธิ์เท่านั้น</p>
+                <p>3. ของรางวัลไม่สามารถแลกเปลี่ยนเป็นเงินสดได้</p>
+                <p>4. <b>บันทึกรูปภาพหน้าจอ</b> เพื่อเป็นหลักฐานในการรับรางวัล</p>
+                <p>5. ติดต่อรับรางวัลผ่าน LINE Official ของบริษัท</p>
+            </div>
+            <button onclick="acceptTerms()" class="w-full bg-[#083600] text-white py-4 rounded-2xl font-bold text-lg hover:bg-[#083600] shadow-lg transition-all active:scale-95">
+                ตกลงและเริ่มกิจกรรม
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. ลงทะเบียน -->
+    <div id="loginPage" class="page-overlay hidden">
+        <div class="bg-white p-7 rounded-[2.5rem] shadow-2xl max-w-sm w-full border-b-[10px] border-[#083600]">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold text-[#083600]">ลงทะเบียน</h2>
+                <p class="text-xs text-gray-400 mt-1">กรุณากรอกข้อมูลเพื่อใช้รับรางวัล</p>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 mb-1.5 ml-1">ชื่อ-นามสกุล</label>
+                    <input type="text" id="userName" placeholder="ชื่อของคุณ" class="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#083600] transition-all text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 mb-1.5 ml-1">เบอร์โทรศัพท์</label>
+                    <input type="tel" id="userPhone" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '');" placeholder="08XXXXXXXX" class="w-full px-4 py-3 rounded-xl border border-gray-100 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#083600] transition-all text-sm">
+                </div>
+                <div id="loginStatus" class="hidden text-center py-1">
+                    <div class="loader"></div>
+                    <span class="text-xs text-gray-500">กำลังตรวจสอบข้อมูล...</span>
+                </div>
+                <button id="loginBtn" onclick="handleLogin()" class="w-full bg-[#083600] text-white py-4 rounded-2xl font-bold text-lg hover:bg-[#083600] shadow-lg transition-all active:scale-95 mt-2">
+                    เข้าสู่กิจกรรม
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. หน้าทำบุญขึ้นบ้านใหม่ -->
+    <div id="houseBlessingPage" class="page-overlay hidden bg-white">
+        <div class="game-wrapper px-6 py-4">
+            <div class="flex justify-between items-center mb-8">
+                <button onclick="goBackToSelectionFromHouse()" class="text-gray-400 font-bold">← กลับหน้าหลัก</button>
+                <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" alt="Logo" class="h-8">
+                <button onclick="showHouseHistory()" class="bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm border border-gray-100 text-[11px] font-bold text-[#083600]">
+                    ประวัติ
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto pb-24">
+                <h2 class="text-2xl font-bold text-[#083600] mb-2">บริการทำบุญขึ้นบ้านใหม่</h2>
+                <p class="text-gray-500 text-sm mb-6">บริษัท Startup Up Real Estate จัดแพ็กเกจทำบุญขึ้นบ้านใหม่ให้ฟรี ไม่มีค่าใช้จ่ายเพิ่มเติม</p>
+                
+                <div class="space-y-6">
+                    <!-- Image Replacement for Upload Section -->
+                    <div class="w-full rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+                        <img src="https://lh3.googleusercontent.com/d/1SeUJgnwbfwhPU76QVysEhngnDu2K9wEI" alt="House Blessing Promotion" class="w-full h-auto object-cover">
+                    </div>
+                    
+                    <!-- EDIT: เปลี่ยน Link เป็นข้อความ 🔻กดด้านล่าง🔻 และลิงก์ด้านล่าง -->
+                    <div class="mt-2 text-center flex flex-col items-center">
+                        <span class="text-xs text-[#083600] animate-bounce mb-1 font-bold">🔻กดด้านล่าง🔻</span>
+                        <a href="https://drive.google.com/file/d/10sPXfXNfpey5aW0q_qBpkb41rjY4Djf3/view?usp=sharing" target="_blank" class="text-[#083600] font-bold underline text-sm hover:text-green-700 transition-colors">
+                            ดูรายละเอียดแพ็กเกจเพิ่มเติม
+                        </a>
+                    </div>
+
+                    <div class="bg-[#f9fafb] p-4 rounded-2xl border border-[#e5e7eb]">
+                        <h4 class="font-bold text-[#083600] text-sm mb-2">จุดเด่นบริการของเรา</h4>
+                        <ul class="text-xs text-[#083600] space-y-1">
+                            <li>• รองรับแขกรวมพระสงฆ์ 30 ท่าน</li>
+                            <li>• อาหารดาว 5 อย่าง (รสเลิศ จัดสวยงาม)</li>
+                            <li>• ขนมหวาน 1 อย่าง</li>
+                            <li>• ผลไม้ตามฤดูกาล</li>
+                            <li>• น้ำสมุนไพร 1 อย่าง</li>
+                            <li>• พร้อมข้าวหอมมะลิ, น้ำเปล่า , น้ำแข็ง</li>
+                            <li>• บริษัทฯจัดการให้ครบทุกขั้นตอน (สะดวกสบายที่สุด)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        `;
-        container.innerHTML += itemHtml;
-    });
-}
-  function toggleTermsSidebar() {
-    const sidebar = document.getElementById('termsSidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-    if (sidebar.style.left === '0px') {
-        sidebar.style.left = '-300px';
-        overlay.style.display = 'none';
-    } else {
-        sidebar.style.left = '0px';
-        overlay.style.display = 'block';
-    }
-}
-function showInitialRules() {
-    const alertMsg = document.getElementById('alertMsg');
-    const alertIcon = document.getElementById('alertIcon');
-    
-    alertIcon.innerHTML = "📜";
-    alertMsg.innerHTML = `
-        <div class="rules-list">
-            <b style="font-size: 20px; color: #ff4d6d; display: block; text-align: center; margin-bottom: 15px;">กติกาการเล่นกิจกรรม</b>
-            1. ลงทะเบียนเพื่อเข้าร่วมกิจกรรม<br>
-            2. เขย่าเซียมซี <span class="highlight-red">ทั้งหมด 2 ครั้ง</span> (มี 2 รางวัล)<br>
-            3. แคปหน้าจอใบเซียมซีที่ได้รางวัล<br>
-            4. กดยืนยันสิทธิ์ส่งรูปภาพมาที่ <span class="highlight-line">LINE
-        </div>
-    `;
-    
-    const alertBtn = document.querySelector('#customAlert button');
-    alertBtn.innerText = "ตกลง เข้าสู่หน้าลงทะเบียน";
-    document.getElementById('customAlert').style.display = 'flex';
-}
 
-// สั่งให้ทำงานทันทีที่เปิดหน้าเว็บ
-window.addEventListener('load', showInitialRules);
-function handleLineLink() {
-    // เช็คว่าเป็นมือถือหรือไม่
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            <div class="fixed bottom-0 left-0 right-0 p-6 bg-white border-t border-gray-100 max-w-[420px] mx-auto">
+                <button id="claimHouseBtn" onclick="initClaimHouse()" class="w-full bg-[#083600] text-white py-4 rounded-2xl font-bold shadow-lg active:scale-95 transition-all mb-3">
+                    🎁 กดรับสิทธิ์ทำบุญขึ้นบ้านใหม่
+                </button>
+                <!-- ปรับสีปุ่ม LINE เป็นสีเขียว LINE -->
+                <a id="houseLineBtn" href="#" target="_blank" class="hidden house-line-btn items-center justify-center gap-2 w-full bg-[#06C755] text-white py-4 rounded-2xl font-bold shadow-lg active:scale-95">
+                    <span>🟢</span> รับเช็ตทำบุญขึ้นบ้านใหม่ฟรีทาง LINE
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Game -->
+    <div id="gameContent" class="game-wrapper opacity-0 pointer-events-none transition-opacity duration-700">
+        <div class="header-section px-4">
+            <div class="text-left mt-2 -mb-1">
+                <button onclick="goBackToSelectionFromWheel()" class="text-gray-400 font-bold text-sm">← กลับหน้าหลัก</button>
+            </div>
+            <div class="flex justify-between items-center mt-2 mb-2">
+                <!-- แก้ไข: เปลี่ยนข้อความปุ่ม -->
+                <button onclick="toggleInfo('prizesModal')" class="bg-white/90 px-4 py-2 rounded-full shadow-sm border border-gray-100 text-[11px] font-bold text-[#083600]">
+                    รายการของรางวัล
+                </button>
+
+                <!-- แก้ไข: เอา backdrop-blur ออกจากกล่องโลโก้และปุ่มประวัติ -->
+                <div class="bg-white/90 px-5 py-2 rounded-2xl shadow-sm border border-gray-100">
+                    <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" alt="Startup Up Logo" class="h-8 w-auto">
+                </div>
+                <button onclick="showHistory()" class="bg-white/90 px-4 py-2 rounded-full shadow-sm border border-gray-100 text-[11px] font-bold text-[#083600]">
+                    ประวัติ
+                </button>
+            </div>
+        </div>
+
+        <div class="game-setup">
+            <div class="wheel-container">
+                <div class="pointer"></div>
+                <div class="center-logo">
+                     <img src="https://lh3.googleusercontent.com/d/1EEAbI2a89rG4ii0Um0cfWdXLtcb6I_RU" alt="Logo" class="logo-img">
+                </div>
+                <canvas id="wheelCanvas" width="800" height="800"></canvas>
+            </div>
+            <div class="wheel-stand"></div>
+        </div>
+
+        <div class="action-area">
+            <button id="spinBtn" class="bg-[#083600] hover:bg-[#083600] text-white border-b-4 border-[#083600]">
+                เริ่มหมุนวงล้อ
+            </button>
+            <!-- ปรับสีปุ่ม LINE เป็นสีเขียว LINE -->
+            <a id="mainLineBtn" href="#" target="_blank" class="hidden flex items-center justify-center gap-2 w-full max-w-[260px] bg-[#06C755] text-white py-3 rounded-full text-sm font-bold shadow-xl animate-bounce">
+                <span>🟢</span> ติดต่อรับรางวัลทาง LINE
+            </a>
+        </div>
+    </div>
+
+    <!-- Winner Modal (Wheel) -->
+    <div id="resultModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[110] p-4 backdrop-blur-md">
+        <div class="max-w-sm w-full flex flex-col items-center">
+            
+            <div id="captureArea">
+                <!-- ส่วนแสดงผลรางวัลใหม่แบบแยก 2 ใบ -->
+                <div id="prizeIcon" class="hidden"></div> <!-- ซ่อนอันเดิมไว้ -->
+                <h3 class="capture-title">ยินดีด้วย!</h3>
+                <p id="winnerNameDisplay" class="capture-subtitle"></p>
+                <p id="winnerPhoneDisplay" class="capture-subtitle last"></p>
+                
+                <span class="capture-prize-label mb-2">ของรางวัลที่ได้รับ</span>
+                <div id="prizeResultContainer" class="prize-result-container">
+                    <!-- JS จะใส่การ์ดรางวัลที่นี่ -->
+                </div>
+                <!-- ซ่อนอันเดิมไว้ -->
+                <div id="prizeResult" class="hidden"></div>
+
+                <p class="capture-footer-text">STARTUP UP REAL ESTATE</p>
+                
+                <!-- เพิ่มช่องใส่โครงการในใบสรุปวงล้อ -->
+                <div class="mt-3 w-full border-t border-dashed border-gray-200 pt-3">
+                    <input type="text" placeholder="หมายเหตุ" class="w-full text-center text-[13px] font-semibold text-[#083600] focus:outline-none bg-transparent placeholder-gray-300">
+                </div>
+            </div>
+
+            <div class="mt-6 w-full flex flex-col gap-3">
+                <!-- EDIT: ปรับปุ่มให้เป็นสีเขียวเข้ม #083600 ตัวหนังสือขาว -->
+                <button id="downloadBtn" onclick="saveAsImage()" class="w-full bg-[#083600] text-white py-3.5 rounded-2xl font-bold shadow-lg transition-all flex items-center justify-center gap-2 active:scale-95 hover:bg-[#062b00]">
+                    📸 บันทึกรูปภาพหลักฐาน
+                </button>
+                <!-- ปรับสีปุ่ม LINE เป็นสีเขียว LINE (คงไว้ตามเดิมเพื่อให้เด่น) -->
+                <a id="resultLineBtn" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full bg-[#06C755] text-white py-3.5 rounded-2xl font-bold shadow-lg active:scale-95">
+                    <span>🟢</span> ติดต่อทาง LINE
+                </a>
+                <!-- EDIT: ปรับปุ่มตกลงให้เป็นสีเขียวเข้ม #083600 ตัวหนังสือขาว -->
+                <button id="closeModalBtn" onclick="closeModal()" class="w-full bg-[#083600] text-white py-4 rounded-2xl font-bold text-lg opacity-50 cursor-not-allowed hover:bg-[#062b00]" disabled>
+                    ตกลง
+                </button>
+            </div>
+            <div id="saveStatus" class="text-center text-[11px] text-white mt-4 font-light tracking-wide italic">กำลังอัปโหลดข้อมูล...</div>
+        </div>
+    </div>
+
+    <!-- Winner Modal (House Blessing Summary) -->
+    <div id="houseResultModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[110] p-4 backdrop-blur-md">
+        <div class="max-w-sm w-full flex flex-col items-center">
+            <div id="captureHouseArea">
+                <div class="w-[110px] h-[110px] bg-[#f9fafb] rounded-full mb-5 flex items-center justify-center text-[55px] border-2 border-[#e5e7eb]">🏠</div>
+                <h3 class="capture-title">รับสิทธิ์สำเร็จ!</h3>
+                <p id="houseWinnerNameDisplay" class="capture-subtitle"></p>
+                <p id="houseWinnerPhoneDisplay" class="capture-subtitle last"></p>
+                <div class="w-full border-2 border-dashed border-[#083600] rounded-[20px] bg-[#f9fafb] p-[22px_15px] mb-[25px] flex flex-col gap-[6px]">
+                    <span class="text-[13px] text-[#083600] font-normal uppercase tracking-[0.05em]">รายการที่คุณได้รับ</span>
+                    <ul class="text-[15px] font-bold text-[#083600] leading-relaxed text-left pl-6 list-disc">
+                        <li>จัดหาอุปกรณ์สงฆ์ครบชุด</li>
+                        <li>นิมนต์พระและรถรับส่ง</li>
+                        <li>ออกแบบสถานที่แบบ 3D</li>
+                        <li>ทีมงานดูแลตลอดพิธีการ</li>
+                    </ul>
+                </div>
+                <p class="capture-footer-text">STARTUP UP REAL ESTATE</p>
+                
+                <!-- เพิ่มช่องใส่โครงการในใบสรุปทำบุญขึ้นบ้านใหม่ -->
+                <div class="mt-3 w-full border-t border-dashed border-gray-200 pt-3">
+                    <input type="text" placeholder="หมายเหตุ" class="w-full text-center text-[13px] font-semibold text-[#083600] focus:outline-none bg-transparent placeholder-gray-300">
+                </div>
+            </div>
+
+            <div class="mt-6 w-full flex flex-col gap-3">
+                <!-- EDIT: ปรับปุ่มให้เป็นสีเขียวเข้ม #083600 ตัวหนังสือขาว -->
+                <button onclick="saveHouseAsImage()" class="w-full bg-[#083600] text-white py-3.5 rounded-2xl font-bold shadow-lg transition-all flex items-center justify-center gap-2 active:scale-95 hover:bg-[#062b00]">
+                    📸 บันทึกรูปภาพหลักฐาน
+                </button>
+                <!-- EDIT: ปรับปุ่มปิดให้เป็นสีเขียวเข้ม #083600 ตัวหนังสือขาว -->
+                <button onclick="closeHouseModal()" class="w-full bg-[#083600] text-white py-4 rounded-2xl font-bold text-lg active:scale-95 hover:bg-[#062b00]">
+                    ปิดหน้าต่าง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Condition Modals -->
+    <!-- ปรับ z-index เป็น z-[150] ให้แสดงเหนือหน้าอื่นๆ -->
+    <div id="conditionModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[150] p-6 backdrop-blur-sm" onclick="toggleInfo('conditionModal')">
+        <div class="bg-white rounded-3xl p-7 max-w-xs w-full shadow-2xl" onclick="event.stopPropagation()">
+            <h4 class="text-xl font-bold text-[#083600] mb-4 text-center">เงื่อนไขกิจกรรม</h4>
+            <ul class="text-sm text-gray-500 text-left list-disc pl-5 space-y-3">
+                <li>สามารถใช้ได้ 1 สิทธิ์ ต่อบ้าน 1 หลัง เท่านั้น</li>
+                <li>ไม่สามารถใช้ร่วมกับ ‘บัตรกำนัล’ อื่นของบริษัท สตาร์ทอัพ อัพ ได้</li>
+                <li>ไม่สามารถโอนสิทธิ์ ให้ผู้อื่นได้</li>
+                <li>หากยกเลิกสัญญา ‘จะซื้อจะขาย’ ภายหลัง ถือว่าสิทธิ์เป็นโมฆะ</li>
+                <li>บริษัทขอสงวนสิทธิ์ในการเปลี่ยนแปลงเงื่อนไขโดยไม่ต้องแจ้งให้ทราบล่วงหน้า</li>
+            </ul>
+            <button onclick="toggleInfo('conditionModal')" class="mt-8 w-full py-3 bg-gray-50 rounded-2xl font-bold text-gray-400">ปิดหน้าต่าง</button>
+        </div>
+    </div>
+
+    <!-- ปรับ z-index เป็น z-[150] ให้แสดงเหนือหน้าอื่นๆ -->
+    <div id="historyModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[150] p-6 backdrop-blur-sm" onclick="toggleInfo('historyModal')">
+        <div class="bg-white rounded-3xl p-7 max-w-xs w-full shadow-2xl" onclick="event.stopPropagation()">
+            <h4 class="text-xl font-bold text-[#083600] mb-4 text-center">ประวัติรางวัล</h4>
+            <div id="historyList" class="max-h-[30vh] overflow-y-auto space-y-3"></div>
+            <button onclick="toggleInfo('historyModal')" class="mt-8 w-full py-3 bg-gray-50 rounded-2xl font-bold text-gray-400">ปิดหน้าต่าง</button>
+        </div>
+    </div>
     
-    if (isMobile) {
-        // ถ้าเป็นมือถือ: ให้ใช้ลิงก์เดิมเพื่อพิมพ์ข้อความอัตโนมัติ
-        window.location.href = "https://line.me/R/oaMessage/@sure141/🎉เขย่าเซียมซีเรียบร้อยแล้ว🎉";
-    } else {
-        // ถ้าเป็นคอมพิวเตอร์: ให้ไปหน้าที่มี ID LINE / QR Code (หน้า Add Friend)
-        // หน้าที่ถูกต้องคือ https://line.me/ti/p/@sure141
-        window.open("https://line.me/ti/p/@sure141", "_blank");
-    }
-}
-(function() {
-    function fixLineLinkForPC() {
-      // เช็คว่าเป็นคอมพิวเตอร์หรือไม่ (ถ้าไม่ใช่ Mobile)
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      
-      if (!isMobile) {
-        // ค้นหาปุ่มที่มีลิงก์ Line
-        const lineBtn = document.querySelector('a[href*="line.me/R/oaMessage"]');
-        if (lineBtn) {
-          // เปลี่ยนลิงก์ให้ไปหน้าเพิ่มเพื่อน/สแกน QR Code ของ @sure141 โดยตรง
-          lineBtn.href = "https://line.me/ti/p/@sure141";
+    <!-- Prizes Modal (เพิ่มใหม่) -->
+    <div id="prizesModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[150] p-6 backdrop-blur-sm" onclick="toggleInfo('prizesModal')">
+        <div class="bg-white rounded-3xl p-7 max-w-xs w-full shadow-2xl relative" onclick="event.stopPropagation()">
+            <h4 class="text-xl font-bold text-[#083600] mb-4 text-center">รายการของรางวัล</h4>
+            <div id="prizesList" class="max-h-[50vh] overflow-y-auto space-y-3 pr-2">
+                <!-- JS will populate this -->
+            </div>
+            <button onclick="toggleInfo('prizesModal')" class="mt-6 w-full py-3 bg-gray-50 rounded-2xl font-bold text-gray-400 text-sm">ปิดหน้าต่าง</button>
+        </div>
+    </div>
+    
+    <!-- Promo Modal (New) -->
+    <div id="promoModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[160] p-6 backdrop-blur-sm">
+        <div class="relative w-full max-w-sm">
+            <button onclick="closePromo()" class="absolute -top-3 -right-3 bg-white text-[#083600] rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-lg border-2 border-white z-10 hover:scale-110 transition-transform">
+                ✕
+            </button>
+            <img src="https://lh3.googleusercontent.com/d/1NwD5P8vGaliyYS5wMRW4hvo8rb7tgbKk" class="w-full h-auto rounded-2xl shadow-2xl border-4 border-white object-contain">
+        </div>
+    </div>
+
+    <!-- Alert Error Modal -->
+    <div id="alertModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[110] p-6 backdrop-blur-sm">
+        <div class="bg-white rounded-[2.5rem] p-8 max-w-xs w-full shadow-2xl text-center border-t-[10px] border-red-500">
+            <div class="text-6xl mb-4">🚫</div>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">ไม่สามารถใช้สิทธิ์ได้</h4>
+            <p id="alertMessage" class="text-sm text-gray-500 mb-8 leading-relaxed"></p>
+            <button onclick="closeAlert()" class="w-full py-4 bg-red-500 text-white rounded-2xl font-bold shadow-lg active:scale-95">เข้าใจแล้ว</button>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[110] p-6 backdrop-blur-sm">
+        <div class="bg-white rounded-[2.5rem] p-8 max-w-xs w-full shadow-2xl text-center border-t-[10px] border-[#083600]">
+            <div class="text-6xl mb-4" id="successIcon">✅</div>
+            <img id="successImage" class="h-32 object-contain mx-auto mb-4 hidden">
+            <h4 class="text-xl font-bold text-gray-800 mb-2">ได้รับสิทธิ์แล้ว</h4>
+            <p id="successMessage" class="text-sm text-gray-500 mb-8 leading-relaxed whitespace-pre-line"></p>
+            <!-- EDIT: เปลี่ยนสีปุ่มตกลง เป็นสีเขียวเข้ม #083600 ตัวหนังสือขาว -->
+            <button onclick="closeSuccess()" class="w-full py-4 bg-[#083600] text-white rounded-2xl font-bold shadow-lg active:scale-95 hover:bg-[#062b00]">ตกลง</button>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div id="confirmModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[120] p-6 backdrop-blur-sm">
+        <div class="bg-white rounded-[2.5rem] p-8 max-w-xs w-full shadow-2xl text-center border-t-[10px] border-[#083600]">
+            <div class="text-6xl mb-4">❓</div>
+            <h4 class="text-xl font-bold text-gray-800 mb-2">ยืนยันการรับสิทธิ์</h4>
+            <p class="text-sm text-gray-500 mb-8 leading-relaxed">คุณต้องการรับสิทธิ์โปรโมชั่นทำบุญขึ้นบ้านใหม่ใช่หรือไม่? (หากรับแล้วจะไม่สามารถหมุนวงล้อได้)</p>
+            <div class="flex gap-3">
+                <button onclick="proceedClaimHouse()" class="w-full py-4 bg-[#083600] text-white rounded-2xl font-bold shadow-lg active:scale-95">ยืนยัน</button>
+                <button onclick="closeConfirm()" class="w-full py-4 bg-gray-200 text-gray-700 rounded-2xl font-bold active:scale-95">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- API Config ---
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyd315o8kF2Z8anaBxgwTIbXMvg0Sx9NmoP4DLLV96bLUwTeG37uE6wGMzfLs6mBzC8ww/exec"; 
+
+        const canvas = document.getElementById('wheelCanvas');
+        const ctx = canvas.getContext('2d');
+        const spinBtn = document.getElementById('spinBtn');
+        const mainLineBtn = document.getElementById('mainLineBtn');
+        const resultLineBtn = document.getElementById('resultLineBtn');
+        const modal = document.getElementById('resultModal');
+        const alertModal = document.getElementById('alertModal');
+        const prizeDisplay = document.getElementById('prizeResult');
+        const prizeIconBox = document.getElementById('prizeIcon');
+        const prizeResultContainer = document.getElementById('prizeResultContainer');
+
+        let userData = { name: '', phone: '', note: '' }; 
+        let userPrizeHistory = [];
+        let isSpinning = false;
+        let currentRotation = 0;
+        let claimedPromo = null; 
+        
+        let spinCount = 0; 
+        let currentSessionPrizes = []; 
+        let successCallback = null;
+
+        const rawPrizes = [
+            {no:"1", text:"ชุดเฟอร์นิเจอร์\nห้องนอน", img:"https://lh3.googleusercontent.com/u/0/d/1Ql_aDFN0ntGbDpDW006tgfmQGzYLpAz-"},
+            {no:"2", text:"แอร์ 9,000 BTU", img:"https://lh3.googleusercontent.com/u/0/d/1z8EjO_Rm6nTt2Q4srDrUGJuzANJ557D-"},
+            {no:"3", text:"โซฟา", img:"https://lh3.googleusercontent.com/u/0/d/1NR3c2b_WpWcvRVkFQoktWfoBEElVF_XU"},
+            {no:"4", text:"โต๊ะรับประทาน\nอาหาร", img:"https://lh3.googleusercontent.com/u/0/d/1G8-8lCWhCU1Vva7RFa2F1n2lYTdFtKH7"},
+            {no:"5", text:"ผ้าม่านทั้งหลัง", img:"https://lh3.googleusercontent.com/u/0/d/1Jp8I3vckpuQ3sUuWTTgnNjRc7hQRgs_l"},
+            {no:"6", text:"ส่วนลด\n20,000.-", fullText:"ส่วนลดเงินสด 20,000 บาท", img:"https://lh3.googleusercontent.com/u/0/d/1Lq6JuSmpXYu0EduuS4-TWYpHYY1yQ63v"},
+            {no:"7", text:"ทีวี 55 นิ้ว", img:"https://lh3.googleusercontent.com/u/0/d/1lQTqCGZxMgDwjnQIlQnVWryzQYNPUJi0"},
+            {no:"8", text:"ตู้เย็น 6.4 คิว", fullText:"ตู้เย็น 6.4 คิว 2 ประตู", img:"https://lh3.googleusercontent.com/u/0/d/1jDQviAtim4_D4g6WlfpcZhDjoWhVs5ON"}
+        ];
+
+        const prizes = rawPrizes.map((p, i) => ({
+            label: p.text,
+            fullLabel: p.fullText || p.text,
+            img: p.img,
+            color: i % 2 === 0 ? '#083600' : '#ffffff', // เขียวเข้ม สลับ ขาว
+            textColor: i % 2 === 0 ? '#ffffff' : '#083600',
+            imgObj: null // Placeholder for image object
+        }));
+
+        // --- Preload Images for Wheel ---
+        let loadedImagesCount = 0;
+        function preloadImages() {
+            prizes.forEach(prize => {
+                const img = new Image();
+                img.crossOrigin = "Anonymous"; // Enable CORS for pixel manipulation
+                img.src = prize.img;
+                img.onload = () => {
+                    loadedImagesCount++;
+                    if (loadedImagesCount === prizes.length) {
+                        drawWheel(); // Redraw once all images are loaded
+                        renderPrizesList(); // Re-render list with processed images
+                    }
+                };
+                img.onerror = () => {
+                      // Fallback if image fails, count it anyway so we don't hang
+                    loadedImagesCount++;
+                }
+                prize.imgObj = img;
+            });
         }
-      }
-    }
-    // รันทันทีเมื่อโหลดหน้าเว็บ
-    fixLineLinkForPC();
-    // รันซ้ำเมื่อมีการกดเซียมซี เพื่อให้มั่นใจว่าปุ่มที่เกิดใหม่ถูกเปลี่ยนลิงก์ด้วย
-    document.addEventListener('click', function(e) {
-      if (e.target.id === 'drawBtn' || e.target.id === 'regSubmitBtn') {
-        setTimeout(fixLineLinkForPC, 1000);
-      }
-    });
-  })();
-</script>
+        
+        // ฟังก์ชันสำหรับตัดพื้นหลังสีขาวออกจากรูปภาพ
+        function getTransparentImageSrc(imgObj) {
+            const canvas = document.createElement('canvas');
+            const size = 150; // Resolution for the result card image
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(imgObj, 0, 0, size, size);
+            
+            try {
+                const imageData = ctx.getImageData(0, 0, size, size);
+                const data = imageData.data;
+                for (let j = 0; j < data.length; j += 4) {
+                    const r = data[j];
+                    const g = data[j + 1];
+                    const b = data[j + 2];
+                    // Threshold for white (adjust as needed, e.g., > 240)
+                    if (r > 240 && g > 240 && b > 240) {
+                        data[j + 3] = 0; // Set alpha to 0
+                    }
+                }
+                ctx.putImageData(imageData, 0, 0);
+                return canvas.toDataURL();
+            } catch (e) {
+                return imgObj.src;
+            }
+        }
+
+        // --- Navigation Logic ---
+        function navigateTo(target) {
+            document.getElementById('selectionPage').classList.add('hidden');
+            if(target === 'luckyWheel') {
+                document.getElementById('gameContent').classList.remove('opacity-0', 'pointer-events-none');
+                drawWheel();
+            } else if(target === 'houseBlessing') {
+                document.getElementById('houseBlessingPage').classList.remove('hidden');
+            }
+        }
+
+        function goBackToSelectionFromWheel() {
+            document.getElementById('gameContent').classList.add('opacity-0', 'pointer-events-none');
+            document.getElementById('selectionPage').classList.remove('hidden');
+        }
+
+        function goBackToSelectionFromHouse() {
+            document.getElementById('houseBlessingPage').classList.add('hidden');
+            document.getElementById('selectionPage').classList.remove('hidden');
+        }
+
+        // --- Image Preview for House Blessing ---
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
+            reader.onload = function(){
+                const img = document.getElementById('houseBlessingImage');
+                const placeholder = document.getElementById('uploadPlaceholder');
+                img.src = reader.result;
+                img.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function isDesktop() {
+            return !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+        }
+
+        function setLineLinks() {
+            const mobileLine = "https://line.me/R/oaMessage/@sure141/หมุนวงล้อแล้ว";
+            const mobileHouseLine = "https://line.me/R/oaMessage/@sure141/สนใจบริการทำบุญบ้าน";
+            const desktopLine = "https://lin.ee/hE0Zvkg";
+            
+            const targetLine = isDesktop() ? desktopLine : mobileLine;
+            const targetHouseLine = isDesktop() ? desktopLine : mobileHouseLine;
+
+            mainLineBtn.href = targetLine;
+            resultLineBtn.href = targetLine;
+            
+            const houseBtn = document.querySelector('.house-line-btn');
+            if(houseBtn) houseBtn.href = targetHouseLine;
+        }
+
+        function acceptTerms() {
+            document.getElementById('termsPage').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+        }
+
+        function showAlert(msg) {
+            document.getElementById('alertMessage').innerText = msg;
+            alertModal.classList.remove('hidden');
+            alertModal.classList.add('flex');
+        }
+
+        function closeAlert() {
+            alertModal.classList.add('hidden');
+            alertModal.classList.remove('flex');
+        }
+
+        function showSuccess(msg, imgSrc = null, callback = null) {
+            document.getElementById('successMessage').innerText = msg;
+            const imgEl = document.getElementById('successImage');
+            const iconEl = document.getElementById('successIcon');
+
+            if (imgSrc) {
+                imgEl.src = imgSrc;
+                imgEl.classList.remove('hidden');
+                iconEl.classList.add('hidden');
+            } else {
+                imgEl.classList.add('hidden');
+                iconEl.classList.remove('hidden');
+            }
+
+            successCallback = callback;
+            const sModal = document.getElementById('successModal');
+            sModal.classList.remove('hidden');
+            sModal.classList.add('flex');
+        }
+
+        function closeSuccess() {
+            const sModal = document.getElementById('successModal');
+            sModal.classList.add('hidden');
+            sModal.classList.remove('flex');
+            if (successCallback) {
+                successCallback();
+                successCallback = null;
+            }
+        }
+        
+        function closePromo() {
+            const pModal = document.getElementById('promoModal');
+            pModal.classList.add('hidden');
+            pModal.classList.remove('flex');
+        }
+
+        async function handleLogin() {
+            const name = document.getElementById('userName').value.trim();
+            const phone = document.getElementById('userPhone').value.trim();
+
+            if (!name || !phone) {
+                showAlert('กรุณากรอกชื่อและเบอร์โทรศัพท์');
+                return;
+            }
+
+            if (phone.length !== 10) {
+                showAlert('กรุณากรอกเบอร์โทรศัพท์ 10 หลัก');
+                return;
+            }
+
+            document.getElementById('loginBtn').disabled = true;
+            document.getElementById('loginStatus').classList.remove('hidden');
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'check', phone: phone })
+                });
+                const result = await response.json();
+
+                if (result.exists) {
+                    showAlert('เบอร์โทรศัพท์นี้เคยใช้สิทธิ์ไปแล้ว');
+                    document.getElementById('loginBtn').disabled = false;
+                    document.getElementById('loginStatus').classList.add('hidden');
+                    return;
+                }
+
+                userData = { name, phone, note: '' }; // เอาโน้ตไปกรอกทีหลัง
+                document.getElementById('loginPage').classList.add('hidden');
+                document.getElementById('selectionPage').classList.remove('hidden');
+                
+                // Show promo modal after login
+                setTimeout(() => {
+                    const pModal = document.getElementById('promoModal');
+                    pModal.classList.remove('hidden');
+                    pModal.classList.add('flex');
+                }, 500);
+                
+            } catch (error) {
+                userData = { name, phone, note: '' };
+                document.getElementById('loginPage').classList.add('hidden');
+                document.getElementById('selectionPage').classList.remove('hidden');
+                
+                 // Show promo modal even if API fails (assuming success for demo)
+                setTimeout(() => {
+                    const pModal = document.getElementById('promoModal');
+                    pModal.classList.remove('hidden');
+                    pModal.classList.add('flex');
+                }, 500);
+            }
+        }
+
+        function drawWheel() {
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = canvas.width / 2 - 30;
+            const sliceAngle = (2 * Math.PI) / prizes.length;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            prizes.forEach((prize, i) => {
+                const angle = i * sliceAngle;
+                
+                ctx.beginPath();
+                ctx.fillStyle = prize.color;
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, angle, angle + sliceAngle);
+                ctx.closePath();
+                ctx.fill();
+                
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.rotate(angle + sliceAngle / 2);
+                
+                // Draw Image on Wheel with Background Removal
+                if (prize.imgObj && prize.imgObj.complete) {
+                      const imgSize = 90; // Slightly smaller to fit with text
+                      const imgX = radius - 250; // Move inward to separate from text
+                      const imgY = -imgSize/2;
+
+                      // Create temp canvas for transparency processing
+                      const tempCanvas = document.createElement('canvas');
+                      tempCanvas.width = imgSize;
+                      tempCanvas.height = imgSize;
+                      const tempCtx = tempCanvas.getContext('2d');
+                      
+                      // Draw original image to temp canvas
+                      tempCtx.drawImage(prize.imgObj, 0, 0, imgSize, imgSize);
+                      
+                      try {
+                          // Get image data
+                          const imageData = tempCtx.getImageData(0, 0, imgSize, imgSize);
+                          const data = imageData.data;
+                          
+                          // Loop through pixels to remove white background
+                          for (let j = 0; j < data.length; j += 4) {
+                              const r = data[j];
+                              const g = data[j + 1];
+                              const b = data[j + 2];
+                              // Threshold for white (adjust as needed, e.g., > 240)
+                              if (r > 240 && g > 240 && b > 240) {
+                                  data[j + 3] = 0; // Set alpha to 0
+                              }
+                          }
+                          
+                          // Put modified data back
+                          tempCtx.putImageData(imageData, 0, 0);
+                          
+                          // Draw the processed image to the main canvas
+                          ctx.drawImage(tempCanvas, imgX, imgY, imgSize, imgSize);
+                      } catch (e) {
+                          // Fallback if CORS prevents pixel manipulation
+                          ctx.drawImage(prize.imgObj, imgX, imgY, imgSize, imgSize);
+                      }
+                }
+
+                // Text
+                ctx.textAlign = "right";
+                ctx.fillStyle = prize.textColor;
+                ctx.font = "bold 20px Kanit";
+                
+                // Handle multiline
+                const lines = prize.label.split('\n');
+                if (lines.length > 1) {
+                      const lineHeight = 22;
+                      let startY = 8 - ((lines.length - 1) * lineHeight) / 2;
+                      lines.forEach((line, idx) => {
+                          ctx.fillText(line, radius - 20, startY + (idx * lineHeight));
+                      });
+                } else {
+                    ctx.fillText(prize.label, radius - 20, 8); 
+                }
+                
+                ctx.restore();
+            });
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            
+            // --- แก้ไข: เปลี่ยนขอบวงล้อเป็นสีเขียว 083600 ตามคำขอ ---
+            ctx.strokeStyle = '#083600'; // ใช้สีเขียวเข้ม Solid
+            ctx.lineWidth = 15;
+            // เพิ่มเงาให้ขอบดูนูนมีมิติ
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+            ctx.shadowBlur = 10;
+            
+            ctx.stroke();
+            // Reset shadow เพื่อไม่ให้กระทบส่วนอื่น
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+        }
+
+        function spin() {
+            if (claimedPromo === 'house') {
+                showAlert('ท่านได้รับโปรโมชั่นของการทำบุญขึ้นบ้านใหม่ไปแล้ว');
+                return;
+            }
+            if (spinCount >= 2) {
+                showAlert('ท่านใช้สิทธิ์หมุนวงล้อครบ 2 ครั้งแล้ว');
+                return;
+            }
+
+            if (isSpinning) return;
+            isSpinning = true;
+            spinBtn.disabled = true;
+
+            // กำหนดเป้าหมายของรางวัลล่วงหน้าเพื่อป้องกันของซ้ำ
+            let targetIndex = Math.floor(Math.random() * prizes.length);
+            
+            // หากเป็นการหมุนครั้งที่ 2 ให้สุ่มใหม่จนกว่าจะไม่ซ้ำกับของเดิม
+            if (spinCount === 1) {
+                const firstPrizeLabel = currentSessionPrizes[0].label;
+                while (prizes[targetIndex].label === firstPrizeLabel) {
+                    targetIndex = Math.floor(Math.random() * prizes.length);
+                }
+            }
+
+            // คำนวณองศาให้หมุนไปตกที่ช่องที่สุ่มได้พอดี
+            const sliceAngle = 360 / prizes.length;
+            const targetAngle = (targetIndex + 0.5) * sliceAngle; 
+            
+            let targetDegrees = (630 - targetAngle) % 360;
+            if (targetDegrees < 0) targetDegrees += 360;
+            
+            // สุ่มตำแหน่งให้ตกในช่องย่อยไม่ให้ดูเป๊ะเกินไป (+/- 40% ของความกว้างช่อง)
+            const randomOffset = (Math.random() * 0.8 - 0.4) * sliceAngle; 
+            targetDegrees = (targetDegrees + randomOffset) % 360;
+            if (targetDegrees < 0) targetDegrees += 360;
+
+            const currentRemainder = currentRotation % 360;
+            let rotationDiff = targetDegrees - currentRemainder;
+            if (rotationDiff <= 0) rotationDiff += 360;
+
+            const spins = 8 + Math.floor(Math.random() * 5); // หมุนฟรี 8-12 รอบก่อนหยุด
+            const totalRotation = (spins * 360) + rotationDiff;
+            
+            currentRotation += totalRotation;
+            canvas.style.transform = `rotate(${currentRotation}deg)`;
+
+            setTimeout(() => {
+                isSpinning = false;
+                handleSpinResult(prizes[targetIndex]);
+                createConfetti();
+            }, 4100);
+        }
+
+        function handleSpinResult(prizeObj) {
+            spinCount++;
+            currentSessionPrizes.push(prizeObj);
+
+            // ใช้รูปภาพที่ตัดพื้นหลังออกแล้ว (ถ้ามี)
+            let displayImg = prizeObj.img;
+            if (prizeObj.imgObj && prizeObj.imgObj.complete) {
+                displayImg = getTransparentImageSrc(prizeObj.imgObj);
+            }
+
+            if (spinCount === 1) {
+                showSuccess(
+                    'ยินดีด้วย!\nคุณได้รับ "' + prizeObj.label + '"\nเหลือสิทธิ์หมุนอีก 1 ครั้ง',
+                    displayImg,
+                    () => {
+                          spinBtn.disabled = false;
+                          spinBtn.innerText = "หมุนครั้งที่ 2";
+                    }
+                );
+            } else if (spinCount === 2) {
+                 showSuccess(
+                    'ยินดีด้วย!\nคุณได้รับ "' + prizeObj.label + '"',
+                    displayImg,
+                    () => {
+                          showFinalWheelResult();
+                    }
+                );
+            }
+        }
+
+        async function showFinalWheelResult() {
+            claimedPromo = 'wheel'; // ล็อคสิทธิ์หลังจากหมุนวงล้อครบ
+            
+            // ใส่ชื่อและเบอร์ของลูกค้าลงในใบสรุป
+            document.getElementById('winnerNameDisplay').innerText = `ชื่อ: คุณ${userData.name}`;
+            document.getElementById('winnerPhoneDisplay').innerText = `เบอร์ติดต่อ: ${userData.phone}`;
+            
+            // Clear previous results
+            prizeResultContainer.innerHTML = '';
+            
+            // Generate distinct Cards for each prize
+            currentSessionPrizes.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'prize-card';
+                
+                const imgWrapper = document.createElement('div');
+                imgWrapper.className = 'prize-card-img-wrapper';
+                
+                const img = document.createElement('img');
+                img.className = 'prize-card-img';
+                
+                // ใช้รูปภาพที่ตัดพื้นหลังออกแล้ว
+                if (p.imgObj && p.imgObj.complete) {
+                    img.src = getTransparentImageSrc(p.imgObj);
+                } else {
+                    img.src = p.img;
+                }
+                
+                imgWrapper.appendChild(img);
+                
+                const text = document.createElement('div');
+                text.className = 'prize-card-text';
+                text.innerText = p.fullLabel || p.label;
+                
+                card.appendChild(imgWrapper);
+                card.appendChild(text);
+                
+                prizeResultContainer.appendChild(card);
+            });
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            currentSessionPrizes.forEach(p => {
+                userPrizeHistory.push({
+                    prize: p.label,
+                    time: new Date().toLocaleTimeString('th-TH')
+                });
+            });
+
+            try {
+                // รวบรวมรางวัลเพื่อส่งลง Sheet
+                const combinedPrizes = currentSessionPrizes.map(p => p.label).join(' และ ');
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ 
+                        action: 'save', 
+                        name: userData.name, 
+                        phone: userData.phone, 
+                        prize: combinedPrizes,
+                        note: ''
+                    })
+                });
+                document.getElementById('saveStatus').innerText = "บันทึกข้อมูลสำเร็จ ✅";
+            } catch (error) {
+                document.getElementById('saveStatus').innerText = "บันทึกข้อมูลเสร็จสิ้น";
+            } finally {
+                const closeBtn = document.getElementById('closeModalBtn');
+                closeBtn.disabled = false;
+                closeBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                
+                spinBtn.innerText = "ใช้สิทธิ์ครบแล้ว";
+                spinBtn.disabled = true;
+                spinBtn.classList.add('bg-gray-400', 'border-gray-500');
+                mainLineBtn.classList.remove('hidden');
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // แก้ไขปุ่มประวัติหน้าวงล้อ หากยังไม่มีประวัติ จะไม่แสดงแจ้งเตือน Error ใดๆ
+        function showHistory() {
+            if (claimedPromo === 'wheel') {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        }
+
+        // ฟังก์ชันประวัติหน้าทำบุญขึ้นบ้านใหม่ หากยังไม่มีประวัติ จะไม่แสดงแจ้งเตือน Error ใดๆ
+        function showHouseHistory() {
+            if (claimedPromo === 'house') {
+                const hModal = document.getElementById('houseResultModal');
+                hModal.classList.remove('hidden');
+                hModal.classList.add('flex');
+            }
+        }
+        
+        // --- Prizes List Function (แก้ไข: ลบพื้นหลังและใช้รูปโปร่งใส) ---
+        function renderPrizesList() {
+            const list = document.getElementById('prizesList');
+            list.innerHTML = '';
+            
+            // ใช้ prizes array แทน rawPrizes เพื่อเข้าถึง imgObj ที่โหลดเสร็จแล้ว
+            prizes.forEach((p, index) => {
+                const item = document.createElement('div');
+                // ลบ border ออกเล็กน้อยเพื่อให้ดูสะอาดตาขึ้น
+                item.className = 'flex items-center gap-4 border-b border-gray-100 pb-3 last:border-0 last:pb-0';
+                
+                // ตรวจสอบและใช้รูปภาพที่ตัดพื้นหลังแล้ว (ถ้ามี)
+                let imgSrc = p.img;
+                if (p.imgObj && p.imgObj.complete) {
+                    imgSrc = getTransparentImageSrc(p.imgObj);
+                }
+
+                // ลบ bg-[#f0fdf4] และ border เดิมออก
+                item.innerHTML = `
+                    <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                        <img src="${imgSrc}" class="w-full h-full object-contain">
+                    </div>
+                    <div class="text-left">
+                        <p class="text-sm font-bold text-[#083600] leading-tight">${p.label.replace(/\n/g, ' ')}</p>
+                        <p class="text-[10px] text-gray-400 mt-0.5">รางวัลที่ ${index + 1}</p>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function saveAsImage() {
+            const area = document.getElementById('captureArea');
+            const input = area.querySelector('input'); // Find the input in the area
+            
+            // Create a temporary text element to replace input for capture
+            const textDisplay = document.createElement('div');
+            textDisplay.className = "w-full text-center text-[13px] font-semibold text-[#083600] py-2"; // Match input style
+            textDisplay.innerText = input.value || input.placeholder; // Show value or placeholder
+            
+            // Swap
+            input.classList.add('hidden');
+            input.parentNode.insertBefore(textDisplay, input);
+
+            const originalShadow = area.style.boxShadow;
+            area.style.boxShadow = 'none';
+
+            html2canvas(area, { 
+                backgroundColor: '#ffffff', 
+                scale: 3, // Increase scale for better quality
+                logging: false,
+                useCORS: true
+            }).then(canvas => {
+                // Revert styles/elements
+                area.style.boxShadow = originalShadow;
+                textDisplay.remove();
+                input.classList.remove('hidden');
+
+                const link = document.createElement('a');
+                link.download = `Winner_${userData.phone}.png`;
+                link.href = canvas.toDataURL('image/png', 1.0);
+                link.click();
+            });
+        }
+        
+        function saveHouseAsImage() {
+            const area = document.getElementById('captureHouseArea');
+            const input = area.querySelector('input'); // Find the input in the area
+            
+            // Create a temporary text element to replace input for capture
+            const textDisplay = document.createElement('div');
+            textDisplay.className = "w-full text-center text-[13px] font-semibold text-[#083600] py-2"; // Match input style
+            textDisplay.innerText = input.value || input.placeholder; // Show value or placeholder
+            
+            // Swap
+            input.classList.add('hidden');
+            input.parentNode.insertBefore(textDisplay, input);
+
+            const originalShadow = area.style.boxShadow;
+            area.style.boxShadow = 'none';
+
+            html2canvas(area, { 
+                backgroundColor: '#ffffff', 
+                scale: 3, 
+                logging: false,
+                useCORS: true
+            }).then(canvas => {
+                area.style.boxShadow = originalShadow;
+                textDisplay.remove();
+                input.classList.remove('hidden');
+
+                const link = document.createElement('a');
+                link.download = `HouseBlessing_${userData.phone}.png`;
+                link.href = canvas.toDataURL('image/png', 1.0);
+                link.click();
+            });
+        }
+
+        // --- Claim House Blessing Logic ---
+        function initClaimHouse() {
+            if (claimedPromo === 'wheel') {
+                showAlert('ท่านได้รับโปรโมชั่นของการสุ่มวงล้อไปแล้ว');
+                return;
+            }
+            if (claimedPromo === 'house') {
+                showAlert('ท่านได้รับโปรโมชั่นของการทำบุญขึ้นบ้านใหม่ไปแล้ว');
+                return;
+            }
+            document.getElementById('confirmModal').classList.remove('hidden');
+            document.getElementById('confirmModal').classList.add('flex');
+        }
+
+        function closeConfirm() {
+            document.getElementById('confirmModal').classList.add('hidden');
+            document.getElementById('confirmModal').classList.remove('flex');
+        }
+        
+        function closeHouseModal() {
+            document.getElementById('houseResultModal').classList.add('hidden');
+            document.getElementById('houseResultModal').classList.remove('flex');
+        }
+
+        async function proceedClaimHouse() {
+            closeConfirm();
+            
+            const btn = document.getElementById('claimHouseBtn');
+            btn.disabled = true;
+            btn.innerText = "กำลังบันทึกข้อมูล...";
+            btn.classList.add('bg-gray-400');
+            
+            try {
+                // บันทึกการรับสิทธิ์ลง Google Sheet เพื่อเก็บข้อมูลและป้องกันการใช้เบอร์ซ้ำในอนาคต
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ 
+                        action: 'save', 
+                        name: userData.name, 
+                        phone: userData.phone, 
+                        prize: 'แพ็กเกจทำบุญขึ้นบ้านใหม่',
+                        note: ''
+                    })
+                });
+                
+                claimedPromo = 'house'; // ล็อคสิทธิ์หลังรับโปรบ้าน
+                btn.innerText = "รับสิทธิ์แล้ว";
+                
+                const lineBtn = document.getElementById('houseLineBtn');
+                lineBtn.classList.remove('hidden');
+                lineBtn.classList.add('flex');
+                
+                // แสดงใบแจ้งเตือน/ใบสรุป ทำบุญขึ้นบ้านใหม่
+                document.getElementById('houseWinnerNameDisplay').innerText = `ชื่อ: คุณ${userData.name}`;
+                document.getElementById('houseWinnerPhoneDisplay').innerText = `เบอร์ติดต่อ: ${userData.phone}`;
+                
+                const hModal = document.getElementById('houseResultModal');
+                hModal.classList.remove('hidden');
+                hModal.classList.add('flex');
+                
+            } catch (error) {
+                btn.disabled = false;
+                btn.innerText = "🎁 กดรับสิทธิ์ทำบุญขึ้นบ้านใหม่";
+                btn.classList.remove('bg-gray-400');
+                showAlert('เกิดข้อผิดพลาดในการบันทึกข้อมูล กรุณาลองใหม่');
+            }
+        }
+
+        function toggleInfo(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                el.classList.add('flex');
+            } else {
+                el.classList.add('hidden');
+                el.classList.remove('flex');
+            }
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 60; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = ['#083600', '#ffffff', '#e63946', '#ffd700'][Math.floor(Math.random() * 4)];
+                confetti.style.width = Math.random() * 8 + 6 + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3500);
+            }
+        }
+
+        spinBtn.addEventListener('click', spin);
+        window.onload = function() {
+            preloadImages(); // Start loading images
+            drawWheel();
+            setLineLinks();
+            renderPrizesList(); // Render prize list on load (initial)
+
+            // Intro Animation Logic
+            setTimeout(() => {
+                const intro = document.getElementById('introPage');
+                intro.classList.add('fade-out');
+            }, 2000); // Show intro for 2 seconds
+        };
+    </script>
 </body>
 </html>
